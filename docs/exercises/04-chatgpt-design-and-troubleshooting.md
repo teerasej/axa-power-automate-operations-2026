@@ -1,5 +1,5 @@
 ---
-title: "Exercise 4 · ChatGPT ช่วยคิดและตรวจ error"
+title: "Exercise 4 · ให้ ChatGPT ดูภาพ flow และช่วยตรวจ error"
 prev:
   text: คู่มือ ChatGPT
   link: /guidebook/
@@ -8,57 +8,65 @@ next:
   link: /guidebook/saved-examples
 ---
 
-# Exercise 4: ใช้ ChatGPT ช่วยออกแบบและตรวจข้อผิดพลาด
+# Exercise 4: ให้ ChatGPT ดูภาพ flow และช่วยตรวจข้อผิดพลาด
 
-เราจะใช้ ChatGPT เหมือนเพื่อนร่วมงานที่ช่วยตั้งคำถามและเสนอทางเลือก แต่เรายังเป็นคนตรวจว่าแนวทางนั้นใช้กับ flow ของเราได้จริง ฝึกสองงาน: ทบทวน design และซ่อม action ที่ผิดแบบตั้งใจ
+ลองให้เพื่อนดูรูปแผนที่ก่อนอธิบายทาง จะคุยกันได้ง่ายขึ้น กิจกรรมนี้ใช้ภาพแทนการพิมพ์รายละเอียด flow ยาว ๆ แล้วถามสั้น ๆ เราจะตรวจว่า ChatGPT อ่านภาพตรงกับที่เราทำ และทดสอบคำแนะนำด้วยตัวเอง
 
-> **License:** Error practice ใช้ Built-in actions ของ Power Automate ไม่ใช้ Premium connector ต้องมีสิทธิ์สร้างและ run cloud flow ส่วน ChatGPT ใช้บัญชีที่องค์กรอนุญาต ไม่ต้องเลือก paid plan หรือ model ตามบทนี้ หากเข้าไม่ได้ ให้ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md) ซึ่งเป็นข้อความที่เตรียมไว้ ไม่ใช่ผลการใช้ ChatGPT จริงของผู้เรียน
+> **License และ access:** ใช้บัญชี Power Automate ที่มีสิทธิ์สร้างและ run cloud flow; Error practice ใช้ Built-in actions ไม่ใช้ Premium connector ส่วน ChatGPT ต้องเป็นบัญชีที่องค์กรอนุญาต ผู้จัดต้องตรวจสิทธิ์ใช้และ image upload ก่อนเริ่มอบรม ไม่กำหนด paid plan หรือ model เฉพาะ หาก upload ไม่ได้ ใช้ text backup; หากเข้า ChatGPT ไม่ได้ ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md) และระบุว่าไม่ได้ฝึก ChatGPT สด
 
 ## ก่อนเริ่ม
 
 - เปิด Power Automate และ [ChatGPT](https://chatgpt.com) ด้วยบัญชีที่ได้รับอนุญาต
-- อ่าน [วิธีให้ context และตรวจคำตอบ](../guidebook/index.md)
-- ใช้ synthetic flow description เท่านั้น ไม่ส่ง mailbox จริง, tenant URLs, customer data, credentials หรือ screenshots ที่ยังไม่ลบข้อมูลส่วนตัว
-- ส่วนซ่อม error สร้าง flow แยก ไม่แก้ tracker หรือ flow หลัก
+- ใช้ flow สมมติจาก Exercise 2 หรือวาดลำดับ Forms → Excel ตามที่ฝึก ไม่ใช้ flow งานจริงที่มีข้อมูลส่วนตัว
+- ดาวน์โหลด [ภาพและ text backup](../resources/downloads.md) ไว้ก่อน ส่วนซ่อม error ใช้ flow แยกจาก tracker
+- อ่าน [วิธีเตรียมภาพและตรวจคำตอบ](../guidebook/index.md)
 
-## Practice 1: ขอ review ที่ตรงกับ flow
+## เลือกเส้นทางที่สะดวก
 
-**เป้าหมาย:** ให้ ChatGPT ทบทวน data flow และเสนอ test cases ที่ตรวจผลได้
+| ถ้าพร้อมแบบนี้ | ทำแบบนี้ |
+|---|---|
+| มี flow ฝึกหรือภาพวาดของตัวเอง | ใช้ screenshot หรือ photo ที่ลบข้อมูลส่วนตัวแล้ว |
+| ยังไม่มีภาพที่อ่านชัด | ใช้ภาพตัวอย่างที่เตรียมให้ |
+| เข้า ChatGPT ได้ แต่ upload ภาพไม่ได้ | คัดลอก text backup ทั้งก้อน ไม่ต้องเขียน description ใหม่ |
+| เข้า ChatGPT ไม่ได้ | อ่านตัวอย่างประกอบกับเพื่อน แล้วทำ Power Automate test เท่าที่บัญชีพร้อม |
 
-1. เปิด chat ใหม่ ใช้ description ของ flow ฝึก Forms → Excel หากยังสร้างไม่สำเร็จก็ใช้ description นี้ได้:
+**ภาพตัวอย่างทั้งสองเป็นภาพสร้างเพื่อการสอน ไม่ใช่ screenshot จริงของ Power Automate และไม่ใช่หลักฐานการ run** ตำแหน่ง UI และข้อความ error จริงอาจต่างจากภาพ
+
+## Practice 1: ให้ ChatGPT อ่านภาพเพื่อทบทวน design
+
+**เป้าหมาย:** ตรวจคำแนะนำหนึ่งข้อจากการ review ภาพ Forms → Excel ให้สัมพันธ์กับ goal และมีวิธีทดสอบ
+
+1. เตรียมภาพด้วยวิธีใดวิธีหนึ่ง:
+   - **Screenshot ของตัวเอง:** เปิด flow ฝึกจาก Exercise 2 ให้เห็นสาม actions ตามลำดับ ถ้าต้องการตรวจ mapping ให้เปิด settings ของ `Get response details` และ `Add a row into a table` ถ้ารวมในภาพเดียวแล้วตัวหนังสือเล็ก ให้แยกภาพลำดับกับภาพ mapping
+   - **Photo ของภาพวาด:** วาด Forms รับคำขอ → ดึงคำตอบ → บันทึก Excel ใส่ลูกศรและชื่อ fields ที่ส่งต่อ เช่น `Task title` → `Title` ถ่ายตรง ๆ ในที่สว่าง ตัดขอบโต๊ะและสิ่งอื่นออก
+   - **ภาพที่เตรียมให้:** ดาวน์โหลด [forms-to-excel-training.png](/downloads/forms-to-excel-training.png) แล้วใช้ไฟล์นี้ได้เลย
+
+   ![ภาพสร้างเพื่อการสอน แสดงสาม actions และ mapping ของ Forms ไป RequestsTable ไม่ใช่ screenshot จริง](/downloads/forms-to-excel-training.png)
+
+   [เปิดภาพตัวอย่างขนาดเต็ม](/downloads/forms-to-excel-training.png) เพื่ออ่านข้อความ ไม่ต้องพยายามอ่านภาพที่ถูกย่อบนมือถือ
+
+2. ตรวจภาพก่อนส่ง: ตัด URL, ชื่อบัญชี, email, connection identifiers, ข้อมูลลูกค้าและ secrets ออก Photo ต้องไม่มีคน, badge หรือกระดานงานอื่น ตรวจไฟล์ที่เตรียมส่งอีกครั้ง
+3. เปิด chat ใหม่ แนบภาพด้วย **Attach**, paste หรือ drag image ตาม UI ที่มี แล้วส่งคำถามสั้นนี้:
 
    ```text
-   ช่วย review Power Automate flow ฝึกนี้เป็นภาษาไทย โดยเก็บชื่อ action และ UI label เป็น English
-
-   เป้าหมาย: รับคำขอสมมติหนึ่งรายการจาก Microsoft Forms แล้วบันทึกหนึ่งแถวใน Excel Table
-   ลำดับ: When a new response is submitted → Get response details → Add a row into a table
-   Workbook อยู่ใน OneDrive for Business; Table ชื่อ RequestsTable
-   Form questions: Task title, Description, Requester email, Category
-   Excel mapping:
-   RequestId = Response Id จาก trigger
-   Title, Description, RequesterEmail, Category = คำตอบจาก Get response details
-   Status = ข้อความ Pending
-
-   ขอให้:
-   1. อธิบายว่าค่าผ่านแต่ละขั้นอย่างไร
-   2. ชี้หนึ่งจุดที่ควรตรวจเพื่อป้องกันการ map ผิด
-   3. เสนอ test cases สองกรณีพร้อมผลที่คาดและจุดที่ดูหลักฐาน
-   4. ถ้าข้อมูลไม่พอให้ถามก่อน อย่าเดา environment หรือสิทธิ์
-
-   ขอบเขต: ใช้ synthetic data และ Standard connectors เท่านั้น ไม่เพิ่ม AI action, Premium connector หรือ production deployment ไม่เปลี่ยน flow อัตโนมัติ
+   เป้าหมายคือรับคำขอผ่าน Forms แล้วบันทึกลง Excel
+   ช่วยอธิบายขั้นตอนจากภาพ แล้วเสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
+   ถ้าอ่านไม่ชัดหรือข้อมูลไม่พอ ให้ถามก่อน อย่าเดา
    ```
 
-2. อ่านคำตอบ เลือกข้อเสนอหนึ่งข้อ เช่นตรวจแหล่ง token หรือส่งสอง response ต่าง Category แล้วบอกเพื่อนว่าทำไมข้อเสนอนั้นสัมพันธ์กับ goal
-3. ตรวจ action name และ token กับ designer ของเรา ถ้าคำตอบเสนอขั้นตอนที่ไม่มีใน flow หรือบริการที่ไม่ได้รับอนุญาต ให้ถามให้ปรับก่อน ไม่ทำตามทันที
-4. ถ้ามี flow จาก Exercise 2 ให้ตรวจ mapping หรือทดสอบด้วย sample ตามข้อเสนอหนึ่งข้อ แล้วเทียบ Run history และ Excel หาก flow ยังไม่พร้อม ให้ระบุว่ากำลัง review design ยังไม่ได้พิสูจน์การทำงานจริง
+   ถ้า upload ไม่ได้ ให้ใช้ [text backup สำหรับ design](../guidebook/index.md#text-backup-design) แทนขั้นนี้
+
+4. **ตรวจว่าอ่านตรงก่อนใช้คำแนะนำ:** คำตอบควรเห็น `When a new response is submitted` → `Get response details` → `Add a row into a table` และแยก `Response Id` จาก trigger กับคำตอบจาก `Get response details` ถ้าภาพไม่แสดง mapping ก็ยังยืนยัน mapping ไม่ได้ หากอ่านผิดให้แก้ความเข้าใจ; หากอ่านไม่ชัดส่งภาพ close-up หรือใช้ text backup ไม่ให้เดาต่อ
+5. เลือกข้อเสนอหนึ่งข้อ เทียบกับ action/field ของเรา ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์ตามคำตอบทันที หากใช้ภาพวาด ให้ตรวจ business sequence ก่อน; ภาพวาดยังไม่ยืนยัน settings หรือว่า flow ทำงานแล้ว
+6. ถ้ามี flow ฝึกที่พร้อม ให้ตรวจ mapping หรือส่ง sample ใหม่หนึ่งรายการตามข้อเสนอ แล้วเทียบ Run history กับแถว Excel ถ้ายังมีเพียงภาพตัวอย่าง/ภาพวาด ให้บอกว่าเป็น design review และการวางแผน test ยังไม่ใช่ verified run
 
 ### Quick check
 
-อธิบายได้หนึ่งข้อเสนอที่ยอมรับหรือควรปรับ พร้อมจุดที่ใช้ตรวจหลักฐาน ไม่ถือว่าคำตอบจาก ChatGPT เป็นผลทดสอบ flow
+อธิบายได้ว่า ChatGPT อ่านภาพตรงหรือผิดตรงไหน และเลือกหนึ่งข้อเสนอพร้อมจุดที่ใช้ตรวจผล ไม่ถือว่าคำตอบใน chat เป็นผลทดสอบ flow
 
-## Practice 2: สร้าง sample action ที่ล้มเหลว
+## Practice 2: เตรียมหลักฐานของ conversion error
 
-**เป้าหมาย:** ทำให้ Compose เกิด conversion error แบบควบคุม เพื่อฝึกอ่านหลักฐาน
+**เป้าหมาย:** เปิดดู error ของ `Compose` ใน flow ฝึกที่แยกไว้ และเตรียมภาพเฉพาะส่วนที่ช่วยอธิบายสาเหตุ
 
 1. Power Automate → **Create** → **Instant cloud flow** ตั้งชื่อ:
 
@@ -78,50 +86,70 @@ next:
    int('not-a-number')
    ```
 
-4. เลือก **Add** หรือ **Update** ตรวจว่าแสดง expression token ไม่ใช่ literal text ถ้ากรอกเป็น text ธรรมดา Compose จะส่งข้อความออกมาและไม่เกิด error ที่เราต้องการ
-5. Save และ Test แบบ Manually แล้ว Run flow หนึ่งครั้ง เปิด run ที่ Failed เลือก Compose แล้วอ่าน error text ของ action
-6. จดเฉพาะ action name, expression และข้อความที่เกี่ยวกับ conversion ลบ private identifiers ก่อนใช้เป็น context ไม่ต้องคัดลอก raw run URL หรือ JSON ทั้งหมด
+4. เลือก **Add** หรือ **Update** ตรวจว่าเป็น expression token ไม่ใช่ literal text แล้ว Save ค่า `not-a-number` ไม่ใช่ข้อความตัวเลข จึงใช้ `int()` แปลงไม่ได้
+5. **หาก Save แจ้ง `InvalidTemplate`:** constant expression อาจถูกตรวจตั้งแต่ Save จึงยังไม่มี failed run ให้ดู ใช้ runtime fallback ต่อไปนี้เพื่อฝึก Run history:
+   - แทรก Built-in `Compose` อีกตัวระหว่าง trigger กับ `Compose` เดิม ตั้งชื่อ action ผ่านคำสั่ง **Rename** ของ action ให้เป็น:
+
+     ```text
+     SampleText
+     ```
+
+   - ใน **Inputs** ของ `SampleText` ใส่เป็นข้อความธรรมดา ไม่ใช่ Expression:
+
+     ```text
+     not-a-number
+     ```
+
+   - เปิด **Expression** ของ `Compose` ตัวเดิม เปลี่ยนเป็น:
+
+     ```text
+     int(outputs('SampleText'))
+     ```
+
+   - ตรวจลำดับ `Manually trigger a flow` → `SampleText` → `Compose` แล้ว Save ไม่เปลี่ยน connections หรือ permissions เพื่อข้าม error
+6. Test แบบ **Manually** แล้ว Run flow เปิด run ที่ `Failed` เลือก `Compose` อ่าน error และ input/expression ที่เกี่ยวข้อง หาก `Compose` กลับเป็น `Succeeded` ให้ตรวจว่ากรอกเป็น literal text หรือไม่
+7. Capture ภาพ close-up ของ expression ที่ใช้ และ error จาก action โดยลบ private identifiers ก่อนส่ง ภาพลำดับ flow อย่างเดียวไม่บอกว่า action ล้มเหลวเพราะอะไร ถ้าใช้ runtime fallback ให้เห็นค่าจาก `SampleText` ด้วย
 
 ### Quick check
 
-ระบุได้ว่า Compose ล้มเหลวเมื่อแปลงข้อความที่ไม่ใช่ตัวเลขเป็น integer พร้อมชี้ expression และ error ของ run จริง
+ชี้ expression, ค่าที่แปลงไม่ได้และ error ของ run จริงได้ หากยัง run ไม่ได้ ให้ใช้ sample ใน Practice 3 และระบุว่ากำลังวิเคราะห์ตัวอย่าง ยังไม่ผ่าน failed-run checkpoint
 
-## Practice 3: ขอแนวทางซ่อมแล้วพิสูจน์ใหม่
+## Practice 3: ให้ ChatGPT ดู error แล้วพิสูจน์การซ่อม
 
-**เป้าหมาย:** แก้ expression ตามสาเหตุและตรวจ output หลังแก้จริง
+**เป้าหมาย:** ตรวจการซ่อม conversion error ด้วย run ใหม่ที่ได้ integer `25`
 
-1. ส่ง prompt นี้ใน ChatGPT โดยเพิ่ม error text ที่ sanitise แล้วของตัวเองหลัง prompt ได้:
+1. ใช้ภาพที่เตรียมใน Practice 2 หากไม่มีภาพจริง ให้ดาวน์โหลด [compose-error-training.png](/downloads/compose-error-training.png) ภาพนี้ใช้ expression แบบ constant เพื่ออธิบายสาเหตุ และไม่ได้แสดง run จริง บน UI ที่ตรวจ constant ตั้งแต่ Save ให้ใช้ runtime fallback ใน Practice 2 เพื่อสร้างหลักฐานจริง
+
+   ![ภาพสร้างเพื่อการสอน แสดง Compose และตัวอย่าง conversion error จาก int('not-a-number') ไม่ใช่หลักฐาน run จริง](/downloads/compose-error-training.png)
+
+   [เปิดภาพ error ขนาดเต็ม](/downloads/compose-error-training.png)
+
+2. แนบภาพใน ChatGPT แล้วส่ง:
 
    ```text
-   ช่วยวิเคราะห์ sample error ของ Power Automate เป็นภาษาไทย
-   Flow: Manually trigger a flow → Compose
-   Compose Inputs ใช้ Expression int('not-a-number')
-   ผลที่คาด: แปลงข้อความตัวเลขเป็น integer
-   ผลจริง: Compose Failed เพราะ input ไม่สามารถแปลงเป็น integer
-   นี่เป็น controlled sample ใช้ข้อมูลสมมติ ไม่ใช่ flow ทำงานจริงขององค์กร
-
-   ขอ likely cause, การแก้ที่เล็กที่สุด และวิธีทดสอบก่อน/หลังแก้
-   ในตัวอย่างหลังแก้ ขอใช้ข้อความ '25' และผลที่คาดเป็น integer 25
-   แยกสิ่งที่ทราบจาก description กับสิ่งที่ยังต้องดูใน Run history
-   อย่าเพิ่ม connector, เปลี่ยนสิทธิ์ หรือบอกว่าซ่อมสำเร็จจนกว่าจะมีผล run จริง
+   Compose นี้ควรแปลงข้อความตัวเลขเป็น integer แต่เกิด error ตามภาพ
+   ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบ
+   ถ้าข้อมูลไม่พอ ให้ถามก่อน
    ```
 
-2. ตรวจคำแนะนำกับ expression และ error เดิม ถ้าแนะนำให้เปลี่ยน input เป็นตัวเลข ให้ Edit Compose → Expression แล้วเปลี่ยนเป็น:
+   ถ้าใช้ภาพตัวอย่าง ให้บอกเพิ่มว่าเป็นภาพประกอบสำหรับฝึก หาก upload ไม่ได้ ใช้ [text backup สำหรับ error](../guidebook/index.md#text-backup-error) หากภาพของจริงอ่านไม่ชัด คัดลอกเฉพาะ expression และ error text ที่ sanitise แล้ว ไม่ส่ง raw run URL หรือ JSON ทั้งหมด
+3. ตรวจว่า ChatGPT อ่านชื่อ action และ expression ตรงกับภาพ แยกสิ่งที่เห็นจริงจากการคาดเดา ถ้าคำตอบเสนอ connectors เพิ่มหรือเปลี่ยนสิทธิ์ ให้กลับมาขอแก้เฉพาะการแปลงข้อความตัวเลขใน sample นี้
+4. เปรียบเทียบคำแนะนำกับสาเหตุ แล้ว Edit `Compose` ตัวที่แปลงค่า เปิด **Expression** เปลี่ยนเป็น:
 
    ```text
    int('25')
    ```
 
-3. เลือก **Add/Update** ตาม UI แล้ว Save และ Test ใหม่ อย่าแก้เฉพาะข้อความใน chat
-4. เปิด run ใหม่ ตรวจว่า Compose เป็น Succeeded และ Outputs เป็นค่าจำนวนเต็ม 25 เปรียบเทียบกับ run แรกที่ Failed
-5. อธิบายว่าจุดไหนเปลี่ยนและทำไม input ใหม่นี้แปลงได้ การรับข้อความอื่นในงานจริงยังต้องออกแบบ validation เพิ่ม ไม่สรุปว่าการเปลี่ยน sample นี้แก้ข้อมูลทุกแบบได้
+   ใช้ expression นี้ได้ทั้งเส้นทางเดิมและ runtime fallback การเปลี่ยนนี้ทำให้ sample ใช้ค่าตัวเลขคงที่ ไม่ใช่การ validate ข้อมูลทุกแบบ
+5. เลือก **Add/Update** แล้ว Save และ Test ใหม่ เปิด run ใหม่ ตรวจ `Compose` เป็น `Succeeded` และ **Outputs** เป็น integer `25` เปรียบเทียบกับ failed run แรก ไม่แก้เฉพาะข้อความใน chat
+6. หากดูเฉพาะภาพตัวอย่างหรือบัญชี run ไม่ได้ ให้สรุป cause, proposed fix และ test ที่จะทำ ไม่กล่าวว่าซ่อมสำเร็จแล้ว หากเข้า ChatGPT ไม่ได้ ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md) และยังทดสอบใน Power Automate ได้เมื่อบัญชีพร้อม
 
 ### Quick check
 
-มี run ก่อนแก้ที่ Failed และ run หลังแก้ที่ Compose ส่ง integer 25 พร้อมอธิบายสาเหตุและการแก้ได้
+มี run ก่อนแก้ที่ Failed และ run หลังแก้ที่ `Compose` ส่ง integer `25` พร้อมอธิบายการเปลี่ยนได้ ภาพตัวอย่างหรือคำตอบ ChatGPT ใช้แทนสอง runs นี้ไม่ได้
 
 ## ปิดกิจกรรม
 
-เล่าให้เพื่อนฟังสามเรื่อง: goal ของ flow, ค่าที่ส่งระหว่าง actions และหลักฐานที่ใช้ยืนยันผล หลังวันนี้สามารถใช้คู่มือถาม ChatGPT ต่อด้วย context ของงานที่ได้รับอนุญาตได้เอง ตรวจข้อเสนอและผลการทำงานทุกครั้ง
+เล่าให้เพื่อนฟังสามเรื่อง: ChatGPT อ่านภาพตรงไหม, ข้อเสนอไหนที่เลือก และหลักฐานไหนยืนยันผล ใช้ภาพ + คำถามสั้น + การตรวจผลกับงานที่ได้รับอนุญาตต่อได้เอง
 
-อ้างอิง: [Workflow expression functions — int](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#int), [Troubleshoot cloud flows](https://learn.microsoft.com/power-automate/guidance/coding-guidelines/troubleshoot-cloud-flows)
+อ้างอิง: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs), [Workflow expression functions — int](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#int), [Cloud flow error reference](https://learn.microsoft.com/power-automate/error-reference), [Troubleshoot a cloud flow](https://learn.microsoft.com/power-automate/fix-flow-failures)

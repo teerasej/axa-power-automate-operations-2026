@@ -1,0 +1,28 @@
+ChatGPT text backup — ตัวอย่างสมมติสำหรับฝึก
+คัดลอกข้อความใต้หัวข้อที่ต้องการไป ChatGPT เมื่อ upload ภาพไม่ได้
+ไม่ใช่ transcript หรือหลักฐาน run จริง
+
+=== Design review ===
+นี่เป็น Power Automate flow ฝึกด้วยข้อมูลสมมติ ไม่ใช่ระบบงานจริง
+เป้าหมาย: รับคำขอผ่าน Forms แล้วบันทึกหนึ่งแถวใน Excel
+ลำดับ: When a new response is submitted → Get response details → Add a row into a table
+Workbook อยู่ใน OneDrive for Business; Table คือ RequestsTable
+RequestId = Response Id จาก trigger
+Title, Description, RequesterEmail, Category = คำตอบจาก Get response details
+Status = ข้อความ Pending
+ช่วยอธิบายขั้นตอน เสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
+ถ้าข้อมูลไม่พอให้ถามก่อน อย่าเดา ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+
+=== Error diagnosis ===
+นี่เป็น sample ของ Power Automate สำหรับฝึก ไม่ใช่หลักฐาน run จริง
+Flow: Manually trigger a flow → Compose
+Expression ตัวอย่าง: int('not-a-number')
+ค่าที่พยายามแปลงคือ not-a-number ซึ่งไม่ใช่ข้อความตัวเลข
+ผลที่ต้องการ: แปลงข้อความตัวเลขเป็น integer
+constant expression อาจถูกปฏิเสธตั้งแต่ Save; อย่าเดาว่ามี failed run แล้ว
+ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบกับข้อความตัวเลข
+ถ้าข้อมูลไม่พอให้ถามก่อน ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+
+=== เมื่ออ่านภาพไม่ชัด ===
+ช่วยบอกก่อนว่าอ่านชื่อ action, ลำดับและค่าจากภาพได้ว่าอะไร
+แยกสิ่งที่เห็นชัดจากสิ่งที่ยังอ่านไม่ออก แล้วถามเฉพาะข้อมูลที่ขาด

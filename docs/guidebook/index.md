@@ -1,5 +1,5 @@
 ---
-title: คู่มือ ChatGPT สำหรับ Power Automate
+title: คู่มือ ChatGPT แบบใช้ภาพ
 prev:
   text: Forms → Excel
   link: /exercises/02-forms-to-excel
@@ -8,94 +8,98 @@ next:
   link: /exercises/04-chatgpt-design-and-troubleshooting
 ---
 
-# คู่มือ ChatGPT: ช่วยคิด ช่วยถาม แล้วเราตรวจผล
+# คู่มือ ChatGPT: ให้ดูภาพ ถามสั้น แล้วตรวจผล
 
-ChatGPT ช่วยเรียบเรียง goal, เสนอ flow sequence และชี้จุดตรวจได้ แต่ไม่เห็น environment, connections หรือ Run history ของเราจากคำอธิบายเพียงอย่างเดียว คิดเหมือนถามเพื่อนทางโทรศัพท์: บอกอาการและสิ่งที่ลองแล้วให้ชัด เพื่อนจึงช่วยได้ตรงจุด
+เหมือนเอารูปแผนที่ให้เพื่อนดู เราไม่ต้องบรรยายทุกเส้นทาง แต่ยังต้องบอกว่าจะไปไหน ใช้ screenshot หรือ photo เป็น context บอก goal สั้น ๆ แล้วตรวจว่า ChatGPT อ่านถูกก่อนนำคำแนะนำไปใช้
 
 ## วิธีใช้ห้าขั้น
 
-1. **บอก goal:** งานเริ่มเมื่อไร ใครใช้ผล และผลที่ถูกต้องคืออะไร
-2. **ให้ context:** ระบุ apps, action names, input/output ตัวอย่าง และข้อจำกัด ใช้ข้อมูลสมมติหรือ sanitise แล้ว
-3. **ขอข้อเสนอเล็ก ๆ:** ขอคำถามที่ขาด, หนึ่ง next step และวิธี test แทนการขอให้แก้ทุกอย่างพร้อมกัน
-4. **ตรวจคำตอบ:** เทียบ action names, field mapping และสิทธิ์กับของจริง แยก recommendation ออกจากสิ่งที่มีหลักฐาน
-5. **ทดสอบ:** เปลี่ยนทีละจุด เปิด run ใหม่ ตรวจ Inputs/Outputs และผลปลายทาง
+1. **เตรียมภาพ:** เลือก screenshot ของ synthetic flow หรือ photo ของภาพวาด ภาพต้องอ่านชื่อขั้นตอนและลูกศรได้ สำหรับ error ให้เห็น action, expression และข้อความ error
+2. **ตรวจภาพก่อนส่ง:** ตัด private URLs, ชื่อบัญชี, email, identifiers, credentials และข้อมูลลูกค้าออก Photo ไม่รวมคน, badge หรือกระดานงานอื่น ใช้เฉพาะ context ที่องค์กรอนุญาต
+3. **แนบภาพและถามสั้น:** บอก goal และสิ่งที่อยากให้ช่วย หาก upload ไม่ได้ คัดลอก text backup ด้านล่างแทน
+4. **ตรวจว่าอ่านตรง:** เปรียบเทียบ action names, ลำดับ, field และ expression กับภาพ ถ้าอ่านผิดให้แก้ความเข้าใจ ถ้าอ่านไม่ชัดใช้ close-up หรือคัดลอกเฉพาะข้อความที่เกี่ยวข้อง
+5. **ทดสอบข้อเสนอหนึ่งจุด:** เทียบกับ configuration จริง แล้วตรวจ run ใหม่และผลปลายทาง ไม่ถือว่าคำตอบ ChatGPT ยืนยัน tenant, permissions หรือการซ่อมสำเร็จ
 
-## Prompt สำหรับออกแบบ flow จาก goal
+## ถามจากภาพ design
 
-เปลี่ยนส่วนในวงเล็บให้เป็นข้อมูลสมมติหรือข้อมูลที่องค์กรอนุญาต ไม่ส่ง prompt ทั้งที่ยังมี placeholder
-
-```text
-ช่วยวางแผน Power Automate cloud flow เป็นภาษาไทย เก็บชื่อ product, action และ UI label เป็น English
-Goal: [งานที่ต้องการทำให้เสร็จ]
-เริ่มเมื่อ: [ผู้ใช้กดปุ่ม / event / เวลา]
-Input ตัวอย่าง: [ข้อมูลสมมติ]
-ผลที่คาด: [ผลที่ตรวจได้]
-Apps และ connectors ที่อนุญาต: [รายการที่ยืนยันแล้ว]
-คนที่ต้องตรวจหรือตัดสินใจ: [role ไม่ใช้ชื่อจริง]
-ข้อจำกัด: [เช่นไม่มี Premium connectors, ห้ามส่งออกนอกบัญชีฝึก]
-
-ถามข้อมูลที่จำเป็นแต่ยังขาดก่อน จากนั้นเสนอ flow sequence แบบสั้น
-แยก Trigger, Actions และ Dynamic content ที่ส่งระหว่างขั้น
-เสนอ normal case และ exception case พร้อม expected result และจุดตรวจ
-ระบุสิ่งที่ต้องตรวจใน environment ไม่เดาสิทธิ์หรือความพร้อม และไม่เปลี่ยน flow อัตโนมัติ
-```
-
-## Prompt เมื่อ action เกิด error
-
-เปิด Run history อ่าน action ที่ Failed ก่อน กรอกเฉพาะส่วนที่เกี่ยวข้อง ไม่มี access token, connection identifiers, tenant URL, อีเมลจริงหรือข้อมูลลูกค้า
+ใช้กับภาพ Forms → Excel ใน Exercise 4:
 
 ```text
-ช่วยวิเคราะห์ error ของ Power Automate เป็นภาษาไทย
-Flow goal: [goal]
-ลำดับก่อนถึง error: [Trigger → Action → Action]
-Action ที่ Failed: [ชื่อ action]
-Input หรือ expression ที่เกี่ยวข้อง: [ข้อมูลสมมติ / sanitised]
-Error text ที่เกี่ยวข้อง: [ข้อความที่ลบข้อมูลส่วนตัวแล้ว]
-Expected result: [ผลที่ควรได้]
-Actual result: [ผลที่เห็น]
-ลองแก้อะไรแล้ว: [สิ่งที่ลองและผล]
-
-ขอ likely causes เรียงจากที่ควรตรวจง่ายก่อน แยกข้อสันนิษฐานจากหลักฐาน
-เสนอการแก้หนึ่งจุดพร้อมเหตุผลและวิธีทดสอบใหม่
-ถ้าข้อมูลไม่พอให้ถาม ไม่เดา field names, permissions หรือข้อมูลที่ไม่ได้ให้
-ไม่แนะนำให้เปิดสิทธิ์สาธารณะหรือใช้ Premium connector เพื่อข้ามปัญหา
-ไม่สรุปว่าแก้สำเร็จจนกว่าจะตรวจ run และ output ใหม่จริง
+เป้าหมายคือรับคำขอผ่าน Forms แล้วบันทึกลง Excel
+ช่วยอธิบายขั้นตอนจากภาพ แล้วเสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
+ถ้าอ่านไม่ชัดหรือข้อมูลไม่พอ ให้ถามก่อน อย่าเดา
 ```
 
-## Prompt เมื่อ run สำเร็จแต่ผลผิด
+ภาพวาดช่วย review ลำดับและการส่งข้อมูล ส่วน screenshot ที่เห็นแค่ชื่อ actions ยังไม่แสดง settings ต้องเปิด field mapping ก่อนยืนยันว่าค่าถูก ถ้ายังไม่ build/run ให้เรียกผลว่า design review
+
+## ถามจากภาพ error
 
 ```text
-Power Automate run นี้ Succeeded แต่ผลไม่ตรง goal ช่วยวางขั้นตอนตรวจเป็นภาษาไทย
-Expected result: [ผลที่คาด]
-Actual result: [ผลจริงที่ sanitise แล้ว]
-Trigger input: [ตัวอย่างสมมติ]
-Action sequence: [ชื่อ actions]
-Field mapping ที่เกี่ยวข้อง: [token มาจากขั้นไหน ไปอยู่ช่องไหน]
-
-เสนอจุดเปรียบเทียบ Inputs/Outputs ทีละขั้น ไม่ถือว่า Succeeded ยืนยันความถูกต้อง
-เลือกหนึ่งจุดที่ควรตรวจเป็นอันดับแรกและบอกผลที่จะแยกสาเหตุได้
+Compose นี้ควรแปลงข้อความตัวเลขเป็น integer แต่เกิด error ตามภาพ
+ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบ
+ถ้าข้อมูลไม่พอ ให้ถามก่อน
 ```
 
-## คำถามต่อเมื่อคำตอบยังไม่ชัด
+ภาพลำดับ flow อย่างเดียวไม่พอ เปิด action ที่ failed และ expression ที่เกี่ยวข้อง ข้อความ error อาจต่างกันตาม UI; ตรวจจากของจริง ไม่คาดว่าตรงกับภาพประกอบทุกคำ
+
+## ถ้าอ่านภาพผิดหรือไม่ชัด
 
 ```text
-ในคำแนะนำเมื่อกี้ ข้อไหนอ้างอิงจากข้อมูลที่ฉันให้ และข้อไหนเป็นสมมติฐาน?
-เลือกการเปลี่ยนแปลงที่เล็กที่สุดหนึ่งจุด ระบุ action, field และผลที่คาดหลังทดสอบ
-ถ้า UI หรือ action name ที่เสนอไม่ตรงกับที่ฉันเห็น ให้ถามก่อนเสนอขั้นต่อไป
+ช่วยบอกก่อนว่าอ่านชื่อ action, ลำดับและค่าจากภาพได้ว่าอะไร
+แยกสิ่งที่เห็นชัดจากสิ่งที่ยังอ่านไม่ออก แล้วถามเฉพาะข้อมูลที่ขาด
 ```
 
-## ตรวจคำตอบก่อนนำไปใช้
+แก้ความเข้าใจด้วยคำสั้น ๆ หรือส่ง close-up ที่ลบข้อมูลส่วนตัวแล้ว เช่นภาพ settings หนึ่ง action ไม่ส่งทั้งหน้าจอเพิ่มโดยไม่ตรวจ privacy
 
-| สิ่งที่เห็นในคำตอบ | วิธีตัดสินใจ |
+## Text backup: design {#text-backup-design}
+
+ใช้เมื่อ upload ไม่ได้ คัดลอกทั้งก้อนนี้ได้เลย ไม่ต้องกรอก placeholders:
+
+```text
+นี่เป็น Power Automate flow ฝึกด้วยข้อมูลสมมติ ไม่ใช่ระบบงานจริง
+เป้าหมาย: รับคำขอผ่าน Forms แล้วบันทึกหนึ่งแถวใน Excel
+ลำดับ: When a new response is submitted → Get response details → Add a row into a table
+Workbook อยู่ใน OneDrive for Business; Table คือ RequestsTable
+RequestId = Response Id จาก trigger
+Title, Description, RequesterEmail, Category = คำตอบจาก Get response details
+Status = ข้อความ Pending
+ช่วยอธิบายขั้นตอน เสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
+ถ้าข้อมูลไม่พอให้ถามก่อน อย่าเดา ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+```
+
+## Text backup: error {#text-backup-error}
+
+ใช้ตัวอย่างนี้ได้แม้ไม่มีภาพจริง ข้อความนี้เป็น sample context ไม่ใช่รายงาน run ของเรา:
+
+```text
+นี่เป็น sample ของ Power Automate สำหรับฝึก ไม่ใช่หลักฐาน run จริง
+Flow: Manually trigger a flow → Compose
+Expression ตัวอย่าง: int('not-a-number')
+ค่าที่พยายามแปลงคือ not-a-number ซึ่งไม่ใช่ข้อความตัวเลข
+ผลที่ต้องการ: แปลงข้อความตัวเลขเป็น integer
+constant expression อาจถูกปฏิเสธตั้งแต่ Save; อย่าเดาว่ามี failed run แล้ว
+ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบกับข้อความตัวเลข
+ถ้าข้อมูลไม่พอให้ถามก่อน ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+```
+
+ถ้ามี error ของตัวเอง ให้ส่ง expression และข้อความ error ที่ sanitise แล้วเพิ่มเฉพาะเมื่อจำเป็น [ดาวน์โหลด text backup](/downloads/chatgpt-text-backup.txt) เพื่อเก็บไว้คัดลอก
+
+## ถ้าเข้า ChatGPT ไม่ได้
+
+ใช้ [ตัวอย่างประกอบ](./saved-examples.md) เพื่อฝึกตัดสินใจร่วมกับเพื่อน ระบุว่าเป็น authored example review ไม่ใช่การใช้ ChatGPT สด สามารถ build/test Power Automate ต่อได้หากบัญชีพร้อม
+
+## ตรวจคำตอบก่อนทำตาม
+
+| สิ่งที่ ChatGPT บอก | สิ่งที่เราตรวจ |
 |---|---|
-| อธิบายการส่งค่าได้ตรงกับ flow | เทียบชื่อ source action และ field ใน designer |
-| เสนอ test case | ตรวจว่ามี input, expected result และจุดดูหลักฐาน |
-| เดา action, column หรือสิทธิ์ | ขอให้ถามข้อมูลที่ขาด และตรวจเอกสาร/ผู้จัด |
-| บอกว่าแก้แล้วโดยยังไม่มี run ใหม่ | ถือเป็นข้อเสนอ ยังไม่ใช่ verified result |
-| เสนอ flow ใหญ่หรือบริการเพิ่ม | ขอให้จำกัดกับ apps และ scope ที่อนุญาต |
+| ลำดับและชื่อ action | เทียบกับภาพ; แก้การอ่านผิดก่อน |
+| Mapping ถูกแล้ว | ภาพเห็น fields และ source tokens จริงหรือยัง |
+| เสนอ test | มี input, expected result และจุดตรวจหรือไม่ |
+| ซ่อมสำเร็จแล้ว | ต้องมี run ใหม่และ output จริงก่อน |
+| ต้องเพิ่มบริการหรือเปิดสิทธิ์ | ไม่ทำทันที; ตรวจ scope และถามผู้จัด |
 
-อย่าส่ง private context เพื่อให้ prompt ดูละเอียดขึ้น ใช้ synthetic version ที่ยังคงสาเหตุของปัญหา หาก error เกี่ยวกับสิทธิ์หรือ policy ให้ขอผู้ดูแลช่วย ไม่ใช้ ChatGPT เป็นผู้ยืนยันสิทธิ์
+ChatGPT ช่วยเสนอแนวทาง ไม่เห็น configuration ที่อยู่นอกภาพหรือสิทธิ์ของบัญชีเรา ใช้ Standard connectors และขอบเขตเดิม ภาพตัวอย่างที่แจกเป็นภาพสร้างเพื่อการสอน ไม่ใช่ screenshot จริงหรือหลักฐาน tenant readiness
 
-[ฝึกใช้คู่มือใน Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md) · [ตัวอย่างประกอบเมื่อเข้า ChatGPT ไม่ได้](./saved-examples.md)
+[ฝึกใน Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md) · [ดาวน์โหลดภาพฝึก](../resources/downloads.md)
 
-แนวทาง prompt นี้ประยุกต์จาก [OpenAI: Prompting](https://learn.chatgpt.com/docs/prompting) ให้ตรงกับการฝึก Power Automate โดยเน้น goal, context, output และการตรวจผล
+อ้างอิง: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs)
