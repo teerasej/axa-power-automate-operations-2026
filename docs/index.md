@@ -13,8 +13,8 @@ hero:
       text: Build your first email flow
       link: /exercises/01-foundation-email
     - theme: alt
-      text: Download practice files
-      link: /resources/downloads
+      text: Download all sample files (ZIP)
+      link: /axa-power-automate-operations-2026/downloads/learner-materials.zip
 features:
   - title: Start with a visible result
     details: Supply an input, send an email and check that the value reaches your mailbox.
