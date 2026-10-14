@@ -3,8 +3,8 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid(defineConfig({
   title: 'Power Automate · Operations',
-  description: 'ฝึกสร้าง flow ทีละขั้น รับคำขอผ่าน Forms บันทึก Excel และใช้ ChatGPT ช่วยคิดและตรวจข้อผิดพลาด',
-  lang: 'th-TH',
+  description: 'Build email and request-routing flows, then review and troubleshoot with ChatGPT',
+  lang: 'en-US',
   base: '/axa-power-automate-operations-2026/',
   cleanUrls: true,
   lastUpdated: false,
@@ -14,39 +14,37 @@ export default withMermaid(defineConfig({
     logo: '/images/workflow-mark.svg',
     siteTitle: 'Power Automate · Operations',
     nav: [
-      { text: 'เริ่มต้น', link: '/' },
-      { text: 'แบบฝึกหัด', link: '/exercises/01-foundation-email' },
-      { text: 'คู่มือ ChatGPT', link: '/guidebook/' },
-      { text: 'ดาวน์โหลด', link: '/resources/downloads' }
+      { text: 'Home', link: '/' },
+      { text: 'Exercises', link: '/exercises/01-foundation-email' },
+      { text: 'ChatGPT guidebook', link: '/guidebook/' },
+      { text: 'Downloads', link: '/resources/downloads' }
     ],
     sidebar: [
-      { text: 'เริ่มฝึก', items: [
-        { text: 'ภาพรวม', link: '/' },
-        { text: 'แนวคิดพื้นฐาน', link: '/resources/foundations' }
+      { text: 'Start learning', items: [
+        { text: 'Overview', link: '/' },
+        { text: 'Flow foundations', link: '/resources/foundations' }
       ] },
-      { text: 'แบบฝึกหัด', items: [
-        { text: '1 · Email flow แรก', link: '/exercises/01-foundation-email' },
-        { text: '2 · Forms → Excel', link: '/exercises/02-forms-to-excel' },
-        { text: '4 · ChatGPT และ error repair', link: '/exercises/04-chatgpt-design-and-troubleshooting' }
+      { text: 'Exercises', items: [
+        { text: '1 · Your first email flow', link: '/exercises/01-foundation-email' },
+        { text: '2 · Smart Request Intake and Routing', link: '/exercises/02-forms-to-excel' },
+        { text: '4 · ChatGPT and error repair', link: '/exercises/04-chatgpt-design-and-troubleshooting' }
       ] },
-      { text: 'คู่มือและไฟล์', items: [
-        { text: 'คู่มือ ChatGPT', link: '/guidebook/' },
-        { text: 'ตัวอย่างประกอบเมื่อเปิด ChatGPT ไม่ได้', link: '/guidebook/saved-examples' },
-        { text: 'ข้อมูลทดสอบ', link: '/resources/sample-inputs' },
-        { text: 'ดาวน์โหลดและ reset', link: '/resources/downloads' }
+      { text: 'Guides and files', items: [
+        { text: 'ChatGPT guidebook', link: '/guidebook/' },
+        { text: 'Prepared review examples', link: '/guidebook/saved-examples' },
+        { text: 'Prepare for Section 2', link: '/resources/section-2-preparation' },
+        { text: 'Test inputs', link: '/resources/sample-inputs' },
+        { text: 'Downloads and reset', link: '/resources/downloads' }
       ] }
     ],
-    search: { provider: 'local', options: { locales: { root: { translations: {
-      button: { buttonText: 'ค้นหา', buttonAriaLabel: 'ค้นหาเอกสาร' },
-      modal: { noResultsText: 'ไม่พบผลลัพธ์', resetButtonTitle: 'ล้างคำค้น', footer: { selectText: 'เลือก', navigateText: 'เลื่อน', closeText: 'ปิด' } }
-    } } } } },
-    outline: { label: 'ในหน้านี้', level: [2, 3] },
-    docFooter: { prev: 'ย้อนกลับ', next: 'ถัดไป' },
-    sidebarMenuLabel: 'สารบัญ',
-    returnToTopLabel: 'กลับด้านบน',
-    darkModeSwitchLabel: 'รูปแบบสี',
-    lightModeSwitchTitle: 'ใช้สีสว่าง',
-    darkModeSwitchTitle: 'ใช้สีมืด',
-    footer: { message: 'ใช้ข้อมูลสมมติในการฝึก · ตรวจผลจริงทุกครั้งก่อนนำไปใช้' }
+    search: { provider: 'local' },
+    outline: { label: 'On this page', level: [2, 3] },
+    docFooter: { prev: 'Previous', next: 'Next' },
+    sidebarMenuLabel: 'Menu',
+    returnToTopLabel: 'Back to top',
+    darkModeSwitchLabel: 'Appearance',
+    lightModeSwitchTitle: 'Switch to light theme',
+    darkModeSwitchTitle: 'Switch to dark theme',
+    footer: { message: 'Use synthetic training data · Verify actual results before applying changes' }
   }
 }))

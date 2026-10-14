@@ -1,57 +1,58 @@
-# ข้อมูลทดสอบสมมติ
+# Synthetic test inputs
 
-ใช้ข้อมูลนี้ใน Form ของ Exercise 2 ช่อง Requester email ให้กรอกอีเมลฝึกของตัวเอง ส่วนคำตอบอื่นใช้ตามด้านล่าง ไม่ใช่ข้อมูลคำขอจริงของบริษัท
+Use these values in the Exercise 2 Form. Replace Requester email with your own authorised training address. These are fictional requests.
 
 ## Sample A {#sample-a}
 
 - **Task title**
 
   ```text
-  เตรียมสรุปคำขอสำหรับประชุมทีม
+  Prepare the request summary for the team meeting
   ```
 
 - **Description**
 
   ```text
-  รวบรวมรายการงานสมมติสามรายการเพื่อใช้ประชุมฝึก
+  Collect three fictional tasks for the training meeting
   ```
 
-- **Requester email:** อีเมลฝึกของตัวเอง
-- **Category:** เลือกตัวเลือก
+- **Category**
 
   ```text
   Operations
   ```
+
+- **Requester email:** enter your own training email.
 
 ## Sample B {#sample-b}
 
 - **Task title**
 
   ```text
-  ตรวจตารางค่าใช้จ่ายตัวอย่าง
+  Check the sample expense table
   ```
 
 - **Description**
 
   ```text
-  ตรวจชื่อรายการและสถานะในไฟล์สมมติสำหรับการฝึก
+  Check item names and statuses in the fictional training file
   ```
 
-- **Requester email:** อีเมลฝึกของตัวเอง
-- **Category:** เลือกตัวเลือก
+- **Category**
 
   ```text
   Finance
   ```
 
-## ผลที่คาด
+- **Requester email:** enter your own training email.
 
-ใน RequestsTable มีสองแถวใหม่ที่ไม่ใช่แถวว่างเริ่มต้น RequestId ต่างกัน Title และ Category ตรงกับ sample A/B Status เป็น Pending ทั้งสองแถว ตัวเลข RequestId จริงขึ้นกับจำนวน responses ที่ Form เคยรับ ไม่ต้องเป็น 1 และ 2
+## Expected records
 
-ถ้าทำ Optional Email extension ให้ส่ง response ใหม่อีกครั้ง โดยเปลี่ยน Task title เป็น:
+RequestsTable has two new populated rows, excluding the initial blank row. RequestId values differ; Title and Category match Samples A/B; Status is Pending in both. Actual Response Id values depend on the Form's previous responses and need not be 1 and 2.
 
-```text
-ทดสอบ Email ยืนยันคำขอ
-```
+## Expected routing
 
-ใช้ Description และ Category จาก Sample A ได้ ผลที่คาดคือเพิ่มหนึ่งแถวและได้หนึ่ง Email ยืนยัน
+- **Sample A:** Condition True / Yes; Operations email action runs and Finance is Skipped. Subject is [TRAINING][Operations] followed by Sample A's Task title.
+- **Sample B:** Condition False / No; Finance email action runs and Operations is Skipped. Subject is [TRAINING][Finance] followed by Sample B's Task title.
+
+Both emails reach your own mailbox. These two tests produce two populated rows and two emails. Status stays Pending. Do not add owner/status columns or unknown-category tests to the required practice.

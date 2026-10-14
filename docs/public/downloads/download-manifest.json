@@ -1,0 +1,37 @@
+{
+  "revision": "2026-10-14",
+  "morning": "10:45–12:00 Scenario 1 confirmed; 10/10/30/15/10; prepared Form/workbook; one Condition; two routes to self",
+  "afternoon": "Learner content follows confirmed scenario selection",
+  "files": [
+    {
+      "name": "operations-request-tracker.xlsx",
+      "description": "Prepared personal six-column RequestsTable; unchanged schema.",
+      "sha256": "da34477ec5bfba76e79752926f4268dffa8ea293f476f9b06ea9d5bc14da1f49"
+    },
+    {
+      "name": "operations-request-tracker-reset.xlsx",
+      "description": "Blank reset copy; reselect File/Table, remap and repeat both routes.",
+      "sha256": "da34477ec5bfba76e79752926f4268dffa8ea293f476f9b06ea9d5bc14da1f49"
+    },
+    {
+      "name": "sample-requests.csv",
+      "description": "Synthetic Operations and Finance requests; replace email placeholder with own mailbox.",
+      "sha256": "56ec0a1290c9f98397072879c8576815b3be0186837ff3deb5c5ac8ae0b576b2"
+    },
+    {
+      "name": "request-routing-training.png",
+      "description": "Current teaching diagram: intake, six mappings, one Condition, two self-email routes; not screenshot/run evidence.",
+      "sha256": "50b262be26f9683f029f34633c27f672d28d1ca068a108c590863f64c4b13b61"
+    },
+    {
+      "name": "compose-error-training.png",
+      "description": "Preserved generated error illustration; separate controlled Compose practice.",
+      "sha256": "e5747da7946e0b5868b5ee29652f46aac9372f77fb85a6981201e572ad65335d"
+    },
+    {
+      "name": "chatgpt-text-backup.txt",
+      "description": "Current routing design context plus separate conversion-error context.",
+      "sha256": "30b7806da414cb32ad5bc61a7d88512fb654f197c03b3fb19ce1704adc7cf674"
+    }
+  ]
+}

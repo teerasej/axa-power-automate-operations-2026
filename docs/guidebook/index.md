@@ -1,105 +1,112 @@
 ---
-title: คู่มือ ChatGPT แบบใช้ภาพ
+title: ChatGPT image guidebook
 prev:
-  text: Forms → Excel
+  text: Smart Request Intake and Routing
   link: /exercises/02-forms-to-excel
 next:
-  text: ฝึก review และซ่อม error
+  text: Design review and error repair
   link: /exercises/04-chatgpt-design-and-troubleshooting
 ---
 
-# คู่มือ ChatGPT: ให้ดูภาพ ถามสั้น แล้วตรวจผล
+# ChatGPT guidebook: Show an image, ask briefly, verify the result
 
-เหมือนเอารูปแผนที่ให้เพื่อนดู เราไม่ต้องบรรยายทุกเส้นทาง แต่ยังต้องบอกว่าจะไปไหน ใช้ screenshot หรือ photo เป็น context บอก goal สั้น ๆ แล้วตรวจว่า ChatGPT อ่านถูกก่อนนำคำแนะนำไปใช้
+A map helps a friend understand your route, but you still need to say where you want to go. Supply a screenshot or drawing, state your goal and check ChatGPT's interpretation before using its advice.
 
-## วิธีใช้ห้าขั้น
+## Five steps
 
-1. **เตรียมภาพ:** เลือก screenshot ของ synthetic flow หรือ photo ของภาพวาด ภาพต้องอ่านชื่อขั้นตอนและลูกศรได้ สำหรับ error ให้เห็น action, expression และข้อความ error
-2. **ตรวจภาพก่อนส่ง:** ตัด private URLs, ชื่อบัญชี, email, identifiers, credentials และข้อมูลลูกค้าออก Photo ไม่รวมคน, badge หรือกระดานงานอื่น ใช้เฉพาะ context ที่องค์กรอนุญาต
-3. **แนบภาพและถามสั้น:** บอก goal และสิ่งที่อยากให้ช่วย หาก upload ไม่ได้ คัดลอก text backup ด้านล่างแทน
-4. **ตรวจว่าอ่านตรง:** เปรียบเทียบ action names, ลำดับ, field และ expression กับภาพ ถ้าอ่านผิดให้แก้ความเข้าใจ ถ้าอ่านไม่ชัดใช้ close-up หรือคัดลอกเฉพาะข้อความที่เกี่ยวข้อง
-5. **ทดสอบข้อเสนอหนึ่งจุด:** เทียบกับ configuration จริง แล้วตรวจ run ใหม่และผลปลายทาง ไม่ถือว่าคำตอบ ChatGPT ยืนยัน tenant, permissions หรือการซ่อมสำเร็จ
+1. **Prepare the image:** use a synthetic flow screenshot or drawing. Action names and arrows should be readable. For an error, show the action, expression and error message.
+2. **Check before sharing:** remove private URLs, account details, email addresses, identifiers, credentials and customer data. Crop people, badges and unrelated surroundings from photos. Use only organisation-approved context.
+3. **Attach and ask briefly:** state your goal and request. Use the text backups below when image upload is unavailable.
+4. **Check the read-back:** compare names, sequence, fields and expressions with the image. Correct misinterpretations; use a close-up or relevant text if needed.
+5. **Test one suggestion:** compare with actual configuration, run again and inspect the destination. ChatGPT does not verify your tenant, permissions or successful repair.
 
-## ถามจากภาพ design
+## Design-review question
 
-ใช้กับภาพ Forms → Excel ใน Exercise 4:
-
-```text
-เป้าหมายคือรับคำขอผ่าน Forms แล้วบันทึกลง Excel
-ช่วยอธิบายขั้นตอนจากภาพ แล้วเสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
-ถ้าอ่านไม่ชัดหรือข้อมูลไม่พอ ให้ถามก่อน อย่าเดา
-```
-
-ภาพวาดช่วย review ลำดับและการส่งข้อมูล ส่วน screenshot ที่เห็นแค่ชื่อ actions ยังไม่แสดง settings ต้องเปิด field mapping ก่อนยืนยันว่าค่าถูก ถ้ายังไม่ build/run ให้เรียกผลว่า design review
-
-## ถามจากภาพ error
+Use with the Exercise 2 Forms → Excel → Condition → email image:
 
 ```text
-Compose นี้ควรแปลงข้อความตัวเลขเป็น integer แต่เกิด error ตามภาพ
-ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบ
-ถ้าข้อมูลไม่พอ ให้ถามก่อน
+My goal is to receive requests through Forms, record them in Excel, then send an Operations- or Finance-labelled email to my own mailbox.
+Explain the steps you can see in the image, then suggest one point to check and a way to test it.
+If the image is unclear or information is missing, ask first. Do not guess.
 ```
 
-ภาพลำดับ flow อย่างเดียวไม่พอ เปิด action ที่ failed และ expression ที่เกี่ยวข้อง ข้อความ error อาจต่างกันตาม UI; ตรวจจากของจริง ไม่คาดว่าตรงกับภาพประกอบทุกคำ
+A drawing supports discussion of sequence and data movement. A screenshot showing only action names does not expose settings. Open field mappings before accepting a claim that they are correct. Without a run, call the outcome a design review.
 
-## ถ้าอ่านภาพผิดหรือไม่ชัด
+## Error-review question
 
 ```text
-ช่วยบอกก่อนว่าอ่านชื่อ action, ลำดับและค่าจากภาพได้ว่าอะไร
-แยกสิ่งที่เห็นชัดจากสิ่งที่ยังอ่านไม่ออก แล้วถามเฉพาะข้อมูลที่ขาด
+This Compose action should convert numeric text to an integer, but it shows the error in the image.
+Explain the cause, suggest the smallest correction, and describe how to test it.
+If information is missing, ask first.
 ```
 
-แก้ความเข้าใจด้วยคำสั้น ๆ หรือส่ง close-up ที่ลบข้อมูลส่วนตัวแล้ว เช่นภาพ settings หนึ่ง action ไม่ส่งทั้งหน้าจอเพิ่มโดยไม่ตรวจ privacy
+Show the failed action and relevant expression, not just the overall flow. Actual error wording can differ from the illustration.
+
+## If the image is unclear or misread
+
+```text
+First tell me which action names, sequence and values you can read.
+Separate what is clearly visible from what you cannot read, then ask only for the missing information.
+```
+
+Correct the misunderstanding briefly or send a sanitised close-up of one action. Check privacy again before sharing more of the screen.
 
 ## Text backup: design {#text-backup-design}
 
-ใช้เมื่อ upload ไม่ได้ คัดลอกทั้งก้อนนี้ได้เลย ไม่ต้องกรอก placeholders:
+Copy the complete block when you cannot upload an image:
 
 ```text
-นี่เป็น Power Automate flow ฝึกด้วยข้อมูลสมมติ ไม่ใช่ระบบงานจริง
-เป้าหมาย: รับคำขอผ่าน Forms แล้วบันทึกหนึ่งแถวใน Excel
-ลำดับ: When a new response is submitted → Get response details → Add a row into a table
-Workbook อยู่ใน OneDrive for Business; Table คือ RequestsTable
-RequestId = Response Id จาก trigger
-Title, Description, RequesterEmail, Category = คำตอบจาก Get response details
-Status = ข้อความ Pending
-ช่วยอธิบายขั้นตอน เสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
-ถ้าข้อมูลไม่พอให้ถามก่อน อย่าเดา ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+This is a synthetic Power Automate training design, not evidence of a real run.
+Flow: When a new response is submitted → Get response details → Add a row into a table → Condition → Send an email (V2) in the selected branch.
+Excel table: RequestsTable
+RequestId = Response Id from the trigger
+Title = Task title from Get response details
+Description = Description from Get response details
+RequesterEmail = Requester email from Get response details
+Category = Category from Get response details
+Status = fixed text Pending
+Category is required single choice: Operations or Finance only.
+After recording: Condition compares Category from Get response details is equal to Operations.
+Yes sends an Operations-labelled email; No sends a Finance-labelled email. Both To fields use the learner's own mailbox.
+Two tests: Operations → Yes and Finance → No; check two rows and two emails.
+Do not add Switch, unknown-category handling or complex exceptions.
+Explain the steps, suggest one point to check and a way to test it.
+If information is missing, ask first. Do not guess, add connectors or change permissions.
 ```
 
 ## Text backup: error {#text-backup-error}
 
-ใช้ตัวอย่างนี้ได้แม้ไม่มีภาพจริง ข้อความนี้เป็น sample context ไม่ใช่รายงาน run ของเรา:
+This is sample context, not a report of your own run:
 
 ```text
-นี่เป็น sample ของ Power Automate สำหรับฝึก ไม่ใช่หลักฐาน run จริง
+This is a Power Automate training example, not evidence of a real run.
 Flow: Manually trigger a flow → Compose
-Expression ตัวอย่าง: int('not-a-number')
-ค่าที่พยายามแปลงคือ not-a-number ซึ่งไม่ใช่ข้อความตัวเลข
-ผลที่ต้องการ: แปลงข้อความตัวเลขเป็น integer
-constant expression อาจถูกปฏิเสธตั้งแต่ Save; อย่าเดาว่ามี failed run แล้ว
-ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบกับข้อความตัวเลข
-ถ้าข้อมูลไม่พอให้ถามก่อน ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์
+Example expression: int('not-a-number')
+The value not-a-number is not numeric text.
+Expected purpose: convert numeric text to an integer.
+The constant expression may be rejected at Save; do not assume a failed run exists.
+Explain the cause, suggest the smallest correction and a test using numeric text.
+If information is missing, ask first. Do not add connectors or change permissions.
 ```
 
-ถ้ามี error ของตัวเอง ให้ส่ง expression และข้อความ error ที่ sanitise แล้วเพิ่มเฉพาะเมื่อจำเป็น [ดาวน์โหลด text backup](/downloads/chatgpt-text-backup.txt) เพื่อเก็บไว้คัดลอก
+Add your sanitised expression or exact error message only when needed. [Download the text backup](/downloads/chatgpt-text-backup.txt).
 
-## ถ้าเข้า ChatGPT ไม่ได้
+## If ChatGPT is unavailable
 
-ใช้ [ตัวอย่างประกอบ](./saved-examples.md) เพื่อฝึกตัดสินใจร่วมกับเพื่อน ระบุว่าเป็น authored example review ไม่ใช่การใช้ ChatGPT สด สามารถ build/test Power Automate ต่อได้หากบัญชีพร้อม
+Review the [prepared examples](./saved-examples.md) with a partner. Record this as an authored-example review, not live ChatGPT practice. Continue Power Automate testing if your account is ready.
 
-## ตรวจคำตอบก่อนทำตาม
+## Check advice before acting
 
-| สิ่งที่ ChatGPT บอก | สิ่งที่เราตรวจ |
+| ChatGPT claim | Your check |
 |---|---|
-| ลำดับและชื่อ action | เทียบกับภาพ; แก้การอ่านผิดก่อน |
-| Mapping ถูกแล้ว | ภาพเห็น fields และ source tokens จริงหรือยัง |
-| เสนอ test | มี input, expected result และจุดตรวจหรือไม่ |
-| ซ่อมสำเร็จแล้ว | ต้องมี run ใหม่และ output จริงก่อน |
-| ต้องเพิ่มบริการหรือเปิดสิทธิ์ | ไม่ทำทันที; ตรวจ scope และถามผู้จัด |
+| This is the action sequence | Compare with the image and correct misread labels. |
+| The mapping is correct | Does the image actually show the fields and source tokens? |
+| Here is a test | Does it specify input, expected result and where to inspect it? |
+| The flow is fixed | Verify a new run and actual output first. |
+| Add a service or broaden access | Check scope and ask the organiser before acting. |
 
-ChatGPT ช่วยเสนอแนวทาง ไม่เห็น configuration ที่อยู่นอกภาพหรือสิทธิ์ของบัญชีเรา ใช้ Standard connectors และขอบเขตเดิม ภาพตัวอย่างที่แจกเป็นภาพสร้างเพื่อการสอน ไม่ใช่ screenshot จริงหรือหลักฐาน tenant readiness
+ChatGPT cannot see settings outside your image or your account's permissions. Stay within the existing Standard-connector exercise. Supplied images are training aids, not actual screenshots or readiness evidence.
 
-[ฝึกใน Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md) · [ดาวน์โหลดภาพฝึก](../resources/downloads.md)
+[Open Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md) · [Download practice images](../resources/downloads.md)
 
-อ้างอิง: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs)
+Reference: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs)

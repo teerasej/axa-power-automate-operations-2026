@@ -1,233 +1,171 @@
 ---
-title: "Exercise 2 · Forms → Excel"
+title: "Exercise 2 · Smart Request Intake and Routing"
 prev:
-  text: Email flow แรก
+  text: Your first email flow
   link: /exercises/01-foundation-email
 next:
-  text: คู่มือ ChatGPT
+  text: ChatGPT guidebook
   link: /guidebook/
 ---
 
-# Exercise 2: รับคำขอจาก Forms แล้วบันทึก Excel
+# Exercise 2: Smart Request Intake and Routing
 
-แทนการอ่านคำขอแล้วคัดลอกลงตาราง เราจะให้ Microsoft Forms รับข้อมูล แล้ว Power Automate ส่งคำตอบลง Excel เหมือนรับใบสั่งงานหนึ่งใบแล้วลงทะเบียนหนึ่งรายการ
+![Requests are recorded before being routed to Operations or Finance](/images/request-routing-header.jpg)
 
-> **License:** ใช้ Microsoft Forms และ Excel Online (Business) Standard connectors พร้อม OneDrive for Business สำหรับเก็บ workbook ต้องมีสิทธิ์บริการและไฟล์ที่ใช้ฝึก ไม่ใช้ Premium connector ส่วน Email extension ใช้ Office 365 Outlook
+*Training illustration, not a Power Automate screenshot or evidence of a successful run.*
 
-## ก่อนเริ่ม
+Think of a reception desk that records a document before placing it in one of two trays. We will receive a Forms response, record it in Excel and use one Condition to choose an Operations or Finance email label. **Both routes send to your own mailbox.** Team names are fictional labels, not real recipients.
 
-- เข้า Power Automate, Microsoft Forms และ OneDrive for Business ด้วยบัญชีฝึกเดียวกันได้
-- ดาวน์โหลด [operations-request-tracker.xlsx](/downloads/operations-request-tracker.xlsx)
-- แต่ละคนใช้ Form และ workbook ของตัวเอง ข้อมูลทั้งหมดเป็นตัวอย่างสมมติ
-- ไม่ใช้ workbook ที่ Forms สร้างหรือ sync อัตโนมัติจากหน้า Responses เราต้องการเห็นแถวที่ flow นี้เป็นผู้เพิ่มโดยตรง
+**10:45–12:00:** explanation 10 minutes → walkthrough 10 → guided practice 30 → tests 15 → recap/support 10. Work steadily. Use the Form and workbook from [pre-session preparation](../resources/section-2-preparation.md).
+
+## Before you start
+
+- Open your own Form with four required questions. Category must allow exactly one answer: Operations or Finance, with Other disabled.
+- Have a personal workbook in OneDrive for Business with worksheet `Requests` and the six-column table `RequestsTable`.
+- Confirm Power Automate, Microsoft Forms, Excel Online (Business) and Office 365 Outlook access with the organiser. These are Standard connectors, but the related service licences and permissions must be confirmed. No Premium connector or AI action is required.
+- If your starting files or access are unavailable, ask for the prepared demonstration. Do not use a shared workbook for the whole class or use breaks to catch up.
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["When a new response is submitted"] --> B["Get response details"]
-  B --> C["Add a row into a table"]
+  B --> C["Add a row into a table: RequestsTable"]
+  C --> D{"Category is equal to Operations"}
+  D -->|Yes| E["Send an email (V2): Operations label"]
+  D -->|No: Finance| F["Send an email (V2): Finance label"]
+  E --> G["Learner's own mailbox"]
+  F --> G
 ```
 
-## Practice 1: เตรียมปลายทางที่ flow เขียนได้
+## Practice 1: Retrieve a Form response
 
-**เป้าหมาย:** วาง workbook ส่วนตัวบน OneDrive for Business และระบุ Excel Table ที่จะรับคำตอบ
+Retrieve the answers belonging to the response that triggered the flow.
 
-1. เปิด OneDrive for Business ของบัญชีฝึก สร้าง folder:
-
-   ```text
-   PowerAutomateTraining
-   ```
-
-2. Upload workbook ที่ดาวน์โหลด แล้วเปิดด้วย Excel for the web
-3. เลือก worksheet:
-
-   ```text
-   Requests
-   ```
-
-4. คลิกเซลล์ในตาราง ดู **Table Design** หรือ **Table** แล้วตรวจ **Table Name**:
-
-   ```text
-   RequestsTable
-   ```
-
-5. ตรวจว่ามี column names ตามนี้ ไม่เปลี่ยนชื่อ:
-
-   ```text
-   RequestId,Title,Description,RequesterEmail,Category,Status
-   ```
-
-   Workbook เริ่มด้วยแถวว่างหนึ่งแถวเพื่อคง Table ไว้ แถวว่างนี้ไม่ใช่คำขอ ไม่ต้องกรอกข้อมูลลงไปเอง
-6. ปิด workbook ก่อนให้ flow เขียน และรอ upload/sync เสร็จ
-
-### Quick check
-
-หา workbook ใน OneDrive ของตัวเองได้ และ Table Name เป็น RequestsTable พร้อมหกคอลัมน์ที่กำหนด
-
-## Practice 2: สร้าง Form รับคำขอ
-
-**เป้าหมาย:** สร้างแบบฟอร์มที่ให้คำตอบตรงกับข้อมูลที่ tracker ต้องการ
-
-1. เปิด [Microsoft Forms](https://forms.office.com) → **New Form** หากมีหน้าชวน Draft with Copilot ให้ปิดแล้วสร้างคำถามเอง
-2. ตั้งชื่อ Form:
-
-   ```text
-   Operations Practice Request
-   ```
-
-3. เพิ่มคำถาม **Text** แบบสั้น เปิด **Required**:
-
-   ```text
-   Task title
-   ```
-
-4. เพิ่ม **Text** เปิด **Long answer** และ **Required**:
-
-   ```text
-   Description
-   ```
-
-5. เพิ่ม **Text** แบบสั้น เปิด **Required**:
-
-   ```text
-   Requester email
-   ```
-
-   ระหว่างฝึกจะกรอกอีเมลฝึกของตัวเอง ไม่พึ่ง Responders' Email เพราะค่าดังกล่าวขึ้นกับการตั้งค่า Form
-6. เพิ่ม **Choice** เปิด **Required** ปิด **Multiple answers** ตั้งชื่อ:
-
-   ```text
-   Category
-   ```
-
-   เพิ่มตัวเลือกทีละค่า:
-
-   ```text
-   Operations
-   ```
-
-   ```text
-   Finance
-   ```
-
-   ```text
-   HR
-   ```
-
-7. เปิด **Preview** ตรวจว่าคำถามครบสี่ข้อ ยังไม่ต้องส่ง response จนกว่า flow จะบันทึกเสร็จ
-
-### Quick check
-
-Form มีคำถามสี่ข้อชื่อถูกต้อง เปิด Required และ Category เลือกได้หนึ่งค่า
-
-## Practice 3: เชื่อม response กับ Excel row
-
-**เป้าหมาย:** ใช้ Response Id ดึงรายละเอียด แล้ว map คำตอบลง Excel Table
-
-1. เปิด Power Automate → **Create** → **Automated cloud flow** ตั้งชื่อ:
+1. Select **Create → Automated cloud flow**. Enter:
 
    ```text
    B2-RecordOperationsRequest
    ```
 
-2. เลือก Microsoft Forms trigger:
+2. Select the Microsoft Forms trigger **When a new response is submitted**, then **Create**.
+3. In **Form Id**, select your prepared `Operations Practice Request` Form. If names are duplicated, check its owner and open the Form to compare.
+4. Add Microsoft Forms **Get response details**. Select the same **Form Id**.
+5. In **Response Id**, insert **Response Id** from the trigger's Dynamic content. Do not type a response number or the words Response Id.
+
+### Quick check
+
+Both Form Id selections match. Response Id is a token from the trigger. If the Form is missing, check account and ownership with the instructor rather than guessing URLs or changing permissions.
+
+## Practice 2: Record the request before routing
+
+Map all six columns of the prepared Excel table.
+
+1. After **Get response details**, add Excel Online (Business) **Add a row into a table**.
+2. Select **Location: OneDrive for Business** and the training account's OneDrive **Document Library**. Use the **File** picker to select your uploaded workbook. Select this **Table**:
 
    ```text
-   When a new response is submitted
+   RequestsTable
    ```
 
-3. เลือก **Create** ใน **Form Id** เลือก Form ที่สร้าง ถ้าหาไม่พบ ตรวจ connection ว่าเป็นเจ้าของ Form เดียวกันก่อนทำต่อ
-4. เพิ่ม Microsoft Forms action:
+3. Wait for the columns to load. If they do not appear, recheck File and Table. A worksheet name is not a table name.
+4. Map the following Dynamic content. Status is the only fixed text value:
 
-   ```text
-   Get response details
-   ```
-
-5. เลือก Form เดิมใน **Form Id** และใน **Response Id** เลือก Dynamic content `Response Id` จาก trigger อย่าพิมพ์เลข response เอง
-6. เพิ่ม Excel Online (Business) action:
-
-   ```text
-   Add a row into a table
-   ```
-
-7. ตั้ง **Location** เป็น **OneDrive for Business** เลือก **Document Library** ส่วนตัวที่มีไฟล์ ใน **File** ใช้ folder picker เข้า PowerAutomateTraining แล้วเลือก operations-request-tracker.xlsx ชื่อ library อาจต่างตามภาษาบัญชี ให้ยืนยันจากไฟล์ที่พบ
-8. ใน **Table** เลือก RequestsTable รอ schema โหลด หากเห็น **Advanced parameters** ให้เปิด **Show all** เพื่อแสดง column fields
-9. Map ค่าตามตาราง โดยเลือก token จากขั้นตอนที่ระบุ ไม่พิมพ์ชื่อ token เป็นข้อความ:
-
-   | Excel column | ค่า | แหล่งที่มา |
-   |---|---|---|
-   | RequestId | Response Id | When a new response is submitted |
-   | Title | Task title | Get response details |
-   | Description | Description | Get response details |
-   | RequesterEmail | Requester email | Get response details |
-   | Category | Category | Get response details |
-   | Status | ข้อความคงที่ด้านล่าง | พิมพ์เอง |
-
-   ใน **Status** กรอก:
+   | Excel column | Value / source |
+   |---|---|
+   | RequestId | Response Id from the trigger |
+   | Title | Task title from Get response details |
+   | Description | Description from Get response details |
+   | RequesterEmail | Requester email from Get response details |
+   | Category | Category from Get response details |
+   | Status | Fixed text below |
 
    ```text
    Pending
    ```
 
-10. เลือก **Save** ตรวจว่าไม่มี configuration error หากระบบมีขั้นตอน Publish ให้ใช้ตามที่วิทยากรตรวจไว้
-
 ### Quick check
 
-Flow มี trigger หนึ่งตัวและ actions สองตัว ใช้ Form เดียวกันทั้งสองจุด และคำตอบมาจาก Get response details
+The trigger supplies the ID; Get response details supplies the answers. Title uses the Task title token. Status remains Pending even after notification, because sending an email does not complete the requested work.
 
-## Practice 4: ส่งสองคำขอแล้วตรวจแถวจริง
+## Practice 3: Choose one of two routes
 
-**เป้าหมาย:** พิสูจน์ว่า response แต่ละรายการสร้างข้อมูลที่ตรงกับ input ใน tracker
+Use one Condition to select the email label that matches Category.
 
-1. เปิด Form → **Preview** กรอก [ข้อมูลทดสอบ A](../resources/sample-inputs.md#sample-a) แล้วเลือก **Submit**
-2. เปิด flow details → **Run history** รอ run จบ เปิด `Get response details` และ `Add a row into a table` ตรวจ Inputs/Outputs
-3. เปิด workbook หลัง run จบ หากยังไม่เห็นแถว ให้รอการแสดงผลแล้ว refresh ก่อน submit ซ้ำ การเขียน Excel อาจแสดงผลล่าช้าได้
-4. ตรวจ Title, Description, RequesterEmail, Category และ Status เทียบกับ sample A รวมทั้ง RequestId เทียบกับ Response Id ใน run
-5. ปิด workbook แล้วส่ง [ข้อมูลทดสอบ B](../resources/sample-inputs.md#sample-b) รอ run ที่สองจบก่อนเปิด Excel ใหม่
-6. นับเฉพาะแถวที่ RequestId มีค่า ต้องเห็นสองรายการใหม่โดย RequestId ต่างกัน และข้อมูลแต่ละแถวตรงกับ response ของมัน
-
-### Quick check
-
-ส่ง Form สองครั้งหลัง Save ได้สอง run และสองแถวคำขอที่มี RequestId ไม่ซ้ำ แต่ละแถวมีข้อมูลถูกต้องและ Status เป็น Pending
-
-## Optional: ส่ง Email หลังบันทึกสำเร็จ
-
-ทำส่วนนี้เมื่อ core flow ผ่านแล้วเท่านั้น
-
-**เป้าหมาย:** ยืนยันคำขอด้วย Email หลัง Excel action สำเร็จ
-
-1. หลัง `Add a row into a table` เพิ่ม `Send an email (V2)` ของ Office 365 Outlook ปล่อย Run after เป็นค่าเริ่มต้นที่ทำหลัง action ก่อนหน้าสำเร็จ
-2. ใน **To** เลือก `Requester email` จาก Get response details ใช้อีเมลฝึกของตัวเองใน Form เสมอ
-3. ใน **Subject** ใส่ข้อความนี้ เว้นหนึ่งช่อง แล้วต่อด้วย token `Task title`:
+1. Add Built-in **Control → Condition** after the Excel action.
+2. Configure one condition row: left value **Category** from Get response details; operator **is equal to**; right value:
 
    ```text
-   Request recorded:
+   Operations
    ```
 
-4. ใน **Body** ใส่ข้อความนี้ เว้นหนึ่งช่อง แล้วต่อด้วย token `Response Id`:
+3. In **True / If yes**, add Office 365 Outlook **Send an email (V2)**.
+4. In **To**, enter your own authorised training email. Leave CC/BCC empty. The Form's Requester email is recorded only; it does not change the recipient in this exercise.
+5. In **Subject**, enter this prefix, add one space, then insert **Task title** from Get response details:
 
    ```text
-   บันทึกคำขอฝึกแล้ว RequestId:
+   [TRAINING][Operations]
    ```
 
-5. Save แล้วส่ง response ใหม่หนึ่งครั้ง ตรวจแถวใหม่ก่อน แล้วตรวจ Email ที่มี RequestId ตรงกัน
+6. Enter this **Body**, then insert **Task title** after Request and **Category** after Category:
+
+   ```text
+   Routed team: Operations (training only)
+   Request:
+   Category:
+   ```
+
+7. In **False / If no**, add another **Send an email (V2)**. Set To to the **same personal training mailbox**, leaving CC/BCC empty. Use this Subject prefix, one space and the Task title token:
+
+   ```text
+   [TRAINING][Finance]
+   ```
+
+   Use this Body and insert Task title and Category after their respective labels:
+
+   ```text
+   Routed team: Finance (training only)
+   Request:
+   Category:
+   ```
+
+8. **Save**. Ensure there is no extra email action after the Condition outside its branches: that would send an additional message every time.
+
+**Why does No mean Finance?** The Form requires exactly one of two options. Any new category would also enter the No branch, so future expansion requires redesign. Do not add Switch, unknown-category handling or complex exceptions to today's required practice.
 
 ### Quick check
 
-Response ใหม่นี้มีทั้งแถวที่ถูกต้องและ Email ยืนยัน ไม่ใช้สอง response ก่อนเพิ่ม action มาคาดว่าจะส่งย้อนหลัง
+There is one Condition and one email action in each branch. Both recipients are your own mailbox. Trace the Operations and Finance paths before testing.
 
-## เมื่อเจอปัญหา
+## Practice 4: Verify both routes
 
-| อาการ | ตรวจตามนี้ |
+Match two runs to two Excel records and two emails.
+
+1. Save and select **Test → Manually**. Open the Form's response page and submit [Sample A](../resources/sample-inputs.md#sample-a), using your training email as Requester email.
+2. Open the completed run in **Run history**. Check Get response details, the Excel action and a **True / Yes** Condition result. The Operations email action should run; Finance should be **Skipped**.
+3. Check the new RequestsTable row: correct Title and Category, with Status Pending. Check Inbox for one Operations-labelled email with the correct Task title.
+4. Submit [Sample B](../resources/sample-inputs.md#sample-b). Check **False / No**, Finance email sent and Operations email action Skipped.
+5. Check the second row and email. Across these two tests, expect **two populated rows with different RequestId values and two emails**. Exclude the initial blank row and any earlier runs.
+
+| Test | Condition | Excel | Email in your own mailbox |
+|---|---|---|---|
+| A: Operations | True / Yes | Category Operations, Status Pending | [TRAINING][Operations] + Task title |
+| B: Finance | False / No | Category Finance, Status Pending | [TRAINING][Finance] + Task title |
+
+### Quick check
+
+Trace one answer from Form → Excel → Condition → email and show evidence for both routes. Use the recap/support time to resolve issues; no additional features are required.
+
+## Troubleshooting
+
+| Symptom | Check / recovery |
 |---|---|
-| ไม่มี run | ส่ง response ใหม่หลัง Save; ตรวจว่า flow เปิดใช้งานและ Form Id ถูกต้อง |
-| ไม่พบ Table | ตรวจบัญชี, workbook, Table Name และสิทธิ์ไฟล์ ใช้ picker ไม่เดา path |
-| Column มีชื่อคำถามแทนคำตอบ | เปลี่ยนข้อความเป็น Dynamic content จาก Get response details |
-| Excel แสดงช้า | รอ run จบและ refresh; อย่า submit ซ้ำทันที |
-| จำนวนแถวเกิน | ตรวจจำนวน submissions และ runs; แถวเริ่มต้นว่างไม่ใช่คำขอ และ resubmit run อาจเพิ่มซ้ำได้ |
-| ข้อมูลผิด | เปรียบเทียบ Get response details Outputs กับ Excel action Inputs ทีละ field |
+| Form or File missing from picker | Check account and ownership with the instructor using [pre-session preparation](../resources/section-2-preparation.md). |
+| Table missing | Reselect File and check RequestsTable; a worksheet alone is not enough. |
+| Row or email has not arrived | Inspect running/failed runs before resubmitting. Excel changes can take time to appear. |
+| Every request goes to Finance | Check the Category token, exact Operations value and spaces; confirm single-choice settings. |
+| Email displays Task title literally | Replace typed text with the token from Get response details. |
+| Excel succeeds but email fails | The row was already written. Inspect Outlook; resubmitting may create a duplicate row. Deduplication is not included. |
+| Need a new workbook | Follow [reset instructions](../resources/downloads.md#reset), reselect File/Table and retest both routes. |
 
-## สิ่งที่ได้
+If your account cannot run the flow, trace the mapping and routes in the prepared demonstration. Record this as a walkthrough, not a completed learner run.
 
-เราเปลี่ยน Trigger จากการกดปุ่มเป็น Form response และส่งข้อมูลข้ามบริการโดยดูแหล่งของ token ได้ ให้ทำกิจกรรมถัดไปตามที่วิทยากรแจ้ง และใช้ [คู่มือ ChatGPT](../guidebook/index.md) เมื่อถึงช่วงสุดท้าย
-
-อ้างอิง: [Microsoft Forms connector](https://learn.microsoft.com/connectors/microsoftforms/), [Excel Online (Business)](https://learn.microsoft.com/connectors/excelonlinebusiness/), [Forms flow overview](https://learn.microsoft.com/power-automate/forms/overview)
+References: [Forms conditional email](https://learn.microsoft.com/power-automate/forms/how-to), [Forms scenarios](https://learn.microsoft.com/power-automate/forms/popular-scenarios), [Excel Online (Business)](https://learn.microsoft.com/connectors/excelonlinebusiness/). Documentation supports the design pattern, not readiness of your training tenant.

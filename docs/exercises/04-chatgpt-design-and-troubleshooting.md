@@ -1,155 +1,163 @@
 ---
-title: "Exercise 4 · ให้ ChatGPT ดูภาพ flow และช่วยตรวจ error"
+title: "Exercise 4 · ChatGPT design review and error repair"
 prev:
-  text: คู่มือ ChatGPT
+  text: ChatGPT guidebook
   link: /guidebook/
 next:
-  text: ตัวอย่างประกอบ
+  text: Prepared review examples
   link: /guidebook/saved-examples
 ---
 
-# Exercise 4: ให้ ChatGPT ดูภาพ flow และช่วยตรวจข้อผิดพลาด
+# Exercise 4: Review a flow image and troubleshoot with ChatGPT
 
-ลองให้เพื่อนดูรูปแผนที่ก่อนอธิบายทาง จะคุยกันได้ง่ายขึ้น กิจกรรมนี้ใช้ภาพแทนการพิมพ์รายละเอียด flow ยาว ๆ แล้วถามสั้น ๆ เราจะตรวจว่า ChatGPT อ่านภาพตรงกับที่เราทำ และทดสอบคำแนะนำด้วยตัวเอง
+![Learners compare a workflow image with ChatGPT advice and verify the result themselves](/images/chatgpt-assistance-header.jpg)
 
-> **License และ access:** ใช้บัญชี Power Automate ที่มีสิทธิ์สร้างและ run cloud flow; Error practice ใช้ Built-in actions ไม่ใช้ Premium connector ส่วน ChatGPT ต้องเป็นบัญชีที่องค์กรอนุญาต ผู้จัดต้องตรวจสิทธิ์ใช้และ image upload ก่อนเริ่มอบรม ไม่กำหนด paid plan หรือ model เฉพาะ หาก upload ไม่ได้ ใช้ text backup; หากเข้า ChatGPT ไม่ได้ ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md) และระบุว่าไม่ได้ฝึก ChatGPT สด
+*Training illustration, not a Power Automate screenshot or evidence of a successful run.*
 
-## ก่อนเริ่ม
+Showing a friend a map can be easier than describing every turn. Use an image and a short question, check that ChatGPT read the image correctly, then test one suggestion yourself.
 
-- เปิด Power Automate และ [ChatGPT](https://chatgpt.com) ด้วยบัญชีที่ได้รับอนุญาต
-- ใช้ flow สมมติจาก Exercise 2 หรือวาดลำดับ Forms → Excel ตามที่ฝึก ไม่ใช้ flow งานจริงที่มีข้อมูลส่วนตัว
-- ดาวน์โหลด [ภาพและ text backup](../resources/downloads.md) ไว้ก่อน ส่วนซ่อม error ใช้ flow แยกจาก tracker
-- อ่าน [วิธีเตรียมภาพและตรวจคำตอบ](../guidebook/index.md)
+**14:45–16:00:** method 10 minutes → design review 20 → controlled error and repair 30 → review and questions 15.
 
-## เลือกเส้นทางที่สะดวก
+> **License and access:** You need Power Automate cloud-flow access. The error practice uses Built-in actions, with no Premium connector. Use an organisation-approved ChatGPT account; the organiser must confirm access and image upload. No specific paid plan or model is required by this exercise. Use text when upload is unavailable, or [prepared examples](../guidebook/saved-examples.md) when ChatGPT is unavailable.
 
-| ถ้าพร้อมแบบนี้ | ทำแบบนี้ |
+## Before you start
+
+- Open Power Automate and [ChatGPT](https://chatgpt.com) with authorised accounts.
+- Use the synthetic Exercise 2 flow or a drawing of its Forms → Excel → Condition → email sequence. Do not use a real operational flow containing private data.
+- Download the [images and text backup](../resources/downloads.md). Error repair uses a separate flow, not your request tracker.
+- Read the [image preparation and verification guide](../guidebook/index.md).
+
+## Choose an available route
+
+| What you have | What to use |
 |---|---|
-| มี flow ฝึกหรือภาพวาดของตัวเอง | ใช้ screenshot หรือ photo ที่ลบข้อมูลส่วนตัวแล้ว |
-| ยังไม่มีภาพที่อ่านชัด | ใช้ภาพตัวอย่างที่เตรียมให้ |
-| เข้า ChatGPT ได้ แต่ upload ภาพไม่ได้ | คัดลอก text backup ทั้งก้อน ไม่ต้องเขียน description ใหม่ |
-| เข้า ChatGPT ไม่ได้ | อ่านตัวอย่างประกอบกับเพื่อน แล้วทำ Power Automate test เท่าที่บัญชีพร้อม |
+| Your own training flow or drawing | A sanitised screenshot or clear photo |
+| No readable image of your own | The supplied training image |
+| ChatGPT works but image upload does not | The complete text backup; no need to write a new description |
+| ChatGPT is unavailable | Prepared examples with a partner, plus Power Automate tests if your account permits |
 
-**ภาพตัวอย่างทั้งสองเป็นภาพสร้างเพื่อการสอน ไม่ใช่ screenshot จริงของ Power Automate และไม่ใช่หลักฐานการ run** ตำแหน่ง UI และข้อความ error จริงอาจต่างจากภาพ
+The routing diagram is author-prepared; the error illustration is AI-generated. **Neither is an actual Power Automate screenshot or run record.** Actual UI positions and error wording may differ.
 
-## Practice 1: ให้ ChatGPT อ่านภาพเพื่อทบทวน design
+## Practice 1: Review the design from an image
 
-**เป้าหมาย:** ตรวจคำแนะนำหนึ่งข้อจากการ review ภาพ Forms → Excel ให้สัมพันธ์กับ goal และมีวิธีทดสอบ
+Evaluate one suggestion against the flow's purpose and define a test for it.
 
-1. เตรียมภาพด้วยวิธีใดวิธีหนึ่ง:
-   - **Screenshot ของตัวเอง:** เปิด flow ฝึกจาก Exercise 2 ให้เห็นสาม actions ตามลำดับ ถ้าต้องการตรวจ mapping ให้เปิด settings ของ `Get response details` และ `Add a row into a table` ถ้ารวมในภาพเดียวแล้วตัวหนังสือเล็ก ให้แยกภาพลำดับกับภาพ mapping
-   - **Photo ของภาพวาด:** วาด Forms รับคำขอ → ดึงคำตอบ → บันทึก Excel ใส่ลูกศรและชื่อ fields ที่ส่งต่อ เช่น `Task title` → `Title` ถ่ายตรง ๆ ในที่สว่าง ตัดขอบโต๊ะและสิ่งอื่นออก
-   - **ภาพที่เตรียมให้:** ดาวน์โหลด [forms-to-excel-training.png](/downloads/forms-to-excel-training.png) แล้วใช้ไฟล์นี้ได้เลย
+1. Prepare one of these images:
+   - **Your screenshot:** show intake, Excel, Condition and the email action in each branch. Open Get response details and Add a row into a table settings to review mapping. Use separate close-ups if a single image makes the text too small.
+   - **Your drawing:** draw Forms intake → retrieve answers → record in Excel → Category = Operations → Yes/No email routes. Add arrows and field names, such as Task title → Title. Take a straight, well-lit photo and crop away the surroundings.
+   - **Supplied image:** download [request-routing-training.png](/downloads/request-routing-training.png).
 
-   ![ภาพสร้างเพื่อการสอน แสดงสาม actions และ mapping ของ Forms ไป RequestsTable ไม่ใช่ screenshot จริง](/downloads/forms-to-excel-training.png)
+   ![Training diagram showing six mappings, one Condition and two labelled email routes to the learner's mailbox](/downloads/request-routing-training.png)
 
-   [เปิดภาพตัวอย่างขนาดเต็ม](/downloads/forms-to-excel-training.png) เพื่ออ่านข้อความ ไม่ต้องพยายามอ่านภาพที่ถูกย่อบนมือถือ
+   [Open the diagram at full size](/downloads/request-routing-training.png) to read its settings.
 
-2. ตรวจภาพก่อนส่ง: ตัด URL, ชื่อบัญชี, email, connection identifiers, ข้อมูลลูกค้าและ secrets ออก Photo ต้องไม่มีคน, badge หรือกระดานงานอื่น ตรวจไฟล์ที่เตรียมส่งอีกครั้ง
-3. เปิด chat ใหม่ แนบภาพด้วย **Attach**, paste หรือ drag image ตาม UI ที่มี แล้วส่งคำถามสั้นนี้:
+2. Remove private URLs, account names, email addresses, connection identifiers, customer data and credentials. A photo must exclude people, badges and unrelated boards. Inspect the final image before sending it.
+3. Start a new chat, attach or paste the image using the controls available in your interface, then ask:
 
    ```text
-   เป้าหมายคือรับคำขอผ่าน Forms แล้วบันทึกลง Excel
-   ช่วยอธิบายขั้นตอนจากภาพ แล้วเสนอจุดที่ควรตรวจหนึ่งจุดและวิธีทดสอบ
-   ถ้าอ่านไม่ชัดหรือข้อมูลไม่พอ ให้ถามก่อน อย่าเดา
+   My goal is to receive requests through Forms, record them in Excel, then send an Operations- or Finance-labelled email to my own mailbox.
+   Explain the steps you can see in the image, then suggest one point to check and a way to test it.
+   If the image is unclear or information is missing, ask first. Do not guess.
    ```
 
-   ถ้า upload ไม่ได้ ให้ใช้ [text backup สำหรับ design](../guidebook/index.md#text-backup-design) แทนขั้นนี้
+   If upload is unavailable, use the [design text backup](../guidebook/index.md#text-backup-design).
 
-4. **ตรวจว่าอ่านตรงก่อนใช้คำแนะนำ:** คำตอบควรเห็น `When a new response is submitted` → `Get response details` → `Add a row into a table` และแยก `Response Id` จาก trigger กับคำตอบจาก `Get response details` ถ้าภาพไม่แสดง mapping ก็ยังยืนยัน mapping ไม่ได้ หากอ่านผิดให้แก้ความเข้าใจ; หากอ่านไม่ชัดส่งภาพ close-up หรือใช้ text backup ไม่ให้เดาต่อ
-5. เลือกข้อเสนอหนึ่งข้อ เทียบกับ action/field ของเรา ไม่เพิ่ม connector หรือเปลี่ยนสิทธิ์ตามคำตอบทันที หากใช้ภาพวาด ให้ตรวจ business sequence ก่อน; ภาพวาดยังไม่ยืนยัน settings หรือว่า flow ทำงานแล้ว
-6. ถ้ามี flow ฝึกที่พร้อม ให้ตรวจ mapping หรือส่ง sample ใหม่หนึ่งรายการตามข้อเสนอ แล้วเทียบ Run history กับแถว Excel ถ้ายังมีเพียงภาพตัวอย่าง/ภาพวาด ให้บอกว่าเป็น design review และการวางแผน test ยังไม่ใช่ verified run
+4. **Check the read-back before using advice.** It should identify the trigger → Get response details → Add a row into a table → Condition → selected email branch. Check that Response Id comes from the trigger and question answers come from Get response details. Correct any misread labels before continuing.
+5. Choose one relevant suggestion, compare it with your actual settings and test it in the existing flow. For example, check Title mapping with both sample requests and compare Excel and email results. A drawing or a collapsed action card cannot prove that field settings are correct.
+6. If you only have a drawing or cannot run the flow, describe the result as a design review and test plan, not a verified run.
 
 ### Quick check
 
-อธิบายได้ว่า ChatGPT อ่านภาพตรงหรือผิดตรงไหน และเลือกหนึ่งข้อเสนอพร้อมจุดที่ใช้ตรวจผล ไม่ถือว่าคำตอบใน chat เป็นผลทดสอบ flow
+Explain what ChatGPT read correctly or incorrectly, identify one suggestion and name the evidence you checked. A chat answer is not a flow test result.
 
-## Practice 2: เตรียมหลักฐานของ conversion error
+## Practice 2: Capture evidence of a conversion error
 
-**เป้าหมาย:** เปิดดู error ของ `Compose` ใน flow ฝึกที่แยกไว้ และเตรียมภาพเฉพาะส่วนที่ช่วยอธิบายสาเหตุ
+Inspect an error in a separate training flow and capture the details needed to explain its cause.
 
-1. Power Automate → **Create** → **Instant cloud flow** ตั้งชื่อ:
+1. Select **Create → Instant cloud flow**. Name it:
 
    ```text
    B2-ErrorPractice
    ```
 
-2. เลือก **Manually trigger a flow** → **Create** เพิ่ม Built-in **Data Operation** action:
+2. Select **Manually trigger a flow → Create**. Add the Built-in **Data Operation** action:
 
    ```text
    Compose
    ```
 
-3. ใน **Inputs** เปิด **Expression** หรือ `/` → **Insert expression** ใส่:
+3. In **Inputs**, open **Expression**, or **/ → Insert expression**, and enter:
 
    ```text
    int('not-a-number')
    ```
 
-4. เลือก **Add** หรือ **Update** ตรวจว่าเป็น expression token ไม่ใช่ literal text แล้ว Save ค่า `not-a-number` ไม่ใช่ข้อความตัวเลข จึงใช้ `int()` แปลงไม่ได้
-5. **หาก Save แจ้ง `InvalidTemplate`:** constant expression อาจถูกตรวจตั้งแต่ Save จึงยังไม่มี failed run ให้ดู ใช้ runtime fallback ต่อไปนี้เพื่อฝึก Run history:
-   - แทรก Built-in `Compose` อีกตัวระหว่าง trigger กับ `Compose` เดิม ตั้งชื่อ action ผ่านคำสั่ง **Rename** ของ action ให้เป็น:
+4. Select **Add** or **Update**. Confirm it is an expression token, not plain text, then Save. The value not-a-number cannot be converted to an integer.
+5. **If Save reports InvalidTemplate:** the constant may be checked before a run exists. Use this runtime fallback:
+   - Insert another Built-in Compose between the trigger and the original Compose. Use the action's **Rename** command to name it:
 
      ```text
      SampleText
      ```
 
-   - ใน **Inputs** ของ `SampleText` ใส่เป็นข้อความธรรมดา ไม่ใช่ Expression:
+   - Enter plain text, not an expression, in SampleText Inputs:
 
      ```text
      not-a-number
      ```
 
-   - เปิด **Expression** ของ `Compose` ตัวเดิม เปลี่ยนเป็น:
+   - Replace the original Compose expression with:
 
      ```text
      int(outputs('SampleText'))
      ```
 
-   - ตรวจลำดับ `Manually trigger a flow` → `SampleText` → `Compose` แล้ว Save ไม่เปลี่ยน connections หรือ permissions เพื่อข้าม error
-6. Test แบบ **Manually** แล้ว Run flow เปิด run ที่ `Failed` เลือก `Compose` อ่าน error และ input/expression ที่เกี่ยวข้อง หาก `Compose` กลับเป็น `Succeeded` ให้ตรวจว่ากรอกเป็น literal text หรือไม่
-7. Capture ภาพ close-up ของ expression ที่ใช้ และ error จาก action โดยลบ private identifiers ก่อนส่ง ภาพลำดับ flow อย่างเดียวไม่บอกว่า action ล้มเหลวเพราะอะไร ถ้าใช้ runtime fallback ให้เห็นค่าจาก `SampleText` ด้วย
+   - Confirm the order Manually trigger a flow → SampleText → Compose, then Save. Do not change connections or permissions to bypass an error.
+6. Select **Test → Manually** and run the flow. Open the **Failed** run, select Compose and inspect its error and relevant input/expression. If Compose succeeds, check whether you entered plain text instead of an expression.
+7. Capture close-ups of the expression and actual failed-action error. Remove private identifiers. For the fallback, include the SampleText value. The overall flow picture alone does not explain the failure.
 
 ### Quick check
 
-ชี้ expression, ค่าที่แปลงไม่ได้และ error ของ run จริงได้ หากยัง run ไม่ได้ ให้ใช้ sample ใน Practice 3 และระบุว่ากำลังวิเคราะห์ตัวอย่าง ยังไม่ผ่าน failed-run checkpoint
+Identify the expression, the nonnumeric value and the actual run error. If you cannot run it, use the supplied sample in Practice 3 and state that the failed-run checkpoint is incomplete.
 
-## Practice 3: ให้ ChatGPT ดู error แล้วพิสูจน์การซ่อม
+## Practice 3: Diagnose the error and verify a repair
 
-**เป้าหมาย:** ตรวจการซ่อม conversion error ด้วย run ใหม่ที่ได้ integer `25`
+Verify a correction with a new run that outputs integer `25`.
 
-1. ใช้ภาพที่เตรียมใน Practice 2 หากไม่มีภาพจริง ให้ดาวน์โหลด [compose-error-training.png](/downloads/compose-error-training.png) ภาพนี้ใช้ expression แบบ constant เพื่ออธิบายสาเหตุ และไม่ได้แสดง run จริง บน UI ที่ตรวจ constant ตั้งแต่ Save ให้ใช้ runtime fallback ใน Practice 2 เพื่อสร้างหลักฐานจริง
+1. Use your close-ups from Practice 2, or download [compose-error-training.png](/downloads/compose-error-training.png). This illustration uses the constant expression to explain the cause; it is not run evidence. Use the runtime fallback when Save rejects that constant.
 
-   ![ภาพสร้างเพื่อการสอน แสดง Compose และตัวอย่าง conversion error จาก int('not-a-number') ไม่ใช่หลักฐาน run จริง](/downloads/compose-error-training.png)
+   ![Training illustration of Compose and an example conversion error from int('not-a-number'), not a real run](/downloads/compose-error-training.png)
 
-   [เปิดภาพ error ขนาดเต็ม](/downloads/compose-error-training.png)
+   [Open the error illustration at full size](/downloads/compose-error-training.png).
 
-2. แนบภาพใน ChatGPT แล้วส่ง:
+2. Attach the image and ask:
 
    ```text
-   Compose นี้ควรแปลงข้อความตัวเลขเป็น integer แต่เกิด error ตามภาพ
-   ช่วยอธิบายสาเหตุ เสนอการแก้ที่เล็กที่สุด และวิธีทดสอบ
-   ถ้าข้อมูลไม่พอ ให้ถามก่อน
+   This Compose action should convert numeric text to an integer, but it shows the error in the image.
+   Explain the cause, suggest the smallest correction, and describe how to test it.
+   If information is missing, ask first.
    ```
 
-   ถ้าใช้ภาพตัวอย่าง ให้บอกเพิ่มว่าเป็นภาพประกอบสำหรับฝึก หาก upload ไม่ได้ ใช้ [text backup สำหรับ error](../guidebook/index.md#text-backup-error) หากภาพของจริงอ่านไม่ชัด คัดลอกเฉพาะ expression และ error text ที่ sanitise แล้ว ไม่ส่ง raw run URL หรือ JSON ทั้งหมด
-3. ตรวจว่า ChatGPT อ่านชื่อ action และ expression ตรงกับภาพ แยกสิ่งที่เห็นจริงจากการคาดเดา ถ้าคำตอบเสนอ connectors เพิ่มหรือเปลี่ยนสิทธิ์ ให้กลับมาขอแก้เฉพาะการแปลงข้อความตัวเลขใน sample นี้
-4. เปรียบเทียบคำแนะนำกับสาเหตุ แล้ว Edit `Compose` ตัวที่แปลงค่า เปิด **Expression** เปลี่ยนเป็น:
+   Say when you are using a supplied illustration. If upload is unavailable, use the [error text backup](../guidebook/index.md#text-backup-error). If your image is unclear, copy only the relevant sanitised expression/error text; do not share a raw run URL or full JSON.
+
+3. Check that ChatGPT read the action and expression correctly. Separate visible evidence from assumptions. If it suggests extra connectors or permission changes, ask it to focus on the sample conversion error.
+4. Edit the conversion Compose action. Replace its **Expression** with:
 
    ```text
    int('25')
    ```
 
-   ใช้ expression นี้ได้ทั้งเส้นทางเดิมและ runtime fallback การเปลี่ยนนี้ทำให้ sample ใช้ค่าตัวเลขคงที่ ไม่ใช่การ validate ข้อมูลทุกแบบ
-5. เลือก **Add/Update** แล้ว Save และ Test ใหม่ เปิด run ใหม่ ตรวจ `Compose` เป็น `Succeeded` และ **Outputs** เป็น integer `25` เปรียบเทียบกับ failed run แรก ไม่แก้เฉพาะข้อความใน chat
-6. หากดูเฉพาะภาพตัวอย่างหรือบัญชี run ไม่ได้ ให้สรุป cause, proposed fix และ test ที่จะทำ ไม่กล่าวว่าซ่อมสำเร็จแล้ว หากเข้า ChatGPT ไม่ได้ ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md) และยังทดสอบใน Power Automate ได้เมื่อบัญชีพร้อม
+   This repair works for both routes. It tests a fixed numeric value; it does not validate arbitrary incoming text.
+
+5. Select **Add/Update**, Save and Test again. Open the new run. Confirm Compose is **Succeeded** and **Outputs** is integer `25`. Compare it with the original failed run. Editing a chat message does not change your flow.
+6. If you only reviewed the illustration or cannot run the flow, explain the cause, proposed fix and planned test without claiming a verified repair. If ChatGPT is unavailable, use the [prepared examples](../guidebook/saved-examples.md); you can still test Power Automate if access permits.
 
 ### Quick check
 
-มี run ก่อนแก้ที่ Failed และ run หลังแก้ที่ `Compose` ส่ง integer `25` พร้อมอธิบายการเปลี่ยนได้ ภาพตัวอย่างหรือคำตอบ ChatGPT ใช้แทนสอง runs นี้ไม่ได้
+Show the failed run before the repair and the successful run producing integer 25 afterward. Explain the change. Neither an illustration nor ChatGPT's response replaces these run records.
 
-## ปิดกิจกรรม
+## Review and close
 
-เล่าให้เพื่อนฟังสามเรื่อง: ChatGPT อ่านภาพตรงไหม, ข้อเสนอไหนที่เลือก และหลักฐานไหนยืนยันผล ใช้ภาพ + คำถามสั้น + การตรวจผลกับงานที่ได้รับอนุญาตต่อได้เอง
+Share three points: whether ChatGPT read the image correctly, which suggestion you chose, and what evidence supports the result. Apply the image → short question → verification method independently to authorised work.
 
-อ้างอิง: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs), [Workflow expression functions — int](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#int), [Cloud flow error reference](https://learn.microsoft.com/power-automate/error-reference), [Troubleshoot a cloud flow](https://learn.microsoft.com/power-automate/fix-flow-failures)
+References: [OpenAI — Image inputs](https://learn.chatgpt.com/docs/image-inputs), [Expression functions — int](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#int), [Cloud flow error reference](https://learn.microsoft.com/power-automate/error-reference), [Troubleshoot a cloud flow](https://learn.microsoft.com/power-automate/fix-flow-failures)

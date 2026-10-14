@@ -1,39 +1,39 @@
-# ตัวอย่างประกอบเมื่อเปิด ChatGPT ไม่ได้
+# Prepared examples when ChatGPT is unavailable
 
-ข้อความด้านล่าง **ผู้เขียนเตรียมเพื่อการสอน** ไม่ใช่ transcript จาก ChatGPT ไม่ใช่ tenant test result และไม่ใช่หลักฐานว่าผู้เรียนได้ใช้ ChatGPT จริง ใช้ร่วมกับ [ภาพฝึกหรือ text backup](../resources/downloads.md) ได้
+These responses were **written by the course author for teaching**. They are not ChatGPT transcripts, tenant test results or evidence of live learner use. Review them with the [practice images or text backups](../resources/downloads.md).
 
-## ตัวอย่าง: อ่านภาพ design แล้ว review
+## Example: Read the design image and review it
 
-> ในภาพตัวอย่างเห็น When a new response is submitted → Get response details → Add a row into a table ภาพระบุว่า RequestId ใช้ Response Id จาก trigger ส่วน Title และคำตอบอื่นมาจาก Get response details; Status เป็น Pending
+> The image shows When a new response is submitted → Get response details → Add a row into a table. A Condition checks Category = Operations. Yes selects the Operations-labelled email; No selects Finance. Both go to the learner's mailbox. RequestId uses Response Id from the trigger. Title and the other answers come from Get response details; Status is Pending.
 >
-> จุดที่ควรตรวจหนึ่งจุดคือ Title: เลือก token Task title จาก Get response details จริงหรือพิมพ์คำว่า Task title เป็นข้อความ? ลองส่งคำขอสมมติหนึ่งรายการที่มี Title จำง่าย ตรวจ action Inputs และ Title ใน Excel ว่าตรงกัน
+> One point to check is Title: did you select the Task title token from Get response details, or type its name as plain text? Submit one Operations and one Finance request. Compare the action Inputs, Excel Title and email subject for each run. Both emails should reach your own mailbox.
 >
-> ภาพนี้ช่วยอธิบาย design แต่ยังไม่ยืนยันว่า configuration ในบัญชีของผู้เรียนตรงกับภาพ หรือว่า flow run สำเร็จแล้ว
+> The image explains the design but cannot prove that your account's configuration matches it or that your flow has run successfully.
 
-**ลองตรวจ:** อ่านภาพตรงไหม? ข้อเสนอไหนตรวจได้จากภาพ และข้อไหนต้องเปิด designer/run/Excel จริง? หากมีแค่ภาพวาด เรายืนยัน token source แล้วได้หรือยัง?
+**Discuss:** Is this reading accurate? Which claims can you check in the image, and which require the designer, a run or Excel? Can a drawing alone prove a token's source?
 
-## ตัวอย่าง: รูปไม่ชัด จึงต้องถาม
+## Example: Ask about an unclear image
 
-> เห็นว่ามี Forms และ Excel แต่ตัวหนังสือใน mapping อ่านไม่ชัด จึงยังยืนยัน Title ไม่ได้ ขอภาพ close-up เฉพาะ fields ของ Add a row into a table ที่ลบข้อมูลส่วนตัวแล้ว หรือคัดลอกชื่อ field กับ source token ที่เกี่ยวข้อง
+> I can see Forms and Excel, but the mapping text is too small to confirm Title. Please provide a sanitised close-up of the relevant Add a row into a table fields, or copy the field name and source token.
 
-**ลองตรวจ:** คำตอบนี้ขอข้อมูลเพิ่มตรงจุด ไม่เดาค่าที่อ่านไม่ออก ถ้า ChatGPT บอกชื่อ column ที่ไม่มีในภาพ เราต้องแก้ความเข้าใจก่อนเลือกการซ่อม
+**Discuss:** This response asks for specific missing evidence. If ChatGPT invents a column that is not in your image, correct its interpretation before choosing a fix.
 
-## ตัวอย่าง: วิเคราะห์ภาพ conversion error
+## Example: Diagnose a conversion error
 
-> ภาพประกอบแสดง Compose และ Expression int('not-a-number') ค่านี้ไม่ใช่ข้อความตัวเลขจึงแปลงเป็น integer ไม่ได้ ข้อความในภาพเป็น error summary เพื่อการสอน ไม่ใช่ error จาก run จริง
+> The illustration shows Compose with int('not-a-number'). That value is not numeric text, so it cannot be converted to an integer. The error summary is illustrative, not a real run message.
 >
-> Constant expression อาจถูกปฏิเสธตอน Save ด้วย InvalidTemplate ถ้าต้องฝึก failed-run inspection ให้ใช้ runtime fallback ของ Exercise 4: SampleText ส่งข้อความ not-a-number ไป Compose ที่ใช้ int(outputs('SampleText'))
+> The constant expression may be rejected at Save with InvalidTemplate. To practise failed-run inspection, use the Exercise 4 runtime fallback: SampleText outputs plain text not-a-number to Compose using int(outputs('SampleText')).
 >
-> สำหรับ sample repair เปลี่ยน Compose ที่แปลงค่าเป็น int('25') แล้ว Save และ Run ใหม่ ตรวจ Outputs เป็น integer 25 เปรียบเทียบกับ failed run ก่อนแก้ ผลนี้พิสูจน์เฉพาะ sample ที่ทดสอบ ไม่ใช่การ validate ข้อมูลทุกแบบ
+> For this sample, change the conversion Compose to int('25'), Save and run again. Check Outputs is integer 25 and compare with the failed run. This verifies the tested sample, not every possible input.
 
-**ลองตรวจ:** ถ้ายังไม่มี run ต้องเรียกผลว่าอะไร? ภาพประกอบยืนยันการซ่อมได้หรือไม่? ทำไมการเปลี่ยนข้อความใน chat ไม่ได้แก้ Power Automate flow?
+**Discuss:** What can you claim before running the flow? Can an illustration prove a repair? Why does editing a chat message not repair the Power Automate flow?
 
-## คำแนะนำที่ยังไม่ควรยอมรับ
+## Advice to challenge
 
-> “ภาพบอกว่าทำงานได้แล้ว ไม่ต้อง test”
+> “The picture proves it works. There is no need to test.”
 >
-> “เพิ่ม Premium connector แล้วเปิดไฟล์เป็น public จะทำให้ทำงานได้แน่นอน”
+> “Add a Premium connector and make the file public; that will definitely fix it.”
 
-ชี้ว่าคำตอบเกินหลักฐานหรือ scope ตรงไหน แล้วกลับไปตรวจ input, source token, error และผลจริง ไม่มีภาพใดอนุญาตให้เปลี่ยนสิทธิ์หรือใช้ข้อมูลลูกค้า
+Identify where the advice exceeds the evidence or exercise scope. Return to the input, source token, actual error and result. An image does not authorise permission changes or use of customer data.
 
-[กลับไป Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md)
+[Return to Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md)

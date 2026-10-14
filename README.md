@@ -1,16 +1,16 @@
-# แบบฝึกหัด Power Automate สำหรับทีม Operations
+# Power Automate exercises for Operations
 
 Learner site: https://teerasej.github.io/axa-power-automate-operations-2026/
 
-เอกสารผู้เรียนภาษาไทย เก็บ product names, UI labels และ column names เป็น English ทุกตัวอย่างเป็นข้อมูลสมมติ ใช้ฝึก cloud flows และ ChatGPT เป็นผู้ช่วยคิดนอก flow
+English learner instructions, synthetic practice files and ChatGPT assistance outside the flow. This English learner release includes illustrated exercises and an offline package.
 
-## ดูแลเว็บไซต์
+## Maintenance
 
-- Learner source: `docs/`
-- Site configuration: `docs/.vitepress/config.mts`
-- Downloadable files: `docs/public/downloads/`
-- Run `npm ci`, then `npm run docs:dev` for local development.
-- Run `npm run docs:build` and `npm run docs:preview` to check production output.
-- GitHub Pages deploys `docs/.vitepress/dist` from `main` through `.github/workflows/deploy.yml`.
+- Canonical learner source: docs/
+- Site configuration: docs/.vitepress/config.mts
+- Downloads: docs/public/downloads/
+- Use npm ci, then npm run docs:dev for local development.
+- Use npm run docs:build and npm run docs:preview for production checks.
+- GitHub Pages deploys docs/.vitepress/dist from main using .github/workflows/deploy.yml.
 
-เผยแพร่เฉพาะ learner content และ synthetic files ไม่เก็บ facilitator guidelines, environment preparation, presentation outlines, tenant information หรือ participant submissions ใน repository นี้
+Keep facilitator guidance, private environment details, presentations, learner assessments and submissions outside this repository. Section 2 uses a prepared Form/workbook, one Condition and two self-addressed email routes. Afternoon learner content follows scenario selection.

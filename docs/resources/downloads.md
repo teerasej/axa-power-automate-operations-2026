@@ -1,34 +1,43 @@
-# ดาวน์โหลดไฟล์ฝึก
+# Practice downloads
 
-| ไฟล์ | ใช้เมื่อไร |
+| File | When to use it |
 |---|---|
-| [operations-request-tracker.xlsx](/downloads/operations-request-tracker.xlsx) | Upload ไป OneDrive for Business ก่อนทำ Exercise 2 |
-| [operations-request-tracker-reset.xlsx](/downloads/operations-request-tracker-reset.xlsx) | เริ่มฝึกใหม่ด้วย Table schema เดิม |
-| [sample-requests.csv](/downloads/sample-requests.csv) | อ่านตัวอย่างคำขอสมมติ ไม่ต้อง import เข้า tracker |
-| [forms-to-excel-training.png](/downloads/forms-to-excel-training.png) | ใช้เป็นภาพ context สำหรับ design review เมื่อไม่มีภาพของตัวเอง |
-| [compose-error-training.png](/downloads/compose-error-training.png) | ใช้เป็นภาพ context สำหรับ error diagnosis เมื่อไม่มีภาพ error จริง |
-| [chatgpt-text-backup.txt](/downloads/chatgpt-text-backup.txt) | คัดลอก sample description และคำถามสั้นเมื่อ upload ภาพไม่ได้ |
-| [learner-materials.zip](/downloads/learner-materials.zip) | เก็บสำเนา Markdown, ภาพและไฟล์ฝึกไว้อ่านต่อ |
+| [operations-request-tracker.xlsx](/downloads/operations-request-tracker.xlsx) | Upload your personal six-column tracker to OneDrive for Business before Section 2. |
+| [operations-request-tracker-reset.xlsx](/downloads/operations-request-tracker-reset.xlsx) | Restart with the same empty table schema. |
+| [sample-requests.csv](/downloads/sample-requests.csv) | Read the two synthetic requests; do not import them into the tracker. |
+| [request-routing-training.png](/downloads/request-routing-training.png) | Design-review context if you do not have your own image. |
+| [compose-error-training.png](/downloads/compose-error-training.png) | Error-review context if you do not have an actual error image. |
+| [chatgpt-text-backup.txt](/downloads/chatgpt-text-backup.txt) | Copy the descriptions and short questions when image upload is unavailable. |
+| [download-manifest.json](/downloads/download-manifest.json) | File list and SHA-256 checksums. |
+| [learner-materials.zip](/downloads/learner-materials.zip) | Offline Markdown, images and practice files. |
 
-Workbook มี worksheet `Requests`, table `RequestsTable` และ columns `RequestId`, `Title`, `Description`, `RequesterEmail`, `Category`, `Status` พร้อมแถวว่างเริ่มต้นหนึ่งแถว ไม่มีข้อมูลลูกค้าหรือ macro
+The workbook contains worksheet Requests, table RequestsTable and six columns: RequestId, Title, Description, RequesterEmail, Category and Status. It starts with one blank row and contains no customer information or macros.
 
-## ภาพสำหรับ Exercise 4
+Complete [pre-session preparation](./section-2-preparation.md) before the session so the exercise time can focus on building and testing both routes.
 
-ภาพ PNG ทั้งสองสร้างด้วย AI เพื่อการสอน ไม่ใช่ screenshot จริงของ Power Automate และไม่ใช่หลักฐาน run หรือ tenant readiness ภาพ Forms → Excel แสดงลำดับและ mapping; ภาพ Compose แสดง expression และ error summary แบบประกอบ UI และ error จริงอาจต่างกัน รวมถึง constant expression ที่อาจถูกปฏิเสธตอน Save ให้ตรวจและทดสอบในบัญชีฝึกของตัวเองตาม [Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md)
+## Exercise header illustrations
 
-เปิดไฟล์ภาพขนาดเต็มเพื่ออ่านข้อความ ถ้า upload ไม่ได้ ใช้ text backup; ถ้าเข้า ChatGPT ไม่ได้ ใช้ [ตัวอย่างประกอบ](../guidebook/saved-examples.md)
+The 2D headers introduce each topic. They are not configuration diagrams; follow the actual steps and technical diagrams. All three are included in the ZIP.
 
-ถ้าคลิก PNG แล้ว browser เปิดภาพ ให้เลือก **Save image as** เพื่อเก็บเป็นไฟล์ หรือดาวน์โหลด ZIP ซึ่งรวม PNG และ text backup ไว้แล้ว
+- [Email flow header](/images/foundation-email-header.jpg)
+- [Request routing header](/images/request-routing-header.jpg)
+- [ChatGPT assistance header](/images/chatgpt-assistance-header.jpg)
 
-## Reset โดยไม่ทำให้ flow ชี้ผิดไฟล์
+## Images for Exercise 4
 
-1. หยุดการทดสอบและรอ runs ที่กำลังทำงานให้จบ ปิด workbook
-2. ดาวน์โหลด reset workbook แล้ว Upload เป็นไฟล์ใหม่ใน folder ฝึกของตัวเอง
-3. เปิด `Add a row into a table` ใน flow ใช้ picker เลือก reset workbook ใหม่ แล้วเลือก RequestsTable อีกครั้ง ตรวจ mapping หกคอลัมน์และ Save
-4. ส่ง Form response ใหม่หนึ่งครั้ง ตรวจว่าไปลงไฟล์ใหม่จริง
+The routing diagram was prepared by the author; the Compose illustration was AI-generated. Neither is an actual screenshot or evidence of a run or tenant readiness. Routing shows intake, mappings, one Condition and two email routes to your own mailbox. The Compose image shows an illustrative expression and error summary. Actual wording may differ, and a constant expression may be rejected at Save. Follow the fallback in [Exercise 4](../exercises/04-chatgpt-design-and-troubleshooting.md).
 
-การเปลี่ยนไฟล์ไม่ได้ลบ Forms responses หรือ Run history เดิม ไม่ใช้ Delete หรือ Replace ไฟล์เพื่อคาดว่า flow จะเปลี่ยน File reference ให้อัตโนมัติ
+Open images at full size to read them. Use the text backup if upload is unavailable, or [prepared examples](../guidebook/saved-examples.md) if ChatGPT is unavailable. If an image opens in the browser, use **Save image as**, or download the ZIP instead.
 
-## อ่าน Markdown จาก ZIP
+## Reset without breaking the file reference {#reset}
 
-แตก ZIP แล้วเริ่มที่ README.md ใช้ Markdown viewer ที่รองรับ relative links; Mermaid ต้องใช้ viewer ที่รองรับด้วย ทางเว็บไซต์เป็นเวอร์ชันที่แสดง diagrams และ search ได้ครบ ไฟล์ workbook อยู่ใน folder downloads ใน ZIP
+1. Stop testing, wait for active runs to finish and close the workbook.
+2. Download the reset workbook and upload it as a new file in your personal training folder.
+3. Open Add a row into a table. Use the File picker to select the new workbook and select RequestsTable again. Recheck all six mappings and Save.
+4. Submit fresh Operations and Finance responses. Verify the new workbook and both correctly labelled emails.
+
+Changing workbooks does not delete previous Forms responses or Run history. Do not assume Delete or Replace will automatically update a flow's File reference.
+
+## Read the offline package
+
+Extract the ZIP and open README.md in a Markdown viewer supporting relative links. Mermaid diagrams need a compatible viewer. The website provides complete diagram rendering and search. Workbooks are in docs/public/downloads inside the archive.
