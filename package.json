@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress docs",
-    "docs:build": "vitepress build docs",
+    "samples:pack": "node scripts/package-samples.mjs",
+    "docs:build": "npm run samples:pack && vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "overrides": {

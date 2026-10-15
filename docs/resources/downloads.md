@@ -12,8 +12,8 @@
 | [request-routing-training.png](/downloads/request-routing-training.png) | Design-review context if you do not have your own image. |
 | [compose-error-training.png](/downloads/compose-error-training.png) | Error-review context if you do not have an actual error image. |
 | [chatgpt-text-backup.txt](/downloads/chatgpt-text-backup.txt) | Copy the descriptions and short questions when image upload is unavailable. |
-| [download-manifest.json](/downloads/download-manifest.json) | File list and SHA-256 checksums. |
-| [learner-materials.zip](/downloads/learner-materials.zip) | Offline Markdown, images and practice files. |
+| [download-manifest.json](/downloads/download-manifest.json) | Sample file list and SHA-256 checksums, including the ZIP checksum. |
+| [learner-materials.zip](/downloads/learner-materials.zip) | All 10 sample files: workbooks, reset copies, sample inputs and instructional images/text backups. |
 
 The morning workbook contains worksheet Requests, table RequestsTable and six columns: RequestId, Title, Description, RequesterEmail, Category and Status. It starts with one blank row and contains no customer information or macros.
 
@@ -23,7 +23,7 @@ Complete [pre-session preparation](./section-2-preparation.md) before the sessio
 
 ## Exercise header illustrations
 
-The 2D headers introduce each topic. They are not configuration diagrams; follow the actual steps and technical diagrams. All four are included in the ZIP.
+The 2D headers introduce each topic. They are not configuration diagrams; follow the actual steps and technical diagrams. These four website illustrations are available separately below and are not included in the sample ZIP.
 
 - [Email flow header](/images/foundation-email-header.jpg)
 - [Request routing header](/images/request-routing-header.jpg)
@@ -49,6 +49,6 @@ Changing workbooks does not delete previous Forms responses or Run history. Do n
 
 Finish or cancel your outstanding training approvals and cancel any remaining active runs before changing files. Cancelling a flow run alone does not guarantee cancellation of the approval record. Upload the approval reset file as a new personal workbook. Reselect **File** and **DocumentApprovalsTable** in **Add a row**, **Update a row** and, after Part 2, **Get a row**. Recheck the Approval ID mappings and start a fresh test. Follow [Exercise 3 cleanup](../exercises/03-document-approval.md#troubleshooting-and-reset).
 
-## Read the offline package
+## Extract the sample files
 
-Extract the ZIP and open README.md in a Markdown viewer supporting relative links. Mermaid diagrams need a compatible viewer. The website provides complete diagram rendering and search. Workbooks are in docs/public/downloads inside the archive.
+Download the ZIP from this page or the homepage, then choose **Extract All** on Windows or double-click it on macOS. All 10 sample files are directly inside the archive, so you can open the workbooks, CSV, text files and instructional PNG images without navigating through website folders. The four approval-practice files are included. Keep the exercise instructions open on this website while practising.
