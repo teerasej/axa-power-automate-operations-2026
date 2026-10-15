@@ -13,4 +13,4 @@ English learner instructions, synthetic practice files and ChatGPT assistance ou
 - Use npm run docs:build and npm run docs:preview for production checks.
 - GitHub Pages deploys docs/.vitepress/dist from main using .github/workflows/deploy.yml.
 
-Keep facilitator guidance, private environment details, presentations, learner assessments and submissions outside this repository. Section 2 uses a prepared Form/workbook, one Condition and two self-addressed email routes. Afternoon learner content follows scenario selection.
+Keep facilitator guidance, private environment details, presentations, learner assessments and submissions outside this repository. Section 2 uses a prepared Form/workbook, one Condition and two self-addressed email routes. Section 3 uses one manual request title: complete the approval and Excel decision record first, then add one reminder based on a fresh status lookup. Each learner uses a separate workbook and their own training mailbox. See [Exercise 3](docs/exercises/03-document-approval.md) and [downloads](docs/resources/downloads.md).

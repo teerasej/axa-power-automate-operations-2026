@@ -5,22 +5,29 @@
 | [operations-request-tracker.xlsx](/downloads/operations-request-tracker.xlsx) | Upload your personal six-column tracker to OneDrive for Business before Section 2. |
 | [operations-request-tracker-reset.xlsx](/downloads/operations-request-tracker-reset.xlsx) | Restart with the same empty table schema. |
 | [sample-requests.csv](/downloads/sample-requests.csv) | Read the two synthetic requests; do not import them into the tracker. |
+| [document-approval-tracker.xlsx](/downloads/document-approval-tracker.xlsx) | Personal four-column tracker for Section 3; upload to OneDrive for Business. |
+| [document-approval-tracker-reset.xlsx](/downloads/document-approval-tracker-reset.xlsx) | Empty reset copy with the same DocumentApprovalsTable schema. |
+| [document-approval-expected-results.xlsx](/downloads/document-approval-expected-results.xlsx) | Illustrative Completed/Approve, Completed/Reject and Pending examples; fictional IDs, not run evidence. |
+| [document-approval-sample-inputs.txt](/downloads/document-approval-sample-inputs.txt) | Two copyable request titles, review briefs and test expectations. |
 | [request-routing-training.png](/downloads/request-routing-training.png) | Design-review context if you do not have your own image. |
 | [compose-error-training.png](/downloads/compose-error-training.png) | Error-review context if you do not have an actual error image. |
 | [chatgpt-text-backup.txt](/downloads/chatgpt-text-backup.txt) | Copy the descriptions and short questions when image upload is unavailable. |
 | [download-manifest.json](/downloads/download-manifest.json) | File list and SHA-256 checksums. |
 | [learner-materials.zip](/downloads/learner-materials.zip) | Offline Markdown, images and practice files. |
 
-The workbook contains worksheet Requests, table RequestsTable and six columns: RequestId, Title, Description, RequesterEmail, Category and Status. It starts with one blank row and contains no customer information or macros.
+The morning workbook contains worksheet Requests, table RequestsTable and six columns: RequestId, Title, Description, RequesterEmail, Category and Status. It starts with one blank row and contains no customer information or macros.
+
+Section 3 uses a separate workbook with worksheet **Approvals**, table **DocumentApprovalsTable** and four columns: **ApprovalId, RequestTitle, Status, Decision**. The tracker and reset copy have one blank starter row; the expected-results file is for reading only. Complete [Section 3 preparation](./section-3-preparation.md) before building.
 
 Complete [pre-session preparation](./section-2-preparation.md) before the session so the exercise time can focus on building and testing both routes.
 
 ## Exercise header illustrations
 
-The 2D headers introduce each topic. They are not configuration diagrams; follow the actual steps and technical diagrams. All three are included in the ZIP.
+The 2D headers introduce each topic. They are not configuration diagrams; follow the actual steps and technical diagrams. All four are included in the ZIP.
 
 - [Email flow header](/images/foundation-email-header.jpg)
 - [Request routing header](/images/request-routing-header.jpg)
+- [Document approval header](/images/document-approval-header.jpg)
 - [ChatGPT assistance header](/images/chatgpt-assistance-header.jpg)
 
 ## Images for Exercise 4
@@ -29,7 +36,7 @@ The routing diagram was prepared by the author; the Compose illustration was AI-
 
 Open images at full size to read them. Use the text backup if upload is unavailable, or [prepared examples](../guidebook/saved-examples.md) if ChatGPT is unavailable. If an image opens in the browser, use **Save image as**, or download the ZIP instead.
 
-## Reset without breaking the file reference {#reset}
+## Reset the morning tracker {#reset}
 
 1. Stop testing, wait for active runs to finish and close the workbook.
 2. Download the reset workbook and upload it as a new file in your personal training folder.
@@ -37,6 +44,10 @@ Open images at full size to read them. Use the text backup if upload is unavaila
 4. Submit fresh Operations and Finance responses. Verify the new workbook and both correctly labelled emails.
 
 Changing workbooks does not delete previous Forms responses or Run history. Do not assume Delete or Replace will automatically update a flow's File reference.
+
+## Reset the approval tracker
+
+Finish or cancel your outstanding training approvals and cancel any remaining active runs before changing files. Cancelling a flow run alone does not guarantee cancellation of the approval record. Upload the approval reset file as a new personal workbook. Reselect **File** and **DocumentApprovalsTable** in **Add a row**, **Update a row** and, after Part 2, **Get a row**. Recheck the Approval ID mappings and start a fresh test. Follow [Exercise 3 cleanup](../exercises/03-document-approval.md#troubleshooting-and-reset).
 
 ## Read the offline package
 

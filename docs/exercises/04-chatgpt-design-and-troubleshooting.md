@@ -1,8 +1,8 @@
 ---
 title: "Exercise 4 · ChatGPT design review and error repair"
 prev:
-  text: ChatGPT guidebook
-  link: /guidebook/
+  text: Approval and one reminder
+  link: /exercises/03-document-approval
 next:
   text: Prepared review examples
   link: /guidebook/saved-examples

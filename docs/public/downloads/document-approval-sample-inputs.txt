@@ -1,0 +1,24 @@
+INTERNAL DOCUMENT APPROVAL — SYNTHETIC TRAINING INPUTS
+
+Enter only Request title when you run the flow. Configure your own training mailbox as approver and result recipient once while building.
+
+TEST A — copy this Request title:
+Handover checklist - complete
+
+Review brief: the fictional procedure records the task, receiving role, handover owner and confirmation step. Choose Approve.
+Expected record: Status = Completed; Decision = Approve. The same actual ApprovalId stays on the row. One decision email arrives.
+
+TEST B — copy this Request title:
+Handover checklist - missing owner
+
+Review brief: the fictional procedure records the task and receiving role but does not name a handover owner. Choose Reject.
+Expected record: Status = Completed; Decision = Reject. One decision email arrives. Completed means review finished, not approved or published.
+
+PART 1: Run A and B separately. Observe the Pending row before responding. Complete and verify both runs before adding the reminder.
+
+PART 2: Run A again and approve early; verify Completed is visible well before the reminder check. No reminder should be sent when Get a row reads Completed.
+Run B again and leave unanswered until one reminder arrives. The row stays Pending and Decision stays blank. Respond Reject to the original request, then verify that same row and one decision email.
+
+Each run generates its own real ApprovalId. The expected-results workbook uses FICTIONAL-APPROVAL-A, FICTIONAL-APPROVAL-B and FICTIONAL-PENDING-C solely to illustrate values; never paste these as lookup keys.
+
+Excel updates may take up to 30 seconds to become visible. A near-simultaneous response and status check can overlap with reminder delivery. This training flow sends at most one reminder per run, with no duplicate approval creation.

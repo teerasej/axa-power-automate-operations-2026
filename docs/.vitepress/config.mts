@@ -3,13 +3,13 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid(defineConfig({
   title: 'Power Automate · Operations',
-  description: 'Build email and request-routing flows, then review and troubleshoot with ChatGPT',
+  description: 'Build email, routing and approval flows, add a reminder, then review and troubleshoot with ChatGPT',
   lang: 'en-US',
   base: '/axa-power-automate-operations-2026/',
   cleanUrls: true,
   lastUpdated: false,
   // VitePress 1.x treats XLSX links as pages. Only these verified static files are exempt.
-  ignoreDeadLinks: [/^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/],
+  ignoreDeadLinks: [/^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/, /^\/downloads\/document-approval-(?:tracker(?:-reset)?|expected-results)\.xlsx$/],
   themeConfig: {
     logo: '/images/workflow-mark.svg',
     siteTitle: 'Power Automate · Operations',
@@ -27,12 +27,14 @@ export default withMermaid(defineConfig({
       { text: 'Exercises', items: [
         { text: '1 · Your first email flow', link: '/exercises/01-foundation-email' },
         { text: '2 · Smart Request Intake and Routing', link: '/exercises/02-forms-to-excel' },
+        { text: '3 · Approval and one reminder', link: '/exercises/03-document-approval' },
         { text: '4 · ChatGPT and error repair', link: '/exercises/04-chatgpt-design-and-troubleshooting' }
       ] },
       { text: 'Guides and files', items: [
         { text: 'ChatGPT guidebook', link: '/guidebook/' },
         { text: 'Prepared review examples', link: '/guidebook/saved-examples' },
         { text: 'Prepare for Section 2', link: '/resources/section-2-preparation' },
+        { text: 'Prepare for Section 3', link: '/resources/section-3-preparation' },
         { text: 'Test inputs', link: '/resources/sample-inputs' },
         { text: 'Downloads and reset', link: '/resources/downloads' }
       ] }

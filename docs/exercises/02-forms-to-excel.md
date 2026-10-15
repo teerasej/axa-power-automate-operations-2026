@@ -4,8 +4,8 @@ prev:
   text: Your first email flow
   link: /exercises/01-foundation-email
 next:
-  text: ChatGPT guidebook
-  link: /guidebook/
+  text: Approval and one reminder
+  link: /exercises/03-document-approval
 ---
 
 # Exercise 2: Smart Request Intake and Routing
