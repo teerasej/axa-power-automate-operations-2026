@@ -56,3 +56,9 @@ Exercise numbers follow the teaching sections. Open activities in the order your
 - **14:45–16:00:** ChatGPT method 10 minutes, design review 20, controlled error/repair 30 and review/questions 15.
 
 Breaks: 10:30–10:45 and 14:30–14:45. Lunch: 12:00–13:00. Use these breaks as breaks; required work stays inside the teaching sessions.
+
+## After Day 1: refine your team project
+
+Complete one team deck for one main Flow, even if the Flow is unfinished or still an idea. The guide explains which slides to edit, how to record evidence honestly and how to remove sensitive information.
+
+[Open the Project Refinement guide and download the PowerPoint template](./project-refinement.md)

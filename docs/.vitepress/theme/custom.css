@@ -18,8 +18,30 @@
 .approval-exercise .reminder-diagram .mermaid svg { min-width: 636px; }
 .approval-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .VPHomeHero .image-src { max-width: 260px; max-height: 260px; }
+.project-refinement-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 8px 0 18px;
+  padding: 0 20px;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 22px;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-white) !important;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none !important;
+  text-align: center;
+}
+.project-refinement-download:hover { background: var(--vp-c-brand-2); border-color: var(--vp-c-brand-2); }
+.project-refinement-download:focus-visible { outline: 3px solid var(--vp-c-brand-1); outline-offset: 3px; }
 @media (max-width: 640px) {
   .VPNavBarTitle .title { font-size: 13px; }
   .vp-doc h1 { font-size: 26px; }
   .vp-doc td, .vp-doc th { min-width: 100px; }
+  .project-refinement-download { width: 100%; }
+}
+@media (max-width: 350px) {
+  .VPNavBarTitle .title span { display: none; }
 }

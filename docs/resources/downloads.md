@@ -1,5 +1,9 @@
 # Practice downloads
 
+## Project Refinement PowerPoint
+
+[Open the Project Refinement guide](../project-refinement.md) to download the editable 15-slide learner template and follow the completion guidance. The template is separate from the classroom sample ZIP and contains no instructor guide.
+
 | File | When to use it |
 |---|---|
 | [operations-request-tracker.xlsx](/downloads/operations-request-tracker.xlsx) | Upload your personal six-column tracker to OneDrive for Business before Section 2. |

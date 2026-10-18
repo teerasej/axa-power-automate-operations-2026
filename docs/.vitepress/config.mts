@@ -9,13 +9,14 @@ export default withMermaid(defineConfig({
   cleanUrls: true,
   lastUpdated: false,
   // VitePress 1.x treats XLSX links as pages. Only these verified static files are exempt.
-  ignoreDeadLinks: [/^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/, /^\/downloads\/document-approval-(?:tracker(?:-reset)?|expected-results)\.xlsx$/],
+  ignoreDeadLinks: [/^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/, /^\/downloads\/document-approval-(?:tracker(?:-reset)?|expected-results)\.xlsx$/, /^\/downloads\/AXA-Batch2-Project-Refinement-Student-v4\.pptx$/],
   themeConfig: {
     logo: '/images/workflow-mark.svg',
     siteTitle: 'Power Automate · Operations',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Exercises', link: '/exercises/01-foundation-email' },
+      { text: 'Project refinement', link: '/project-refinement' },
       { text: 'ChatGPT guidebook', link: '/guidebook/' },
       { text: 'Downloads', link: '/resources/downloads' }
     ],
@@ -31,6 +32,7 @@ export default withMermaid(defineConfig({
         { text: '4 · ChatGPT and error repair', link: '/exercises/04-chatgpt-design-and-troubleshooting' }
       ] },
       { text: 'Guides and files', items: [
+        { text: 'Project refinement', link: '/project-refinement' },
         { text: 'ChatGPT guidebook', link: '/guidebook/' },
         { text: 'Prepared review examples', link: '/guidebook/saved-examples' },
         { text: 'Prepare for Section 2', link: '/resources/section-2-preparation' },
