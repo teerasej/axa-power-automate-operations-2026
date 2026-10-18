@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: Download all sample files (ZIP)
       link: /axa-power-automate-operations-2026/downloads/learner-materials.zip
+    - theme: alt
+      text: View teaching presentation (PDF)
+      link: /axa-power-automate-operations-2026/downloads/AXA-Batch2-Day1-Training.pdf
 features:
   - title: Start with a visible result
     details: Supply an input, send an email and check that the value reaches your mailbox.
