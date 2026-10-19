@@ -5,12 +5,12 @@
     "name": "learner-materials.zip",
     "contents": "Sample files only, at the archive root",
     "count": 10,
-    "sha256": "95ff8c116ef53940ac97074a5991dd728560286da6505808436ce2e00617eeed"
+    "sha256": "7f06601db4901113502eb6e80d10777e42fe38670d0b138b564c25f15b84ad83"
   },
   "files": [
     {
       "name": "chatgpt-text-backup.txt",
-      "sha256": "30b7806da414cb32ad5bc61a7d88512fb654f197c03b3fb19ce1704adc7cf674"
+      "sha256": "56d6f32b1ab11e8f73a7f15d4f7bbf594d87efc32b14bf6a7e77e730d4cf9749"
     },
     {
       "name": "compose-error-training.png",

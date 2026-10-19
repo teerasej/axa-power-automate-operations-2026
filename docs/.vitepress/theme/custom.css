@@ -14,6 +14,20 @@
 .vp-doc pre, .vp-doc .mermaid { max-width: 100%; overflow-x: auto; }
 .vp-doc .mermaid svg { max-width: 100%; height: auto; }
 .vp-doc .mermaid p { margin: 0; line-height: 1.2; }
+.subject-reference { margin: 16px 0; }
+.subject-reference-label { display: block; margin-bottom: 6px; font-weight: 600; }
+.subject-reference-field { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 14px; border: 1px solid var(--vp-c-divider); border-radius: 6px; background: var(--vp-c-bg-soft); }
+.subject-reference-token { padding: 2px 9px; border: 1px solid var(--vp-c-brand-1); border-radius: 4px; background: var(--vp-c-brand-soft); color: var(--vp-c-brand-1); font-weight: 600; }
+.foundation-email-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ai-review-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.Layout footer.VPFooter.has-sidebar { display: block; }
+.VPFooter .copyright { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.VPFooter .publishing-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.VPFooter .publishing-links a { white-space: nowrap; }
+.VPFooter a:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 3px; border-radius: 2px; }
+@media (min-width: 960px) {
+  .Layout footer.VPFooter.has-sidebar { padding-left: calc(var(--vp-sidebar-width) + 32px); }
+}
 .approval-exercise .reminder-diagram { max-width: 100%; overflow-x: auto; }
 .approval-exercise .reminder-diagram .mermaid svg { min-width: 636px; }
 .approval-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -36,7 +50,23 @@
 }
 .project-refinement-download:hover { background: var(--vp-c-brand-2); border-color: var(--vp-c-brand-2); }
 .project-refinement-download:focus-visible { outline: 3px solid var(--vp-c-brand-1); outline-offset: 3px; }
+
+/* Keep the full brand inside the fixed sidebar header, beside the logo. */
+@media (min-width: 960px) {
+  .VPNavBarTitle.has-sidebar { width: 100%; min-width: 0; }
+  .VPNavBarTitle.has-sidebar .title { min-width: 0; max-width: 100%; }
+  .VPNavBarTitle.has-sidebar .logo { flex-shrink: 0; }
+  .VPNavBarTitle.has-sidebar .title span {
+    min-width: 0;
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+}
 @media (max-width: 640px) {
+  .VPNavBar .title { min-width: 0; flex-shrink: 1; }
+  .VPNavBarTitle { min-width: 0; }
+  .VPNavBarTitle .title span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .VPNavBarTitle .title { font-size: 13px; }
   .vp-doc h1 { font-size: 26px; }
   .vp-doc td, .vp-doc th { min-width: 100px; }
@@ -44,4 +74,57 @@
 }
 @media (max-width: 350px) {
   .VPNavBarTitle .title span { display: none; }
+}
+
+/* Keep sidebar controls keyboard accessible. */
+.VPSidebar a:focus-visible, .VPSidebar [role="button"]:focus-visible {
+  outline: 3px solid var(--vp-c-brand-1); outline-offset: 3px;
+}
+.VPSidebarItem .text { overflow-wrap: anywhere; }
+
+/* Completed routing fields: typed text and inserted tokens stay distinct. */
+.routing-exercise .condition-reference { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin: 16px 0; }
+.routing-exercise .condition-reference > div { min-width: 0; }
+.routing-exercise .condition-reference .subject-reference-field { min-height: 58px; }
+.routing-exercise .email-body-reference { display: block; }
+.routing-exercise .email-body-reference > div { margin: 5px 0; }
+.routing-exercise .subject-reference-field { overflow-wrap: anywhere; }
+.routing-exercise .subject-reference-token { display: inline-block; max-width: 100%; }
+.routing-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .routing-exercise .condition-reference { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Approval form references: one full-width field per row, in UI order. */
+.approval-exercise .approval-field-stack { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+.approval-exercise .approval-field-stack .subject-reference { margin: 0; min-width: 0; }
+.approval-exercise .subject-reference-field { overflow-wrap: anywhere; min-height: 56px; }
+.approval-exercise .subject-reference-token { display: inline-block; max-width: 100%; }
+.approval-exercise .email-body-reference { display: block; }
+.approval-exercise .email-body-reference > div { margin: 5px 0; }
+.approval-exercise .condition-reference { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 16px 0; }
+.approval-exercise .condition-reference > div { min-width: 0; }
+
+/* A condition is one expression; keep its three parts together even on mobile. */
+.approval-exercise .condition-reference .subject-reference-label { font-size: 13px; }
+.approval-exercise .condition-reference .subject-reference-field { padding: 10px 8px; overflow-wrap: anywhere; }
+.approval-exercise .condition-reference .subject-reference-token { padding: 4px; }
+
+.approval-exercise .branch-action-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  color: #7c2d12;
+  background: linear-gradient(135deg, #ffedd5, #fef3c7);
+  border: 1px solid #fb923c;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgb(234 88 12 / 16%);
+}
+
+.dark .approval-exercise .branch-action-badge {
+  color: #ffedd5;
+  background: linear-gradient(135deg, #9a3412, #854d0e);
+  border-color: #fb923c;
+  box-shadow: 0 2px 10px rgb(251 146 60 / 22%);
 }

@@ -1,0 +1,90 @@
+OPTIONAL A-C PRACTICE INPUTS
+Fictional training data. All preparation is inside Practice 1 of each website exercise.
+
+A. COMPARE TWO LISTS
+Flow: B2-Optional-A-CompareLists
+Workbook: list-comparison.xlsx
+IncomingTable (Incoming sheet): C001, C002
+ReferenceTable (Reference sheet): C001, C003
+ComparisonResultsTable (Results sheet): CaseId, MatchStatus
+Expected populated results: C001 Matched; C002 Missing.
+Ignore the blank Results starter row. Use reset before counting a fresh run.
+Action names: Read_Incoming, Read_Reference, For_each_incoming, Find_reference.
+Filter array advanced query (leading @ included):
+@equals(item()?['CaseId'],items('For_each_incoming')?['CaseId'])
+Condition left expression (fx, no leading @):
+length(body('Find_reference'))
+Operator: is greater than. Right numeric fx expression: 0
+Result CaseId expression:
+items('For_each_incoming')?['CaseId']
+Keep IDs unique, nonblank and consistently cased. No duplicates or field-value comparison.
+
+B. DUE-DATE REMINDERS
+Flow: B2-Optional-B-DueDateReminders
+Workbook: due-date-tracker.xlsx
+Tasks sheet, PendingTasksTable: TaskId, TaskTitle, DueDate, Status
+Refresh text dates for YOUR actual practice day in Bangkok before testing.
+T001 | Check the handover list | yesterday | Pending | email expected
+T002 | Review the request summary | today | Pending | email expected
+T003 | File the completed checklist | yesterday | Completed | no email
+T004 | Prepare the next team update | tomorrow | Pending | no email
+Dated example for 19 October 2026 ONLY (C2:C5):
+2026-10-18
+2026-10-19
+2026-10-18
+2026-10-20
+All dates are yyyy-MM-dd TEXT, not Excel numeric date serials.
+Action names: Read_Tasks, Today_Bangkok, Due_Pending, For_each_due_task.
+Today_Bangkok Inputs expression (fx):
+convertTimeZone(utcNow(),'UTC','SE Asia Standard Time','yyyy-MM-dd')
+Due_Pending advanced query (leading @ included):
+@and(equals(item()?['Status'],'Pending'),lessOrEquals(item()?['DueDate'],outputs('Today_Bangkok')))
+Loop input: Body from Due_Pending, not value from Read_Tasks.
+Subject prefix: [TRAINING][Due reminder]
+Insert current task expressions after the Subject prefix and Body labels:
+items('For_each_due_task')?['TaskTitle']
+items('For_each_due_task')?['DueDate']
+items('For_each_due_task')?['Status']
+Body labels:
+Task:
+Due date:
+Status:
+Set To to your own authorised training mailbox, CC/BCC empty.
+Test manually. Expected: exactly T001/T002 in filtered output and two emails.
+Turn off the scheduled flow after testing. Another run can resend the same reminders.
+
+C. EMAIL-TO-DOCUMENT REGISTER
+Flow: B2-Optional-C-DocumentRegister
+Workbook: email-document-register.xlsx
+Register sheet, DocumentRegisterTable: EmailSubject, FileName, SavedPath
+Personal OneDrive destination: PowerAutomateOptional/SavedTrainingDocuments
+Trigger: When a new email arrives (V3), Office 365 Outlook.
+Folder Inbox; Only with Attachments Yes; Include Attachments No.
+Subject Filter: [TRAINING][DocumentRegister]
+Send each message to YOUR OWN authorised training mailbox only after saving the flow.
+Test A Subject:
+[TRAINING][DocumentRegister] Handover checklist
+Attach only training-document-a.pdf; remove inline-image signatures.
+Test B Subject:
+[TRAINING][DocumentRegister] Request summary
+Attach only training-document-b.pdf; wait for test A to finish before sending test B.
+Action names: For_each_attachment, Get_PDF, Saved_File_Name, Save_PDF.
+Get_PDF Message Id: trigger Message Id.
+Get_PDF Attachment Id expression (fx):
+items('For_each_attachment')?['id']
+Saved_File_Name Inputs expression (fx):
+concat(guid(),'-',body('Get_PDF')?['name'])
+Save_PDF File Name: Outputs from Saved_File_Name.
+Save_PDF File Content: Content Bytes from Get_PDF.
+Register EmailSubject: Subject from trigger.
+Register FileName: Outputs from Saved_File_Name (do not generate another guid).
+Register SavedPath: Path returned by Save_PDF.
+Expected: two readable PDFs with distinct names and two matching populated rows.
+Expected-results IDs/paths are FICTIONAL examples, not actual saved files or run evidence.
+Turn off the flow after testing. New copies of the same email can create additional files.
+
+RESET
+A: New reset workbook; reselect File/Table in BOTH reads and BOTH writes.
+B: New reset workbook; refresh all four dates; reselect File/Table in Read_Tasks.
+C: New reset workbook; reselect File/Table in register action; clean only your own test files.
+Wait for active runs to finish and close Excel editing windows before changing files.
