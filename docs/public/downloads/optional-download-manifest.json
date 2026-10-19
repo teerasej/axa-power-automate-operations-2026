@@ -1,0 +1,64 @@
+{
+  "revision": "2026-10-17",
+  "optional_exercises": [
+    "A: Compare lists",
+    "B: Due-date reminders",
+    "C: Email-to-document register"
+  ],
+  "archive": {
+    "name": "optional-sample-files.zip",
+    "contents": "Sample files only, at the archive root",
+    "count": 12,
+    "sha256": "8d37a74c44d39fc91729697e0815c37aad1dda7ed9bec186e7856d444bd744a6"
+  },
+  "files": [
+    {
+      "name": "due-date-tracker-expected-results.xlsx",
+      "sha256": "facef5dafabe160d15eae3d4c695f83f78f5fef6a9f13087c1b62ba9ac69a5fb"
+    },
+    {
+      "name": "due-date-tracker-reset.xlsx",
+      "sha256": "4cf67aaae6956bb6997990ed01582789cdeb498a4f4f3a372030a8f82013540f"
+    },
+    {
+      "name": "due-date-tracker.xlsx",
+      "sha256": "4cf67aaae6956bb6997990ed01582789cdeb498a4f4f3a372030a8f82013540f"
+    },
+    {
+      "name": "email-document-register-expected-results.xlsx",
+      "sha256": "7174eca6edb96eb0baa816b20ea411457dbe5db4676d7f393e2a1f6bb3698450"
+    },
+    {
+      "name": "email-document-register-reset.xlsx",
+      "sha256": "1527780cb4a3a16ecd37c110fcd705af63b3220786ea8e297cdcd1299b60319e"
+    },
+    {
+      "name": "email-document-register.xlsx",
+      "sha256": "1527780cb4a3a16ecd37c110fcd705af63b3220786ea8e297cdcd1299b60319e"
+    },
+    {
+      "name": "list-comparison-expected-results.xlsx",
+      "sha256": "1b0ca25c48a7b34de838f61e668cceade025bbb0eda5147d6196478111134728"
+    },
+    {
+      "name": "list-comparison-reset.xlsx",
+      "sha256": "4d228a299b55ebd2c340efe4b765b65f139fe9e661fb58cfbb48c08d31f4624f"
+    },
+    {
+      "name": "list-comparison.xlsx",
+      "sha256": "4d228a299b55ebd2c340efe4b765b65f139fe9e661fb58cfbb48c08d31f4624f"
+    },
+    {
+      "name": "optional-practice-inputs.txt",
+      "sha256": "24206f359ea3c8f847b346385ba6791f3426ee50c68ef219a394405794c2e066"
+    },
+    {
+      "name": "training-document-a.pdf",
+      "sha256": "56e6aec3d7474154f4733b21fbf09242172f3c401d55f7c260786a7f0f1a2ed7"
+    },
+    {
+      "name": "training-document-b.pdf",
+      "sha256": "aed087810a742996378b7308e015f46d9ac98972a2de61c68e7a861e64704719"
+    }
+  ]
+}
