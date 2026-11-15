@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
 
-const props = defineProps<{ src: string; alt: string }>()
+const props = withDefaults(defineProps<{ src: string; alt: string; width?: number; height?: number }>(), { width: 1536, height: 512 })
 const source = computed(() => withBase(props.src))
 const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.webp'))} 768w, ${source.value} 1536w`)
 </script>
@@ -14,8 +14,9 @@ const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.we
       :srcset="sources"
       sizes="(min-width: 768px) 688px, calc(100vw - 48px)"
       :alt="alt"
-      width="1536"
-      height="512"
+      :width="props.width"
+      :height="props.height"
+      :style="{ aspectRatio: `${props.width} / ${props.height}` }"
       loading="lazy"
       decoding="async"
     >
@@ -30,7 +31,6 @@ const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.we
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 1;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   object-fit: contain;

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { exerciseMenu, exerciseSidebar } from './exercise-navigation'
+import { day2Menu, day2Sidebar } from './day2-navigation'
 
 export default withMermaid(defineConfig({
   title: 'Power Automate · Operations',
@@ -10,19 +11,20 @@ export default withMermaid(defineConfig({
   cleanUrls: true,
   lastUpdated: false,
   // VitePress 1.x treats XLSX links as pages. Only these verified static files are exempt.
-  ignoreDeadLinks: [/^\/downloads\/(?:list-comparison|due-date-tracker|email-document-register)(?:-reset|-expected-results)?\.xlsx$/, /^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/, /^\/downloads\/document-approval-(?:tracker(?:-reset)?|expected-results)\.xlsx$/, /^\/downloads\/AXA-Batch2-Project-Refinement-Student-v4\.pptx$/],
+  ignoreDeadLinks: [/^\/downloads\/(?:list-comparison|due-date-tracker|email-document-register)(?:-reset|-expected-results)?\.xlsx$/, /^\/downloads\/operations-request-tracker(?:-reset)?\.xlsx$/, /^\/downloads\/document-approval-(?:tracker(?:-reset)?|expected-results)\.xlsx$/, /^\/downloads\/AXA-Batch2-Project-Refinement-Student-v4\.pptx$/, /^\/day-2\/files\/(?:reset\/)?(?:core01-repair-relay|core02-document-handoff|core03-match-close-remind|rescue01-script-workbook-[ab])\.xlsx$/],
   themeConfig: {
     logo: '/images/workflow-mark.svg',
     siteTitle: 'Power Automate · Operations',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Exercises', items: exerciseMenu },
+      { text: 'Day 2', items: [{ text: 'Overview and preparation', link: '/day-2/' }, ...day2Menu] },
       { text: 'Optional exercises', link: '/optional/' },
       { text: 'Project refinement', link: '/project-refinement' },
       { text: 'Generative AI guidebook', link: '/guidebook/' },
       { text: 'Downloads', link: '/resources/downloads' }
     ],
-    sidebar: exerciseSidebar,
+    sidebar: { ...exerciseSidebar, ...day2Sidebar },
     search: { provider: 'local' },
     outline: { label: 'On this page', level: [2, 3] },
     docFooter: { prev: 'Previous', next: 'Next' },

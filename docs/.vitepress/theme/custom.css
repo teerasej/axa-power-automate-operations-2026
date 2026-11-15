@@ -8,6 +8,14 @@
   --vp-home-hero-image-filter: blur(58px);
 }
 .dark { --vp-c-brand-1: #63d3d5; --vp-home-hero-name-color: #63d3d5; }
+.day2-exercise .day2-field-stack { display: flex; flex-direction: column; gap: 14px; margin: 18px 0; }
+.day2-exercise .day2-field-stack > div { min-width: 0; width: 100%; }
+.day2-exercise .subject-reference-field { overflow-wrap: anywhere; min-height: 52px; }
+.day2-exercise .subject-reference-token { max-width: 100%; overflow-wrap: anywhere; }
+.day2-exercise .language-text pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.day2-exercise details { margin: 14px 0; padding: 12px 16px; border: 1px solid var(--vp-c-divider); border-radius: 6px; }
+.day2-exercise details summary { cursor: pointer; font-weight: 600; }
+.day2-exercise details summary:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 4px; }
 .vp-doc p, .vp-doc li { line-height: 1.9; }
 .vp-doc h1, .vp-doc h2, .vp-doc h3 { line-height: 1.5; }
 .vp-doc table { display: block; max-width: 100%; overflow-x: auto; }
@@ -77,6 +85,11 @@
 }
 
 /* Keep sidebar controls keyboard accessible. */
+.day2-exercise .day2-table-hint { display: none; }
+@media (max-width: 640px) {
+  .day2-exercise .day2-table-hint { display: block; color: var(--vp-c-text-2); font-size: 14px; }
+}
+
 .VPSidebar a:focus-visible, .VPSidebar [role="button"]:focus-visible {
   outline: 3px solid var(--vp-c-brand-1); outline-offset: 3px;
 }
