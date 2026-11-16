@@ -9,77 +9,120 @@ next: false
 
 # Rescue R1: Office Script result
 
-The prepared Flow should read a small workbook through a supplied Office Script and return its request count. It currently stops before producing the expected count. Find the first failing dependency and repair the configuration.
+A prepared Flow should count the requests in a workbook. It stops because the supplied script cannot find the table it was asked to read. Repair the one parameter that identifies that table.
 
-> **Access:** Office Scripts with Power Automate requires an eligible Microsoft 365 business licence and Office Scripts enabled for the authorised account. Use this live challenge only after **Run script** access has been rehearsed. The script is supplied and read-only; you do not need to write TypeScript. If access is unavailable, inspect the labelled static evidence and report a review result.
+> **Draft rehearsal:** The **B2D2-v2-R01-OfficeScript-START** baseline is available for the current instructor-account shared-copy rehearsal. Use only the baseline assigned to you. Learner-account, package-import and complete beginner-path checks are still pending; this availability does not establish classroom readiness.
+
+> **Access:** The instructor confirms Excel for the web and Office Scripts access before assigning R1. If **Automate** or **Run script** is unavailable, stop and tell the instructor. You copy a supplied read-only script; you do not write TypeScript.
 
 ## Your test card
 
-| Item | Resource |
-|---|---|
-| Starter | B2D2-R01-OfficeScript-START |
-| Workbooks | rescue01-script-workbook-a.xlsx and rescue01-script-workbook-b.xlsx |
-| Supplied script | rescue01-check-table.ts |
-| Expected result | Numeric count **3** from each workbook copy |
-| Scope | One parameter repair; keep the script and workbook contents unchanged |
+| Test | File selected in Run table check | Required result |
+|---|---|---|
+| A | rescue01-script-workbook-a.xlsx | Numeric 3 |
+| B | rescue01-script-workbook-b.xlsx | Numeric 3 |
 
-Download the resources and check [starter availability](../downloads.md#starter-flow-status) before live practice. The script must exist in the authorised account and be selected in the prepared **Run script** action. A Flow package alone does not distribute an Office Script.
+> **Excel file selection:** In **Document Library**, choose your OneDrive document library. It may appear as **Documents** or **เอกสาร**. Do not select **PersonalCacheLibrary**. For this card, select the supplied **File** and **Script**; there is no Table picker in Run script.
+
+The supplied workbook Table is named **RequestsTable**. The worksheet tab is **Requests**; those two names are different.
 
 ## Setup: Install the supplied script
 
-Complete this external dependency before the timed repair. You will paste the supplied source unchanged.
+Complete this setup before the repair timer starts.
 
-1. Upload both R1 workbooks into your own training folder. Open **rescue01-script-workbook-a.xlsx** in Excel for the web. Select **Automate → New Script → Create in Code Editor**. If the first-use pane shows **Turn actions into scripts**, select **Write a script**.
-2. Open **rescue01-check-table.ts** from the extracted [practice files](../downloads.md). Copy its entire contents. In the script editor, select all existing default code and replace it with the supplied source. Do not run the default script.
-3. Select **Rename**, enter the name below and press Enter. Wait until the save control confirms **Script saved**.
+| Action to check | Service |
+|---|---|
+| Run table check | Excel Online (Business) |
+
+
+1. Upload both R1 workbooks from your extracted practice files to your OneDrive training folder.
+2. Open **rescue01-script-workbook-a.xlsx** in Excel for the web.
+3. Select **Automate → New Script → Create in Code Editor**. If the first-use screen offers **Write a script**, select it.
+4. Select all default code in the editor and replace it with the unchanged supplied script:
+
+   ```typescript
+   /**
+    * Read-only table check for the Operations Request Desk exercise.
+    * Save this as an Office Script before binding Run script in Power Automate.
+    * This source file is not an importable Flow package.
+    */
+   function main(workbook: ExcelScript.Workbook, tableName: string): number {
+     const table = workbook.getTable(tableName);
+     if (!table) {
+       throw new Error(`Required table missing: ${tableName}`);
+     }
+     return table.getRowCount();
+   }
+   ```
+
+5. Select **Rename**. In **Enter script name**, type:
 
    ```text
    B2D2-CheckTable-ReadOnly
    ```
 
-4. Close the workbook's editing tab. In the imported Flow's `Run_table_check`, select your own workbook A and **B2D2-CheckTable-ReadOnly**. Keep the starter's initial **ScriptParameters/tableName** value unchanged for the first diagnostic test.
+   Press **Enter** to confirm the name.
+6. If **Save script** is shown, select it. Wait for **Script saved**, then close the Excel tab.
+7. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R1. Open the Flow you just copied or imported and select **Edit**.
+8. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for Run table check. Stop if its selected account/reference is not assigned to you.
+9. Select **Run table check → Parameters**. Set **Location** to **OneDrive for Business** and **Document Library** to your document library. Select workbook A in **File**. In **Script**, select the script you just named in step 5 — normally **B2D2-CheckTable-ReadOnly**.
+10. Wait for the script's parameter fields to finish loading. Check **tableName** (shown as **ScriptParameters/tableName** in some views). Its prepared starting value should be:
 
-If **Automate**, the script editor or saving is unavailable, record the access boundary and use the labelled evidence-review route. Do not change tenant settings.
+    ```text
+    RequestsTypo
+    ```
 
-## Practice 1: Check a script dependency
+    If the field is empty, type this value. This restores the starter's intended first-test value after selecting a different script. You will repair it during Practice 1.
+11. [Save your changes](../preparation.md#save-your-changes).
+12. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+
+## Practice 1: Check a script dependency {#practice-1-check-a-script-dependency}
 
 <PracticeIllustration src="/day-2/images/r01-p01.webp" :width="1536" :height="864" alt="A workbook reference is checked against the dependency required by a supplied script." />
 
-Repair a configuration dependency so the supplied script returns the expected count from both workbook copies.
+Correct the table-name parameter and return the count from two workbook copies.
 
-1. Import your assigned START Flow. Select workbook A and the supplied read-only script in `Run_table_check`. Recheck the connection account, select **Publish** and confirm **Published**.
-2. Run the first test. Read the failed action’s actual inputs and error. Open workbook A in Excel and compare the workbook’s actual Tables with what the action requests. Close Excel again before retesting.
-3. Record the expected count, actual result and first mismatch. Change only the justified parameter in the Flow. Keep the supplied TypeScript unchanged.
-4. Select **Publish** and confirm **Published**, then run test A. Confirm `Script_result` returns numeric **3**.
-5. Select workbook B using the File picker in `Run_table_check`, keep the same script and repaired parameter, then select **Publish** and confirm **Published** before running test B. Confirm numeric **3** again. The trigger needs no test input; the File picker selects the workbook for this test.
-6. Return your two-test evidence to the [shared peer-verification activity](../exercises/04-flow-rescue.md#practice-2-verify-another-teams-test).
+1. On your copy's details page, select **Edit** to open the designer. Then select **Test → Manually → Test**. If **Sign in** appears, complete the [first-test connection check](../preparation.md#first-test-connection-check). This trigger needs no input; select **Run flow**. When the confirmation says the run has started, select **Done**.
+2. Wait for the run-result view showing the action statuses. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result).
+3. Select the failed **Run table check** action. Read its **Inputs** and error. It should report that the requested table is missing.
+4. Compare the requested **tableName** in the failed action with the supplied Table name above: **RequestsTable**. The script needs the Table name, not the Requests worksheet name.
+5. Return to **Edit → Run table check → Parameters**. In **tableName** (shown as **ScriptParameters/tableName** in some views), replace the existing value with:
+
+   ```text
+   RequestsTable
+   ```
+
+6. Save your changes using the [control shown in your editor](../preparation.md#save-your-changes).
+7. Select **Test → Manually → Test** for test A. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** contains numeric **3**.
+8. Select **Edit**, then **Run table check → Parameters**. Select workbook B in **File**. Keep the same script and repaired tableName. Save your changes.
+9. Select **Test → Manually → Test** for test B. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** for numeric **3** again.
 
 ### Progressive hints
 
-<details><summary>Hint 1: Separate access from a script error</summary>
+<details><summary>Hint 1: Read the error first</summary>
 
-A connection or entitlement error happens before the supplied script can inspect a workbook. If the script itself reports a missing dependency, compare its requested input with the workbook schema.
-
-</details>
-
-<details><summary>Hint 2: Inspect the action’s inputs</summary>
-
-The script accepts a workbook and a tableName parameter, displayed in the action as **ScriptParameters/tableName**. Check both selected resources rather than replacing the workbook with unrelated data.
+A missing-table message means the script ran far enough to look for a table. Compare the tableName input with the workbook's actual Table name.
 
 </details>
 
-<details><summary>Hint 3: Compare exact names</summary>
+<details><summary>Hint 2: A sheet is not a Table</summary>
 
-A worksheet name and a Table name are different. Compare the exact parameter text with the Table name shown in Excel, including spelling. Keep your evidence before changing the value.
+The sheet is called Requests. The Table on it is called RequestsTable. The script needs the Table name.
+
+</details>
+
+<details><summary>Hint 3: Keep the script unchanged</summary>
+
+Repair the tableName parameter in Run table check. Do not edit the TypeScript or workbook data.
 
 </details>
 
 ### Checkpoint
 
-Both workbook copies return numeric **3**. Your evidence shows the configuration mismatch and the two successful outputs. This controlled dependency test does not establish the cause of any earlier workbook-lock or script failure.
+Both workbook copies return numeric **3**. Your evidence names the wrong parameter and shows the two corrected outputs.
 
 ## Reset
 
-Wait for the run to finish. Restore fresh copies of the two supplied workbooks and reselect File and Script. Select **Publish** and confirm **Published** before retesting. The script is read-only, so no workbook data repair should be necessary. Turn off the practice Flow after verification.
+The script is read-only. Select clean copies from the **reset** folder only if you changed a workbook. Reselect File and Script and save before retesting.
 
-Reference: [Office Scripts with Power Automate: troubleshooting](https://learn.microsoft.com/office/dev/scripts/testing/power-automate-troubleshooting).
+References: [Office Scripts troubleshooting](https://learn.microsoft.com/office/dev/scripts/testing/power-automate-troubleshooting), [Create a script for a Flow](https://learn.microsoft.com/office/dev/scripts/tutorials/excel-power-automate-manual).

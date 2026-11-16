@@ -9,29 +9,27 @@ next: false
 
 # Microsoft Learn references
 
-Use these first-party references to check current action behavior and limitations. The exercise scenarios, records and deliberate faults are synthetic. Documentation explains product behavior; account access, import and actual output checks require rehearsal in the training environment.
+You do not need to read these articles before class. Use the relevant link when you want to understand an action or check its documented behaviour.
 
-| Topic | Microsoft Learn reference | Effect on the exercise |
-|---|---|---|
-| Diagnosis | [Troubleshoot cloud Flow errors](https://learn.microsoft.com/power-automate/troubleshoot-flow-errors) | Compare action inputs and outputs when a run succeeds but its business output is wrong |
-| Package import | [Export and import a non-solution Flow](https://learn.microsoft.com/power-automate/export-import-flow-non-solution) | Use a real exported package, Create as New, authorised connections and the required destination role |
-| Solution import | [Import a solution](https://learn.microsoft.com/power-automate/import-flow-solution) | Follow the supported route when the environment requires solutions |
-| Target access and entitlements | [Power Automate licensing FAQ](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs) | Organiser confirms the Dataverse-backed target, required roles and applicable entitlements; Standard connector classification alone does not prove readiness |
-| Runnable versions | [Drafts and versioning for solution-aware cloud Flows](https://learn.microsoft.com/power-automate/drafts-versioning) | Publish edits before testing; a draft cannot be tested and native export includes only the last published version |
-| Data operations | [Filter array and other data operations](https://learn.microsoft.com/power-automate/data-operations) | Match the current request to the response array and inspect the resulting count |
-| Expressions | [Workflow expression functions](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference) | Use exact action names and correct current-item references |
-| Excel connector | [Excel Online (Business)](https://learn.microsoft.com/connectors/excelonlinebusiness/) | Use real Tables and unique row keys; avoid concurrent edits and immediate read-after-write assumptions |
-| File content and conversion | [OneDrive for Business](https://learn.microsoft.com/connectors/onedriveforbusiness/) | Distinguish file paths/IDs from file content, and rehearse the supported conversion route |
-| Mail and attachments | [Office 365 Outlook](https://learn.microsoft.com/connectors/office365/) | Pass actual file content to the attachment and verify the received email |
-| Office Scripts | [Power Automate and Office Scripts troubleshooting](https://learn.microsoft.com/office/dev/scripts/testing/power-automate-troubleshooting) | Check the selected workbook, supplied script and script parameters |
-| Supplied-script setup | [Create a script and connect it to a manual Flow](https://learn.microsoft.com/office/dev/scripts/tutorials/excel-power-automate-manual) | Install the unchanged supplied script through Excel's Automate tools before binding Run script |
-| Script access | [Office Scripts platform requirements and limits](https://learn.microsoft.com/office/dev/scripts/testing/platform-limits) | Confirm eligible Microsoft 365 access and Power Automate support before assigning R1 |
-| Decision paths | [Add a Condition to a cloud Flow](https://learn.microsoft.com/power-automate/add-condition) | Inspect actual comparisons and which branch runs |
+| Question | Microsoft Learn reference |
+|---|---|
+| How do I import a legacy Flow package? | [Non-solution Flow export/import](https://learn.microsoft.com/power-automate/export-import-flow-non-solution) |
+| How do I import a solution package? | [Import a solution](https://learn.microsoft.com/power-automate/import-flow-solution) |
+| How does Save As make a personal Flow copy? | [Duplicate a solution-aware Flow](https://learn.microsoft.com/power-automate/edit-solution-aware-flow#duplicate-a-solution-aware-cloud-flow-using-save-as) |
+| Where do I inspect a failed or wrong result? | [Troubleshoot cloud Flow errors](https://learn.microsoft.com/power-automate/troubleshoot-flow-errors) |
+| How does the current designer work? | [Cloud Flow designer](https://learn.microsoft.com/power-automate/flows-designer) |
+| What does Filter array do? | [Data operations](https://learn.microsoft.com/power-automate/data-operations) |
+| What do the supplied expressions mean? | [Workflow expression functions](https://learn.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference) |
+| How does a Flow read or update an Excel Table? | [Excel Online (Business)](https://learn.microsoft.com/connectors/excelonlinebusiness/) |
+| How does it retrieve content or convert a file? | [OneDrive for Business](https://learn.microsoft.com/connectors/onedriveforbusiness/) |
+| How do email attachments work? | [Office 365 Outlook](https://learn.microsoft.com/connectors/office365/) |
+| How do I install the supplied script? | [Create a script and connect it to a Flow](https://learn.microsoft.com/office/dev/scripts/tutorials/excel-power-automate-manual) |
+| What should I inspect when Run script fails? | [Office Scripts troubleshooting](https://learn.microsoft.com/office/dev/scripts/testing/power-automate-troubleshooting) |
+| How does a Condition choose a branch? | [Add a Condition](https://learn.microsoft.com/power-automate/add-condition) |
+| When do I need to publish a solution-aware Flow? | [Drafts and versioning](https://learn.microsoft.com/power-automate/drafts-versioning) |
 
 ## Boundaries that affect your result
 
-- A successful send action requires a received-message check for attachment readability or image rendering.
-- A connector’s Standard classification does not prove that a learner has the related Microsoft 365 service or permissions.
-- A prepared Flow needs connection rebinding, file selection and controlled recipient configuration after import.
-- A sample result documents what should happen. It is not evidence that the current tenant produced that result.
-- The reminder preview and decision gate are controlled simulations. They do not create an operational schedule or define workplace approval authority.
+A successful action does not replace checking the result. Open the received attachment or saved PDF, inspect the updated row, or read the named action output shown in your exercise.
+
+The reminder preview and decision gate are training simulations. Your organisation's account access and any later workplace use need their own checks.

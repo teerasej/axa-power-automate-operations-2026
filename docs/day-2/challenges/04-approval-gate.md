@@ -9,86 +9,109 @@ next: false
 
 # Rescue R4: Decision gate simulation
 
-The fictional request desk checks a manager decision before entering a finance stage. The prepared Flow records the wrong result for one test. Compare the supplied rule with the branch that actually runs.
+A manager rejection should stop a request before finance. The prepared Flow follows the wrong branch. Correct one Condition value and check the two decision paths.
 
-> **Access:** Complete [Preparation](../preparation.md) and check [starter availability](../downloads.md#starter-flow-status) before live practice. This challenge uses a manual trigger, Conditions and recorded synthetic results. It sends no real approval request and does not establish workplace approval authority.
+> **Draft rehearsal:** The **B2D2-v2-R04-ApprovalGate-START** baseline is available for the current instructor-account rehearsal. Use only the baseline assigned to you. A complete learner-account copy and runtime check is still required; this availability does not establish classroom readiness.
+
+> **Access:** This simulation uses Power Automate's built-in actions. It sends no approval request or email and needs no workbook. It practices a supplied rule; it does not decide workplace approval authority.
 
 ## Your test card
 
-**Supplied training rule:** A manager rejection ends the request as Rejected. Finance runs only after manager approval. Finance approval then produces Approved.
-
-| Test | ManagerDecision | FinanceDecision | Required result |
+| Test | ManagerDecision | FinanceDecision | Required result after repair |
 |---|---|---|---|
-| A | Reject | Approve | Rejected; finance actions show Skipped |
-| B | Approve | Approve | Approved; finance stage executes |
+| A | Reject | Approve | Rejected; Finance gate is Skipped |
+| B | Approve | Approve | Approved; Finance gate runs |
 
-Starter: **B2D2-R04-ApprovalGate-START**. One deliberate Condition defect is present.
+```mermaid
+flowchart LR
+  A{Manager approves?} -->|No| B[Rejected]
+  A -->|Yes| C{Finance approves?}
+  C -->|Yes| D[Approved]
+  C -->|No| B
+```
 
-## Practice 1: Verify a decision gate
+## Setup
+
+1. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R4.
+2. Open the Flow you just copied or imported. This Flow has no connector actions, so no connection-account check or file selection is needed.
+3. Confirm that the Flow is saved. Follow [Save your changes](../preparation.md#save-your-changes) before testing any edit.
+4. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+
+## Practice 1: Verify a decision gate {#practice-1-verify-a-decision-gate}
 
 <PracticeIllustration src="/day-2/images/r04-p01.webp" :width="1536" :height="768" alt="A gate checks a decision before allowing a request to proceed to a second stage." />
 
-Repair the decision gate so both synthetic cases follow the supplied rule.
+Correct the manager comparison so a rejection stops the finance branch.
 
-1. Import the starter. Confirm **Published**; publish any Flow edits first. Run test A with the exact values below.
+1. On your copy's details page, select **Edit** to open the designer. Then select **Test → Manually → Test** and enter test A:
 
-   **ManagerDecision**
+   - **ManagerDecision**
 
-   ```text
-   Reject
-   ```
+     ```text
+     Reject
+     ```
 
-   **FinanceDecision**
+   - **FinanceDecision**
 
-   ```text
-   Approve
-   ```
+     ```text
+     Approve
+     ```
 
-2. Inspect `Manager_gate`, the finance-stage action statuses and the recorded final result. Identify the first branch that differs from the supplied rule.
-3. Record the actual values compared by the Condition and the branch result. Repair only the justified comparison. Keep the synthetic inputs and the rule unchanged.
-4. Select **Publish**, confirm **Published** and rerun test A. Verify Rejected and confirm finance actions show **Skipped**.
-5. Run test B with the values below.
-
-   **ManagerDecision**
+2. Select **Run flow**. When the confirmation says the run has started, select **Done**.
+3. Wait for the run-result view showing the action statuses. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result). Select **Manager gate** and inspect the comparison result.
+4. Expand **Manager gate** using the arrow beside it. In its **True** branch, notice that **Finance gate** ran even though the manager rejected the request. Expand **Finance gate** using its arrow. In the finance **True** branch, select **Approved result → Outputs** to see the incorrect Approved result.
+5. Return to **Edit → Manager gate → Parameters**. Leave the **ManagerDecision** value and **is equal to** operator unchanged. Replace the right-hand comparison value with:
 
    ```text
    Approve
    ```
 
-   **FinanceDecision**
+6. Save your changes. Select **Test → Manually → Test** and run test A again with the same two inputs. Select **Done** when the confirmation says the run has started, then wait for the run-result view.
+7. Expand **Manager gate** if needed. Select the **arrow beside its outer False branch**, to the right of Manager gate and opposite the True branch containing Finance gate. Open **Manager rejected result → Outputs** and check for **Rejected**. In the manager's **True** branch, check that **Finance gate** shows **Skipped**.
 
-   ```text
-   Approve
-   ```
+   The manager's False branch and the False branch inside Finance gate are separate. If Copilot covers the right side of the Flow, close its panel. Use **Zoom view to fit** if needed to see the outer branch arrow.
+8. Select **Edit → Test → Manually → Test**. Enter test B:
 
-6. Verify the finance stage executes and the result is Approved. Share both branch traces with another team.
+   - **ManagerDecision**
+
+     ```text
+     Approve
+     ```
+
+   - **FinanceDecision**
+
+     ```text
+     Approve
+     ```
+
+9. Select **Run flow**, then **Done** when the started confirmation appears. Wait for the run-result view. Expand **Manager gate**, then expand **Finance gate** in its **True** branch if needed. Confirm Finance gate ran. In the finance **True** branch, select **Approved result → Outputs** and check for **Approved**.
 
 ### Progressive hints
 
-<details><summary>Hint 1: Start at the earliest wrong branch</summary>
+<details><summary>Hint 1: Follow the first wrong branch</summary>
 
-The last recorded value is an effect. Compare the first decision’s actual values with the supplied rule before changing the result text.
-
-</details>
-
-<details><summary>Hint 2: Inspect actual Condition values</summary>
-
-Read the left input, operator and right input in the manager Condition. A correct action name does not prove that the comparison expresses the intended rule.
+The manager's decision controls whether finance can start. Check that Condition before changing any final result text.
 
 </details>
 
-<details><summary>Hint 3: Check skipped actions</summary>
+<details><summary>Hint 2: Read the three comparison parts</summary>
 
-For test A, finance must not execute at all. A final Rejected label is insufficient if finance still runs on the wrong branch.
+Read the input, operator and comparison value in Manager gate. The supplied rule allows finance after manager approval.
+
+</details>
+
+<details><summary>Hint 3: Check Skipped as well as Rejected</summary>
+
+For test A, finance must not run. A final Rejected label is not enough if Finance gate still executed.
 
 </details>
 
 ### Checkpoint
 
-Test A returns Rejected and skips finance. Test B enters finance and returns Approved. Your evidence identifies the comparison that caused the earlier wrong branch.
+Test A returns Rejected and skips Finance gate. Test B runs Finance gate and returns Approved. Only the comparison value in Manager gate was repaired.
 
 ## Reset
 
-This simulation does not write a workbook or issue approvals. Start a fresh manual run with the original test values. Turn off the practice Flow when finished.
+Start a new manual run with the original test inputs. This simulation does not change a workbook or issue approvals. Turn off the training Flow during announced cleanup.
 
-Reference: [Conditions in cloud Flows](https://learn.microsoft.com/power-automate/add-condition).
+Reference: [Add a Condition](https://learn.microsoft.com/power-automate/add-condition).

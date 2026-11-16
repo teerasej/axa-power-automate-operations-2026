@@ -13,6 +13,8 @@ Check the actual Results rows and received emails. Each email must have its matc
 
 ## Reliable Document Handoff
 
+The v2 exercise uses two prepared mappings inside the Flow. It needs only the two supplied PDFs in your own OneDrive and your controlled email recipients; no Excel workbook is needed for this exercise.
+
 | RequestID | Filename | RecipientSlot | Contents to check after opening |
 | --- | --- | --- | --- |
 | R-101 | DOC-A.pdf | SLOT-A | DOC-A, IT equipment request, 1250.00, Blue folder |
@@ -30,10 +32,19 @@ CutoffDate is 2026-11-17. Before the first run, Requests contains three Pending 
 | R-102\|2026-10 | Closed |
 | R-101\|2026-11 | Pending |
 
-The first correct Reminder_preview result contains one item, R-101|2026-11, SLOT-A, DueDate 2026-11-17. The RESET marker is gone from the workbook's ReminderPreview table.
+After the first correct run, the workbook's ReminderPreview Table contains one item: R-101|2026-11, SLOT-A, DueDate 2026-11-17. The RESET marker is gone.
 
-Add the row from core03-final-response.csv to Responses, confirm the edit has persisted, close editing and rerun. All three requests become Closed. Reminder_preview contains zero items and the old preview row is removed. The Flow previews follow-up selection and does not send a scheduled reminder.
+Add the row from core03-final-response.csv to Responses. Use the exercise's Table Design → Resize Table step to include the new row in the Table, confirm the edit has persisted, close editing and rerun. All three requests become Closed and ReminderPreview has zero populated rows. The Flow previews follow-up selection and does not send a scheduled reminder.
 
 ## Reset copies
 
-The files under reset/ restore the original synthetic data. Upload a fresh separate workbook copy and reselect it in the relevant Flow actions. Do not overwrite a workbook during an active run. Each pair uses its own copies.
+The four files under reset/ restore the original synthetic data for Core01, Core03 and the two Office Script workbooks. Wait for active runs to finish and close the workbook's editing tabs. Each pair restores only its own synthetic resources.
+
+- **Core01:** use reset/core01-repair-relay.xlsx to restore the exact own-OneDrive path B2D2-Operations-Request-Desk/core01-repair-relay.xlsx. Verify the original Requests and both Results rows with Pending in Outcome.
+- **Core03:** use reset/core03-match-close-remind.xlsx to restore the exact own-OneDrive path B2D2-Operations-Request-Desk/core03-match-close-remind.xlsx. Verify three Pending requests, two October responses and RESET in ReminderPreview's RequestKey column.
+- **R1:** upload a fresh separate workbook copy and repeat that exercise's workbook selection.
+- **Document Handoff:** use the unchanged DOC-A.pdf and DOC-B.pdf files again.
+
+For Core01 and Core03, keep the canonical folder and filename unchanged and leave the Flow's prepared File/Table values unchanged. If OneDrive reports a shared-use lock, keep editing tabs closed, wait and select Retry. At a replacement prompt, check that this is your own training workbook, select Replace and wait for Uploaded.
+
+Follow the exercise's Reset instructions for the exact route. A successful upload must still be checked against the pristine data. These target checks do not establish reset or access readiness for your learner account.

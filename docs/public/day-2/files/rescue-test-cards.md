@@ -12,18 +12,19 @@ Use the assigned prepared Flow. Record the expected result, actual result, first
 
 - Test A: run once. A new uniquely named file exists and retrieval returns Sequence verified.
 - Test B: run again. A different uniquely named file exists and retrieval returns the same expected content.
-- Evidence: action order, both file names and retrieved contents. Diagnose the first failed action before changing timing settings.
+- Before repair in the v2 starter: creation succeeds, but retrieval is Skipped. A skipped action has not attempted to read the file.
+- Evidence: the creation and retrieval statuses, both unique file names and retrieved contents. Explain why retrieval did not start; this case is not an actual workbook lock.
 
 ## R03 - HTML image
 
 - Supplied synthetic image resource: [request illustration](https://teerasej.github.io/axa-power-automate-operations-2026/images/practices/ex01-p01-768.webp) (approximately 11.1 KB). Keep the starter unchanged for the first diagnostic run.
-- Test A: send a controlled training message with TestLabel A. The supplied image appears in the intended recipient client.
+- Test A: send a controlled training message with TestLabel A. Open it in Outlook on the web in Edge and check that the supplied image appears.
 - Test B: send TestLabel B. The image appears again and the label matches B.
 - Evidence: actual received messages and the image source resource. If the organization blocks external images, use the facilitator's labelled captured evidence route.
 
 ## R04 - Approval gate simulation
 
-- Test A: ManagerDecision Reject, FinanceDecision Approve. Final result is Rejected. Finance-stage actions are Skipped.
+- Test A: ManagerDecision Reject, FinanceDecision Approve. Final result is Rejected. The Finance gate Condition is Skipped.
 - Test B: ManagerDecision Approve, FinanceDecision Approve. Finance stage runs. Final result is Approved.
 - Evidence: both decision inputs, branch status and final result. The exercise uses a supplied synthetic rule and sends no real approval request.
 
