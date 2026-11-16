@@ -1,10 +1,10 @@
 {
-  "revision": "2026-11-12",
+  "revision": "2026-11-15-v2-review",
   "description": "Synthetic Day 2 resources only. This archive is not a Power Automate import package.",
   "archive": {
     "name": "day-2-practice-files.zip",
-    "count": 18,
-    "sha256": "59fa0322b3c40eb7a473d262644d6672a01ec3c4333430ba411c53116f282794"
+    "count": 16,
+    "sha256": "b7b1f786c5b9297c18ed8a65b5d9907c05f041a4f60b913d46df901fab396a91"
   },
   "files": [
     {
@@ -23,11 +23,6 @@
       "sha256": "a0caa77438cb53cc8409e8168668d6e489c95ce2007bc8cba71aeb477e588b9d"
     },
     {
-      "name": "core02-document-handoff.xlsx",
-      "bytes": 4636,
-      "sha256": "356e2656b6dbc180c2335aea4a18fcf9511327d3a22a12ad90aca74274e73e5d"
-    },
-    {
       "name": "core03-final-response.csv",
       "bytes": 79,
       "sha256": "c548e10857f57d4d8979b56043da6c7b375858d575a1f8b3cac546832b8c7f51"
@@ -39,13 +34,13 @@
     },
     {
       "name": "expected-results.md",
-      "bytes": 2090,
-      "sha256": "518f70d0cd8b065ea6a56e4a83475f41d19e1a72d05e5359fc1d6f595e03e51d"
+      "bytes": 3558,
+      "sha256": "60980de7402c082aa586911bab8ae508a64f6d8b076d266b0886567feaff7a76"
     },
     {
       "name": "rescue-test-cards.md",
-      "bytes": 2398,
-      "sha256": "f21075d08200bd1e069e240981978b209a3960b2371ccd91bed53ddd5c95e05c"
+      "bytes": 2598,
+      "sha256": "1e0f8833d242308c689a39b80a1a044ce5673fb882ab1915a9692927fac52478"
     },
     {
       "name": "rescue01-check-table.ts",
@@ -76,11 +71,6 @@
       "name": "reset/core01-repair-relay.xlsx",
       "bytes": 6179,
       "sha256": "a0caa77438cb53cc8409e8168668d6e489c95ce2007bc8cba71aeb477e588b9d"
-    },
-    {
-      "name": "reset/core02-document-handoff.xlsx",
-      "bytes": 4636,
-      "sha256": "356e2656b6dbc180c2335aea4a18fcf9511327d3a22a12ad90aca74274e73e5d"
     },
     {
       "name": "reset/core03-match-close-remind.xlsx",

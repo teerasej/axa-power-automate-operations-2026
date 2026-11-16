@@ -9,11 +9,11 @@ const samples = new URL('files/', publicRoot)
 // originals are deliberately outside this synthetic-resource archive.
 const files = [
   'DOC-A.pdf', 'DOC-B.pdf',
-  'core01-repair-relay.xlsx', 'core02-document-handoff.xlsx', 'core03-match-close-remind.xlsx',
+  'core01-repair-relay.xlsx', 'core03-match-close-remind.xlsx',
   'core03-final-response.csv', 'expected-results.md',
   'rescue01-check-table.ts', 'rescue01-script-workbook-a.xlsx', 'rescue01-script-workbook-b.xlsx',
   'rescue02-sequence-content.txt', 'rescue05-summary-template.html', 'rescue-test-cards.md',
-  'reset/core01-repair-relay.xlsx', 'reset/core02-document-handoff.xlsx',
+  'reset/core01-repair-relay.xlsx',
   'reset/core03-match-close-remind.xlsx', 'reset/rescue01-script-workbook-a.xlsx',
   'reset/rescue01-script-workbook-b.xlsx'
 ].sort()
@@ -42,7 +42,7 @@ end.writeUInt32LE(0x06054b50, 0); end.writeUInt16LE(files.length, 8); end.writeU
 end.writeUInt32LE(directory.length, 12); end.writeUInt32LE(offset, 16)
 const archive = Buffer.concat([...localParts, directory, end])
 const manifest = {
-  revision: '2026-11-12',
+  revision: '2026-11-15-v2-review',
   description: 'Synthetic Day 2 resources only. This archive is not a Power Automate import package.',
   archive: { name: 'day-2-practice-files.zip', count: files.length, sha256: hash(archive) },
   files: records

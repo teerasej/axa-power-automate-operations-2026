@@ -9,71 +9,86 @@ next: false
 
 # Rescue R2: File dependency order
 
-The prepared Flow creates a uniquely named training text file and returns its contents. It currently cannot retrieve the expected result. Trace when the file becomes available and restore the dependency path.
+The Flow creates a file, but the next action does not read it. Repair the one **Run after** setting that controls when reading can start.
 
-> **Access:** Confirm Power Automate and your own authorised OneDrive for Business. Check [starter availability](../downloads.md#starter-flow-status) before live practice. This minimal challenge uses your OneDrive root and a unique `B2D2-R02-sequence-` filename on every run. It is a controlled missing-file/dependency case, not a manufactured file-lock error.
+> **Draft rehearsal:** The **B2D2-v2-R02-FileSequencing-START** baseline is available for the current instructor-account rehearsal. Use only the baseline assigned to you. A complete learner-account copy and runtime check is still required; this availability does not establish classroom readiness.
+
+> **Access:** This card uses Power Automate and your own OneDrive for Business. The instructor confirms access before assigning R2.
 
 ## Your test card
 
-| Item | Resource |
-|---|---|
-| Starter | B2D2-R02-FileSequencing-START |
-| Expected content | Sequence verified |
-| Test A | New run with a fresh generated filename |
-| Test B | Another new run with a different generated filename |
-| Scope | One dependency-order repair; retain the unique-name design |
+| Test | Input | Required result after repair |
+|---|---|---|
+| A | Start a manual run; no values needed | File created, retrieval succeeds, result is Sequence verified |
+| B | Start another run | A different file produces the same expected result |
 
-## Practice 1: Restore the file dependency order
+Each run creates a unique filename beginning **B2D2-R02-sequence-**. The prepared file actions use your OneDrive root; you do not need to create a folder.
+
+## Setup
+
+| Action to check | Service |
+|---|---|
+| Create training file | OneDrive for Business |
+| Retrieve training file | OneDrive for Business |
+
+
+1. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R2.
+2. Open the Flow you just copied or imported and select **Edit**.
+3. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for every action in the table above. Stop if a selected account/reference is not assigned to you.
+4. Leave the filename, folder and file-content values unchanged. [Save your changes](../preparation.md#save-your-changes).
+5. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+
+## Practice 1: Restore the file dependency order {#practice-1-restore-the-file-dependency-order}
 
 <PracticeIllustration src="/day-2/images/r02-p01.webp" :width="1536" :height="768" alt="A document must be placed on a shelf before it can be retrieved." />
 
-Repair the file dependency so each new run returns the content of its own created file.
+Make file retrieval run after file creation succeeds.
 
-1. Import the starter and bind your own authorised OneDrive connection. Keep the prepared creation and retrieval paths together. **Folder Path** uses your OneDrive root:
-
-   ```text
-   /
-   ```
-
-   The prepared retrieval path uses that same root and the generated filename. Do not change only the creation folder or introduce an uncreated folder. Select **Publish**, confirm **Published** and run test A.
-2. Open the run. Record the unique path, the first failed action, its error and the status of the file creation action. Check the actual folder after the run finishes.
-3. Write the prerequisite for each file action in plain language. Identify which prerequisite did not exist when the failed action ran.
-4. Repair the ordering or successful-run dependency justified by your evidence. Right-click the action card that needs a different predecessor, select **Run after**, then open **Select actions**. Select the required predecessor and clear the old one; keep **Succeeded** as the required result. Close **Select actions** and finish the dependency changes before checking or testing the Flow. Keep the manual trigger and the same path calculation. Do not solve the case by manually creating the expected file before each run.
-5. Select **Publish**, confirm **Published** and start a fresh run. Check `Retrieved_result` and open the created file. Its content must be:
+1. On your copy's details page, select **Edit** to open the designer. Then select **Test → Manually → Test**. If **Sign in** appears, complete the [first-test connection check](../preparation.md#first-test-connection-check). No input is needed; select **Run flow**. When the confirmation says the run has started, select **Done**.
+2. Wait for the run-result view. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result). Check **Create training file**: it should show **Succeeded**.
+3. Check **Retrieve training file** and **Retrieved result**: both should show **Skipped**. A skipped action did not run.
+4. Select **File name → Outputs** and copy the complete filename.
+5. In OneDrive, open **My files**. Paste the complete filename into the search box at the top and press **Enter**.
+6. Open the result whose name matches your copied filename. The result list may hide the `.txt` extension. The preview may open in a new tab. In the preview, confirm the full filename matches and the content is:
 
    ```text
    Sequence verified
    ```
 
-6. Run again without reusing the first filename. Verify the second distinct file contains the same expected text and its retrieval succeeds.
-7. Give the two run IDs or timestamps, filenames and observed content to a peer team.
+7. Return to the Power Automate tab and select **Edit**. Select **Retrieve training file → Settings**. Under **Run after**, select the arrow beside **Create training file** to show its result choices.
+8. Select **Is successful** and clear **Has failed**. Keep **Has timed out** and **Is skipped** cleared. This is the only action setting you repair.
+9. Save your changes using the [control shown in your editor](../preparation.md#save-your-changes).
+10. Select **Test → Manually → Test** to run test A again. No input is needed. Select **Run flow**, then **Done** when the started confirmation appears. Wait for the run-result view. Check **Retrieve training file** is **Succeeded**. Record the filename from **File name → Outputs**, then check **Retrieved result → Outputs** contains **Sequence verified**.
+11. From this result view, select **Edit → Test → Manually → Test** for test B. No input is needed. Select **Run flow**, then **Done** when the started confirmation appears. Wait for the new run-result view. Open **File name → Outputs** and compare it with your test A filename: it must be different. Check **Retrieve training file** is **Succeeded** and **Retrieved result → Outputs** again contains **Sequence verified**.
 
 ### Progressive hints
 
-<details><summary>Hint 1: Follow the first error</summary>
+<details><summary>Hint 1: Notice Skipped</summary>
 
-A missing-file error directs attention to the file’s location and availability. A delay alone cannot supply a prerequisite that no action has completed.
-
-</details>
-
-<details><summary>Hint 2: Trace the same path</summary>
-
-Compare the creation and retrieval paths. Both should use the one generated token for that run. An old file elsewhere does not satisfy this test.
+The file was created successfully. Reading was skipped before it tried to open the file, so first check the condition that allows the reading action to start.
 
 </details>
 
-<details><summary>Hint 3: Check dependency status</summary>
+<details><summary>Hint 2: Explain Run after in plain language</summary>
 
-Look at the creation action’s status at the moment retrieval begins. Explain the order you need before changing the designer.
+Run after means “start this action when the previous action has this result.” Reading should start after creation is successful.
+
+</details>
+
+<details><summary>Hint 3: Repair one setting</summary>
+
+Open Retrieve training file's Run after setting. It should require successful creation, rather than failed creation.
 
 </details>
 
 ### Checkpoint
 
-Two fresh runs produce two distinct files. Each retrieval returns **Sequence verified** from its own created file. Your evidence identifies the original dependency failure.
+Two fresh runs create different files, retrieve their content successfully and return **Sequence verified**. You changed only Retrieve training file's Run after result.
 
 ## Reset
 
-Wait for active runs to finish. Each retest creates another unique prefixed file, so it does not depend on removing an earlier file. When cleanup is announced, remove only your own files created by these runs, checking the recorded `B2D2-R02-sequence-` names. Do not remove other root files or another team’s work.
+No file reset is needed because every run uses a new filename. During announced cleanup, remove only your own recorded **B2D2-R02-sequence-** files. Leave other files untouched.
 
-Reference: [OneDrive for Business file actions](https://learn.microsoft.com/connectors/onedriveforbusiness/).
+This is a controlled sequencing exercise. It does not reproduce a workbook lock or diagnose a real lock incident.
+
+Reference: [Cloud Flow designer and Run after settings](https://learn.microsoft.com/power-automate/flows-designer).

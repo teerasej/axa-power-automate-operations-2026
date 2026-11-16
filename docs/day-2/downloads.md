@@ -13,63 +13,78 @@ import { withBase } from 'vitepress'
 
 # Day 2 downloads and reset copies
 
-<a :href="withBase('/day-2/day-2-practice-files.zip')" download>Download the Day 2 practice files (ZIP)</a>. Extract the archive locally before uploading your pair’s own files. This bundle contains synthetic practice resources and reset copies. It is **not** an importable Power Automate package.
+<a :href="withBase('/day-2/day-2-practice-files.zip')" download><strong>Download the Day 2 practice files (ZIP)</strong></a>
 
-<a :href="withBase('/day-2/download-manifest.json')" download>Download manifest and SHA-256 checksums</a>
+Extract the ZIP on your computer before uploading a file to OneDrive. Upload only the files named in the exercise you are starting. The ZIP contains practice resources; it is not a Flow package.
 
 ## Core resources
 
-| File | Use |
+| Exercise | Files you will use |
 |---|---|
-| <a :href="withBase('/day-2/files/core01-repair-relay.xlsx')" download>core01-repair-relay.xlsx</a> | Exercise 1: Requests and Results Tables; two supplied requests and two Pending result rows |
-| <a :href="withBase('/day-2/files/reset/core01-repair-relay.xlsx')" download>Core 01 reset</a> | New independent copy for a clean retest |
-| <a :href="withBase('/day-2/files/core02-document-handoff.xlsx')" download>core02-document-handoff.xlsx</a> | Exercise 2: Documents Table maps two requests to their PDFs and recipient slots |
-| <a :href="withBase('/day-2/files/reset/core02-document-handoff.xlsx')" download>Core 02 reset</a> | Restore the original two document references |
-| <a :href="withBase('/day-2/files/DOC-A.pdf')" download>DOC-A.pdf</a> | Request R-101, IT equipment request and amount 1250.00 |
-| <a :href="withBase('/day-2/files/DOC-B.pdf')" download>DOC-B.pdf</a> | Request R-102, PMO reporting request and amount 2750.00 |
-| <a :href="withBase('/day-2/files/core03-match-close-remind.xlsx')" download>core03-match-close-remind.xlsx</a> | Exercise 3: Requests, Responses and ReminderPreview Tables |
-| <a :href="withBase('/day-2/files/reset/core03-match-close-remind.xlsx')" download>Core 03 reset</a> | Three Pending requests, two October responses and one RESET preview marker |
-| <a :href="withBase('/day-2/files/core03-final-response.csv')" download>core03-final-response.csv</a> | Read the final matching response; type its fields into Responses when instructed |
+| Repair Relay | <a :href="withBase('/day-2/files/core01-repair-relay.xlsx')" download>core01-repair-relay.xlsx</a> |
+| Reliable Document Handoff | <a :href="withBase('/day-2/files/DOC-A.pdf')" download>DOC-A.pdf</a> and <a :href="withBase('/day-2/files/DOC-B.pdf')" download>DOC-B.pdf</a>; no workbook needed |
+| Match, Close and Remind | <a :href="withBase('/day-2/files/core03-match-close-remind.xlsx')" download>core03-match-close-remind.xlsx</a> |
 
-<a :href="withBase('/day-2/files/expected-results.md')" download>Illustrative expected results (Markdown)</a>. These are synthetic acceptance references, not captured run evidence.
+The final response values are shown beside the steps in Exercise 3. A <a :href="withBase('/day-2/files/core03-final-response.csv')" download>CSV reference copy</a> is also supplied.
+
+<a :href="withBase('/day-2/files/expected-results.md')" download>Expected results</a> describes what to check. It is an example reference, not the result of your Flow run.
 
 ## Rescue resources
 
-| File | Use |
+Download only the resources for your assigned card, or use them from the extracted ZIP.
+
+| Card | Resources |
 |---|---|
-| <a :href="withBase('/day-2/files/rescue01-script-workbook-a.xlsx')" download>rescue01-script-workbook-a.xlsx</a> | R1 first workbook, RequestsTable with three rows |
-| <a :href="withBase('/day-2/files/rescue01-script-workbook-b.xlsx')" download>rescue01-script-workbook-b.xlsx</a> | R1 independent second workbook |
-| <a :href="withBase('/day-2/files/reset/rescue01-script-workbook-a.xlsx')" download>R1 workbook A reset</a> | Untouched first workbook copy |
-| <a :href="withBase('/day-2/files/reset/rescue01-script-workbook-b.xlsx')" download>R1 workbook B reset</a> | Untouched second workbook copy |
-| <a :href="withBase('/day-2/files/rescue01-check-table.ts')" download>rescue01-check-table.ts</a> | Supplied read-only Office Script; learners repair its Flow parameter rather than write TypeScript |
-| <a :href="withBase('/day-2/files/rescue02-sequence-content.txt')" download>rescue02-sequence-content.txt</a> | Expected content for the generated R2 files |
-| <a :href="withBase('/day-2/files/rescue05-summary-template.html')" download>rescue05-summary-template.html</a> | Small synthetic HTML source reference for R5 |
+| R1 | <a :href="withBase('/day-2/files/rescue01-script-workbook-a.xlsx')" download>Workbook A</a>, <a :href="withBase('/day-2/files/rescue01-script-workbook-b.xlsx')" download>workbook B</a> and the <a :href="withBase('/day-2/files/rescue01-check-table.ts')" download>supplied read-only script</a> |
+| R2 | <a :href="withBase('/day-2/files/rescue02-sequence-content.txt')" download>Expected file content</a>; the Flow creates its own test files |
+| R3 | [Supplied training image](https://teerasej.github.io/axa-power-automate-operations-2026/images/practices/ex01-p01-768.webp); use its URL on the card |
+| R4 | No workbook or document needed; use the two decision inputs on the card |
+| R5 | <a :href="withBase('/day-2/files/rescue05-summary-template.html')" download>HTML source reference</a>; the Flow already contains its prepared content |
 
-<a :href="withBase('/day-2/files/rescue-test-cards.md')" download>Rescue test cards (Markdown)</a>. Use the assigned challenge page for the task and progressive hints.
+<a :href="withBase('/day-2/files/rescue-test-cards.md')" download>Rescue test cards</a> summarises the tests.
 
-R3 uses the [supplied synthetic image resource](https://teerasej.github.io/axa-power-automate-operations-2026/images/practices/ex01-p01-768.webp) (approximately 11.1 KB), with a copyable URL on the [R3 challenge page](./challenges/03-html-image.md#supplied-image-resource). A local image file alone does not create a public image URL for an email client.
+## Starter Flow packages {#starter-flow-packages}
 
-## Starter Flow status
+<a class="day2-download-button" :href="withBase('/day-2/day-2-flow-packages.zip')" download>Download Flow starters + solutions</a>
 
-<p class="day2-table-hint">On a narrow screen, scroll the table sideways to see every column.</p>
+This single download contains **eight START packages and eight working SOLUTION Flows**, supplied as **nine native unmanaged solution ZIPs**, plus README.md and checksums. Extract **day-2-flow-packages.zip** first. Do not extract the inner ZIPs; do not upload the outer download to Power Automate.
 
-All eight START Flows have native exports that were inspected privately. These packages remain private; their individual states are listed below. Fresh import, learner permissions and resource rebinding have **not been rehearsed in a separate target environment**. No learner Flow package is released in this website release.
+| Assigned exercise | Inner START package |
+|---|---|
+| Core 01 — Repair Relay | `starters/Core01/B2D2V2Core01RepairRelaySTART_1_0_0_1.zip` |
+| Core 02 — Document Handoff | `starters/Core02/B2D2V2Core02DocumentHandoffSTART_1_0_0_1.zip` |
+| Core 03 — Match, Close and Remind | `starters/Core03/B2D2V2Core03MatchCloseRemindSTART_1_0_0_1.zip` |
+| R1 — Office Script | `starters/R1/B2D2V2R01OfficeScriptSTART_1_0_0_1.zip` |
+| R2 — File sequencing | `starters/R2/B2D2V2R02FileSequencingSTART_1_0_0_1.zip` |
+| R3 — HTML image | `starters/R3/B2D2V2R03HtmlImageSTART_1_0_0_1.zip` |
+| R4 — Approval gate | `starters/R4/B2D2V2R04ApprovalGateSTART_1_0_0_1.zip` |
+| R5 — PDF generation | `starters/R5/B2D2V2R05PdfGenerationSTART_1_0_0_1.zip` |
 
-| Exercise | START Flow | Native export | Fresh import and learner-permission rehearsal |
-|---|---|---|---|
-| Core 01 | B2D2-Core01-RepairRelay-START | Private export inspected | Unperformed |
-| Core 02 | B2D2-Core02-DocumentHandoff-START | Private export inspected | Unperformed |
-| Core 03 | B2D2-Core03-MatchCloseRemind-START | Private export inspected | Unperformed |
-| R1 | B2D2-R01-OfficeScript-START | Private export inspected | Unperformed |
-| R2 | B2D2-R02-FileSequencing-START | Private export inspected | Unperformed |
-| R3 | B2D2-R03-HtmlImage-START | Private export inspected | Unperformed |
-| R4 | B2D2-R04-ApprovalGate-START | Private export inspected | Unperformed |
-| R5 | B2D2-R05-PdfGeneration-START | Private export inspected | Unperformed |
+The **solutions** folder contains `B2D2V2InstructorSolutions_1_0_0_1.zip`, with all eight working answers. Use it when the instructor asks; it is not required to start an exercise. The practice files above are a separate download.
 
-Flow download links will be added only after an inspected distribution package is approved. Use only that package for your assigned exercise and follow [Preparation](./preparation.md). The instructor’s SOLUTION copies stay private and separate from learner downloads. If a live route is unavailable, use the explicitly labelled evidence-review route; this does not count as an executed Flow repair.
+**Shared class environment:** the instructor imports each START once, then each pair makes its own copy. Importing the same solution repeatedly can update existing components; changing the ZIP filename does not create a personal copy. Follow [Start your assigned Flow](./preparation.md#start-your-assigned-flow).
+
+**Package type:** use the [solution import guide](./preparation.md#solution-route-for-this-edition) for these inner ZIPs. The Legacy guide remains available for genuine Legacy packages supplied separately; none are included here. Select your own connections and resources as directed in each exercise. Source resource identifiers remain in the native packages and do not make those resources portable.
+
+**Verification:** all eight fault/repair test pairs passed in instructor-account copies, and all nine native exports passed content inspection. Fresh imports of these delivery packages, representative learner permissions and a full classroom rehearsal remain **Unperformed**. Package availability does not establish those checks.
+
+<a :href="withBase('/day-2/flow-package-manifest.json')" download>Flow download contents and SHA-256 checksums</a>
 
 ## Reset safely
 
-Finish active runs and close Excel before changing files. Upload the relevant reset workbook as a new personal file. Reselect **File** and **Table** in every dependent action, then select **Publish** and confirm **Published**. Recheck your recipient settings before any email test. Resetting a workbook does not remove old mailbox messages or Run history.
+If an exercise needs to restart, use a clean copy from the **reset** folder. Do not overwrite another pair's workbook.
 
-The three core workbooks are independent. You can restart one exercise without replacing another pair’s resources or changing a previous exercise.
+| Reset copy | Use |
+|---|---|
+| <a :href="withBase('/day-2/files/reset/core01-repair-relay.xlsx')" download>Core 01 reset</a> | Restore the original Requests and two Pending Results at the same canonical Core01 filename/path; follow its Reset steps |
+| <a :href="withBase('/day-2/files/reset/core03-match-close-remind.xlsx')" download>Core 03 reset</a> | Restore three Pending requests, two October responses and RESET at the same canonical Core03 folder/filename; follow its Reset steps |
+| <a :href="withBase('/day-2/files/reset/rescue01-script-workbook-a.xlsx')" download>R1 workbook A reset</a> | Clean first workbook |
+| <a :href="withBase('/day-2/files/reset/rescue01-script-workbook-b.xlsx')" download>R1 workbook B reset</a> | Clean second workbook |
+
+Wait for active runs to finish and close Excel before changing a workbook. Follow the exercise's reset steps for where to upload the clean copy and which settings to check. Old emails and Run history remain, so identify a retest by its time.
+
+<details><summary>Download checksums</summary>
+
+The <a :href="withBase('/day-2/download-manifest.json')" download>download manifest</a> lists the ZIP contents and SHA-256 checksums. You do not need to read it before the exercise.
+
+</details>

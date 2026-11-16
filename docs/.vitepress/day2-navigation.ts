@@ -2,16 +2,19 @@ import type { DefaultTheme } from 'vitepress'
 
 export const day2Exercises = [
   { number: 1, title: 'Repair Relay', path: '/day-2/exercises/01-repair-relay', practices: [
+    { title: 'Prepare your exercise', anchor: 'practice-1-prepare-your-exercise' },
     { title: 'Trace an incorrect result', anchor: 'practice-1-trace-an-incorrect-result' },
     { title: 'Repair and verify both routes', anchor: 'practice-2-repair-and-verify-both-routes' }
   ] },
   { number: 2, title: 'Reliable Document Handoff', path: '/day-2/exercises/02-document-handoff', practices: [
+    { title: 'Prepare your documents', anchor: 'practice-1-prepare-your-documents' },
     { title: 'Retrieve the correct document', anchor: 'practice-1-retrieve-the-correct-document' },
     { title: 'Attach and verify readable content', anchor: 'practice-2-attach-and-verify-readable-content' }
   ] },
   { number: 3, title: 'Match, Close and Remind', path: '/day-2/exercises/03-match-close-remind', practices: [
-    { title: 'Match responses to requests', anchor: 'practice-1-match-responses-to-requests' },
-    { title: 'Select only due outstanding requests', anchor: 'practice-2-select-only-due-outstanding-requests' }
+    { title: 'Prepare your tracker', anchor: 'practice-1-prepare-your-tracker' },
+    { title: 'Reproduce the wrong match', anchor: 'practice-1-match-responses-to-requests' },
+    { title: 'Repair and verify the tracker', anchor: 'practice-2-select-only-due-outstanding-requests' }
   ] },
   { number: 4, title: 'Flow Rescue Challenge', path: '/day-2/exercises/04-flow-rescue', practices: [
     { title: 'Repair one assigned Flow', anchor: 'practice-1-repair-one-assigned-flow' },

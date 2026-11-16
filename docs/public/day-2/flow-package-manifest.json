@@ -1,0 +1,66 @@
+{
+  "revision": "2026-11-16-v2",
+  "description": "Extract this outer ZIP first. Eight START native solution ZIPs and one bundle of eight SOLUTION Flows; README and checksums included. No Legacy packages.",
+  "archive": {
+    "name": "day-2-flow-packages.zip",
+    "count": 11,
+    "sha256": "f75a620e5e13d17caafb4765a9e674db08efcaae1f4e4a32969ba64fe8210a88"
+  },
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 3729,
+      "sha256": "91125580ced6cc228d71e43eaa77a5bb0d91ed63ad2e5b1ab93b68fecd7b1268"
+    },
+    {
+      "name": "solutions/B2D2V2InstructorSolutions_1_0_0_1.zip",
+      "bytes": 14461,
+      "sha256": "1dbc8c5ae6f35a30c09aba5789b98d0c8ceb5d5c20bdefbcd3a5012d7372dec1"
+    },
+    {
+      "name": "starters/Core01/B2D2V2Core01RepairRelaySTART_1_0_0_1.zip",
+      "bytes": 4222,
+      "sha256": "fcb25411f737e39289fafdd9484277de8a685fe58db8d593d4007cd6ea12fa8a"
+    },
+    {
+      "name": "starters/Core02/B2D2V2Core02DocumentHandoffSTART_1_0_0_1.zip",
+      "bytes": 4117,
+      "sha256": "b6a6e2bcc3fe4e8900c8381c46bee584aeb119d77a36ff75662eced2f13949a0"
+    },
+    {
+      "name": "starters/Core03/B2D2V2Core03MatchCloseRemindSTART_1_0_0_1.zip",
+      "bytes": 4569,
+      "sha256": "99faee1e001d83a9c3ef7863570d5b6de6443fdcd2daaf65fbc9abfca0efba3f"
+    },
+    {
+      "name": "starters/R1/B2D2V2R01OfficeScriptSTART_1_0_0_1.zip",
+      "bytes": 3593,
+      "sha256": "f7e9226a2779f8916da6d9ef8dabb24c60f143ba74f38a4646afc7e0aa566233"
+    },
+    {
+      "name": "starters/R2/B2D2V2R02FileSequencingSTART_1_0_0_1.zip",
+      "bytes": 3419,
+      "sha256": "bed3d68170dd393db21bf998abfda9c3235246b183890e9e3b68bde1053879c0"
+    },
+    {
+      "name": "starters/R3/B2D2V2R03HtmlImageSTART_1_0_0_1.zip",
+      "bytes": 3594,
+      "sha256": "d0b4646012cc9a2686c07cd057247948e625b7cd2ae009cb936e3a1b85b6adf1"
+    },
+    {
+      "name": "starters/R4/B2D2V2R04ApprovalGateSTART_1_0_0_1.zip",
+      "bytes": 3153,
+      "sha256": "9899bc36a25ef5a52765f3a342b69ff86638fb0159f75b0d727140932c5e0bb2"
+    },
+    {
+      "name": "starters/R5/B2D2V2R05PdfGenerationSTART_1_0_0_1.zip",
+      "bytes": 3778,
+      "sha256": "1ab6c57ccecb2c21092923ac3ba246e1993d3522e34c47745165fb8df06a57f1"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 1153,
+      "sha256": "c85f8d266169dd5d9f52e4f6d8eea23dd6ee7eac07ae34cd502b4fe528b2b29f"
+    }
+  ]
+}
