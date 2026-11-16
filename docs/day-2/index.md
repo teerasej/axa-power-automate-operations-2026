@@ -16,11 +16,11 @@ import { withBase } from 'vitepress'
 Today you will repair prepared Flows for a fictional **Operations Request Desk**. Work with a partner: one person operates Power Automate and the other checks the result. Swap roles during the day.
 
 <div class="day2-hero-actions">
-  <a class="day2-download-button" :href="withBase('/day-2/day-2-flow-packages.zip')" download>Download Flow starters + solutions</a>
+  <a class="day2-download-button" :href="withBase('/day-2/day-2-workshop.zip')" download>Download complete Day 2 workshop (ZIP)</a>
   <a :href="withBase('/day-2/preparation')">Start preparation →</a>
 </div>
 
-**One ZIP: 8 starters + 8 solutions.** Extract the download and open **README.md**. Do not extract the inner solution ZIPs; import only your assigned START when the instructor announces that route. [Practice files are a separate download](./downloads.md).
+**One ZIP: 8 starters + 8 working solutions + all 16 sample resources.** Extract the download and open **README.md**. Do not extract the inner solution ZIPs; import only your assigned START when the instructor announces that route. Practice files and reset copies are included in **files/**.
 
 You already know triggers and actions. You do not need to build these Flows from scratch. Each exercise helps you find a small problem, make one repair and check what changed.
 

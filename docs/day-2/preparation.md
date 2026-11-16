@@ -11,7 +11,7 @@ pageClass: day2-exercise
 
 # Preparation and starter Flows
 
-Before class, check your account and download the practice files. You will select the files and settings for each Flow when you reach that exercise.
+Before class, check your account and download the complete workshop ZIP. You will select the files and settings for each Flow when you reach that exercise.
 
 ## Before class {#access-and-licences}
 
@@ -22,22 +22,23 @@ Before class, check your account and download the practice files. You will selec
 
 > If an app does not open, note its name and the message shown. Share that with the organiser before class. The organiser checks licences and permissions; you do not need to change account or environment settings.
 
-## Download your practice files {#prepare-your-pair-s-workspace}
+## Download your complete workshop {#prepare-your-pair-s-workspace}
 
 1. Open [Day 2 downloads](./downloads.md).
-2. Select **Download the Day 2 practice files (ZIP)**.
+2. Select **Download complete Day 2 workshop (ZIP)**.
 3. Find the downloaded ZIP in your computer's Downloads folder.
 4. Extract it: double-click on macOS, or right-click and select **Extract All** on Windows.
-5. Open the extracted folder. Confirm that you can see **DOC-A.pdf**, **DOC-B.pdf**, the core workbooks and a **reset** folder.
+5. Open the extracted folder and read **README.md**. Open **files/** and confirm that you can see **DOC-A.pdf**, **DOC-B.pdf**, the core workbooks and a **reset** folder.
 
-Keep the **reset** folder unchanged. It contains clean copies you can use if an exercise needs to restart.
+Keep the **files/reset** folder unchanged. It contains clean copies you can use if an exercise needs to restart.
 
-### Download the starter and solution packages
+### Find the included starter and solution packages
 
-1. Return to the [Day 2 home page](./index.md) and select **Download Flow starters + solutions**.
-2. Extract **day-2-flow-packages.zip** on your computer.
-3. Open **README.md**. Find **starters**, which has one folder per exercise, and **solutions**, which contains the eight working answers in one bundle.
-4. Do not extract the inner ZIPs. Wait for the instructor's starting route below before importing anything. **The outer download ZIP is not an import package.**
+Your complete workshop download already includes **starters/** and **solutions/** alongside **files/**. No second download is needed.
+
+1. Open **README.md** in the extracted **day-2-workshop.zip** folder.
+2. Find **starters**, which has one folder per exercise, and **solutions**, which contains the eight working answers in one bundle.
+3. Do not extract the inner ZIPs. Wait for the instructor's starting route below before importing anything. **The outer workshop ZIP is not an import package.**
 
 All nine inner packages use **solution import**, not Legacy import. You do not need the solution answers to begin an exercise.
 

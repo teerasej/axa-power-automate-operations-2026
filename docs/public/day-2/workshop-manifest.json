@@ -1,0 +1,146 @@
+{
+  "revision": "2026-11-16-complete-workshop",
+  "description": "Extract this outer ZIP first. Eight START native solution ZIPs, one bundle of eight SOLUTION Flows and all 16 practice resources; README and checksums included. Keep inner solution ZIPs zipped.",
+  "archive": {
+    "name": "day-2-workshop.zip",
+    "count": 27,
+    "sha256": "b5ed1ccb2a118aa65c5cf9d0d8d40ef149bfc8e62e43e035c3ae2b3c8c607c66"
+  },
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 3957,
+      "sha256": "255711a1cf634ae831ec24210bdec4a5d5205420afb874500046a2e4b208d9f0"
+    },
+    {
+      "name": "solutions/B2D2V2InstructorSolutions_1_0_0_1.zip",
+      "bytes": 14461,
+      "sha256": "1dbc8c5ae6f35a30c09aba5789b98d0c8ceb5d5c20bdefbcd3a5012d7372dec1"
+    },
+    {
+      "name": "starters/Core01/B2D2V2Core01RepairRelaySTART_1_0_0_1.zip",
+      "bytes": 4222,
+      "sha256": "fcb25411f737e39289fafdd9484277de8a685fe58db8d593d4007cd6ea12fa8a"
+    },
+    {
+      "name": "starters/Core02/B2D2V2Core02DocumentHandoffSTART_1_0_0_1.zip",
+      "bytes": 4117,
+      "sha256": "b6a6e2bcc3fe4e8900c8381c46bee584aeb119d77a36ff75662eced2f13949a0"
+    },
+    {
+      "name": "starters/Core03/B2D2V2Core03MatchCloseRemindSTART_1_0_0_1.zip",
+      "bytes": 4569,
+      "sha256": "99faee1e001d83a9c3ef7863570d5b6de6443fdcd2daaf65fbc9abfca0efba3f"
+    },
+    {
+      "name": "starters/R1/B2D2V2R01OfficeScriptSTART_1_0_0_1.zip",
+      "bytes": 3593,
+      "sha256": "f7e9226a2779f8916da6d9ef8dabb24c60f143ba74f38a4646afc7e0aa566233"
+    },
+    {
+      "name": "starters/R2/B2D2V2R02FileSequencingSTART_1_0_0_1.zip",
+      "bytes": 3419,
+      "sha256": "bed3d68170dd393db21bf998abfda9c3235246b183890e9e3b68bde1053879c0"
+    },
+    {
+      "name": "starters/R3/B2D2V2R03HtmlImageSTART_1_0_0_1.zip",
+      "bytes": 3594,
+      "sha256": "d0b4646012cc9a2686c07cd057247948e625b7cd2ae009cb936e3a1b85b6adf1"
+    },
+    {
+      "name": "starters/R4/B2D2V2R04ApprovalGateSTART_1_0_0_1.zip",
+      "bytes": 3153,
+      "sha256": "9899bc36a25ef5a52765f3a342b69ff86638fb0159f75b0d727140932c5e0bb2"
+    },
+    {
+      "name": "starters/R5/B2D2V2R05PdfGenerationSTART_1_0_0_1.zip",
+      "bytes": 3778,
+      "sha256": "1ab6c57ccecb2c21092923ac3ba246e1993d3522e34c47745165fb8df06a57f1"
+    },
+    {
+      "name": "files/DOC-A.pdf",
+      "bytes": 2013,
+      "sha256": "78bbf133605a6b0cd4404aa5a25c550d1f2f6a6c6dc06d3636c096e9e8bb72a2"
+    },
+    {
+      "name": "files/DOC-B.pdf",
+      "bytes": 2020,
+      "sha256": "a286d3991f8678d7a9e31451863071e01b938749fe558f50950ff88d60d24fd2"
+    },
+    {
+      "name": "files/core01-repair-relay.xlsx",
+      "bytes": 6179,
+      "sha256": "a0caa77438cb53cc8409e8168668d6e489c95ce2007bc8cba71aeb477e588b9d"
+    },
+    {
+      "name": "files/core03-final-response.csv",
+      "bytes": 79,
+      "sha256": "c548e10857f57d4d8979b56043da6c7b375858d575a1f8b3cac546832b8c7f51"
+    },
+    {
+      "name": "files/core03-match-close-remind.xlsx",
+      "bytes": 7635,
+      "sha256": "96d1b77a4d68e40122029788defcd4a7c8bbf32e0f3a82636ecf2df5260ca358"
+    },
+    {
+      "name": "files/expected-results.md",
+      "bytes": 3558,
+      "sha256": "60980de7402c082aa586911bab8ae508a64f6d8b076d266b0886567feaff7a76"
+    },
+    {
+      "name": "files/rescue-test-cards.md",
+      "bytes": 2598,
+      "sha256": "1e0f8833d242308c689a39b80a1a044ce5673fb882ab1915a9692927fac52478"
+    },
+    {
+      "name": "files/rescue01-check-table.ts",
+      "bytes": 442,
+      "sha256": "c73aa53c49c668d999c468e57be7d777dc64528f01664435d3b1346daa40e508"
+    },
+    {
+      "name": "files/rescue01-script-workbook-a.xlsx",
+      "bytes": 4630,
+      "sha256": "95b3d86029c25a1dbd47595ea791c2d1b1d2be9e2678f887cf2a0da7d954c84a"
+    },
+    {
+      "name": "files/rescue01-script-workbook-b.xlsx",
+      "bytes": 4628,
+      "sha256": "6cb422e3d7a1d159d876c1c6cc6830ab980a2bbcb109204455835f1a14cd94be"
+    },
+    {
+      "name": "files/rescue02-sequence-content.txt",
+      "bytes": 18,
+      "sha256": "d3e1213132c91cce37f93a616bc151178d0ee86dbd0a9503a97f846fe557f05f"
+    },
+    {
+      "name": "files/rescue05-summary-template.html",
+      "bytes": 338,
+      "sha256": "f79ba0c2445b968e80cb4b58b2454af77ed3ca7bfdae4bb2f2d38a61a7b1762c"
+    },
+    {
+      "name": "files/reset/core01-repair-relay.xlsx",
+      "bytes": 6179,
+      "sha256": "a0caa77438cb53cc8409e8168668d6e489c95ce2007bc8cba71aeb477e588b9d"
+    },
+    {
+      "name": "files/reset/core03-match-close-remind.xlsx",
+      "bytes": 7635,
+      "sha256": "96d1b77a4d68e40122029788defcd4a7c8bbf32e0f3a82636ecf2df5260ca358"
+    },
+    {
+      "name": "files/reset/rescue01-script-workbook-a.xlsx",
+      "bytes": 4630,
+      "sha256": "95b3d86029c25a1dbd47595ea791c2d1b1d2be9e2678f887cf2a0da7d954c84a"
+    },
+    {
+      "name": "files/reset/rescue01-script-workbook-b.xlsx",
+      "bytes": 4628,
+      "sha256": "6cb422e3d7a1d159d876c1c6cc6830ab980a2bbcb109204455835f1a14cd94be"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 2741,
+      "sha256": "86511e8f16ca020e1c23268c17f48db4e2f8bf8c88b2a2c3fa6c0446aa1de85b"
+    }
+  ]
+}
