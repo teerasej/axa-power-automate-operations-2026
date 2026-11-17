@@ -19,16 +19,7 @@ Every challenge includes optional progressive hints and a highlighted **Solution
 
 > **Draft rehearsal:** The revised starters are being checked one at a time. Use only the baseline or package assigned for your rehearsal. Setup and live repair cannot be accepted until the assigned starting route and learner checks pass.
 
-## Roles and timing
-
-Choose a driver, checker and reporter. In a pair, the checker also reports.
-
-| Time | What to do |
-|---|---|
-| 14:45–15:00 | Hear the briefing and open your assigned, prepared Flow |
-| 15:00–15:35 | Diagnose, make one repair, run two tests and exchange evidence |
-| 15:35–15:50 | Five two-minute reports, with five minutes for transitions |
-| 15:50–16:00 | Write one transfer note and close |
+## Your assigned challenge
 
 Complete your assigned card's **Setup** before the repair timer starts. Each card has one faulty setting in one action. You may need several clicks to change that setting; you do not need to rebuild the Flow.
 
