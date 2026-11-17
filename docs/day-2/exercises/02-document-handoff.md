@@ -51,7 +51,7 @@ Prepare the two PDFs and your personal flow so it can retrieve files from your O
 
 ### Prepare your OneDrive files
 
-Open [Day 2 downloads](../downloads.md) and select **Download the Day 2 practice files (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac.
+Open [Day 2 downloads](../downloads.md) and select **Download complete Day 2 workshop (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac. Open **files/** for the practice resources.
 
 1. In OneDrive, open your training folder from Exercise 1. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 

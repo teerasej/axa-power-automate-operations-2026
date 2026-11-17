@@ -31,7 +31,7 @@ The supplied workbook Table is named **RequestsTable**. The worksheet tab is **R
 Complete this setup before the repair timer starts.
 
 
-1. Open [Day 2 downloads](../downloads.md), select **Download the Day 2 practice files (ZIP)** and extract the ZIP if needed. In your OneDrive, open your training folder. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
+1. Open [Day 2 downloads](../downloads.md), select **Download complete Day 2 workshop (ZIP)** and extract the ZIP if needed. Open **files/** for the practice resources. In your OneDrive, open your training folder. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
    ```text
    B2D2-Operations-Request-Desk

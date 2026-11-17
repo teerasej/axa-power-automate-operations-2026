@@ -45,7 +45,7 @@ B2D2-Operations-Request-Desk/core03-match-close-remind.xlsx
 
 ### Prepare your OneDrive files
 
-Open [Day 2 downloads](../downloads.md) and select **Download the Day 2 practice files (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac.
+Open [Day 2 downloads](../downloads.md) and select **Download complete Day 2 workshop (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac. Open **files/** for the practice resources.
 
 1. In OneDrive, open your training folder. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
