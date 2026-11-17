@@ -17,6 +17,7 @@ Today you will repair prepared Flows for a fictional **Operations Request Desk**
 
 <div class="day2-hero-actions">
   <a class="day2-download-button" :href="withBase('/day-2/day-2-workshop.zip')" download>Download complete Day 2 workshop (ZIP)</a>
+  <a class="day2-download-button" :href="withBase('/day-2/AXA-Batch2-Day2-Teaching-v2-Learner.pdf')" download="AXA-Batch2-Day2-Teaching-v2-Learner.pdf">Download Day 2 slides (PDF)</a>
   <a :href="withBase('/day-2/preparation')">Start preparation →</a>
 </div>
 
