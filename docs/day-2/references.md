@@ -15,7 +15,7 @@ You do not need to read these articles before class. Use the relevant link when 
 |---|---|
 | How do I import a legacy Flow package? | [Non-solution Flow export/import](https://learn.microsoft.com/power-automate/export-import-flow-non-solution) |
 | How do I import a solution package? | [Import a solution](https://learn.microsoft.com/power-automate/import-flow-solution) |
-| How does Save As make a personal Flow copy? | [Duplicate a solution-aware Flow](https://learn.microsoft.com/power-automate/edit-solution-aware-flow#duplicate-a-solution-aware-cloud-flow-using-save-as) |
+| How does the organiser make independent Flow copies? | [Duplicate a solution-aware Flow](https://learn.microsoft.com/power-automate/edit-solution-aware-flow#duplicate-a-solution-aware-cloud-flow-using-save-as) |
 | Where do I inspect a failed or wrong result? | [Troubleshoot cloud Flow errors](https://learn.microsoft.com/power-automate/troubleshoot-flow-errors) |
 | How does the current designer work? | [Cloud Flow designer](https://learn.microsoft.com/power-automate/flows-designer) |
 | What does Filter array do? | [Data operations](https://learn.microsoft.com/power-automate/data-operations) |
@@ -27,6 +27,10 @@ You do not need to read these articles before class. Use the relevant link when 
 | What should I inspect when Run script fails? | [Office Scripts troubleshooting](https://learn.microsoft.com/office/dev/scripts/testing/power-automate-troubleshooting) |
 | How does a Condition choose a branch? | [Add a Condition](https://learn.microsoft.com/power-automate/add-condition) |
 | When do I need to publish a solution-aware Flow? | [Drafts and versioning](https://learn.microsoft.com/power-automate/drafts-versioning) |
+
+| How do environment access and flow permissions differ? | [Cloud flow sharing and permissions](https://learn.microsoft.com/power-automate/guide-to-cloud-flow-sharing-permissions) |
+| How does the organiser grant editing access? | [Share a cloud flow](https://learn.microsoft.com/power-automate/create-team-flows) |
+| Where are the official setup screenshots from? | [Screenshot sources](./screenshot-sources.md) |
 
 ## Boundaries that affect your result
 

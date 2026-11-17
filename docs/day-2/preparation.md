@@ -11,7 +11,7 @@ pageClass: day2-exercise
 
 # Preparation and starter Flows
 
-Before class, check your account and download the practice files. You will select the files and settings for each Flow when you reach that exercise.
+Before class, check your account and download the complete workshop ZIP. You will select the files and settings for each Flow when you reach that exercise.
 
 ## Before class {#access-and-licences}
 
@@ -22,22 +22,23 @@ Before class, check your account and download the practice files. You will selec
 
 > If an app does not open, note its name and the message shown. Share that with the organiser before class. The organiser checks licences and permissions; you do not need to change account or environment settings.
 
-## Download your practice files {#prepare-your-pair-s-workspace}
+## Download your complete workshop {#prepare-your-pair-s-workspace}
 
 1. Open [Day 2 downloads](./downloads.md).
-2. Select **Download the Day 2 practice files (ZIP)**.
+2. Select **Download complete Day 2 workshop (ZIP)**.
 3. Find the downloaded ZIP in your computer's Downloads folder.
 4. Extract it: double-click on macOS, or right-click and select **Extract All** on Windows.
-5. Open the extracted folder. Confirm that you can see **DOC-A.pdf**, **DOC-B.pdf**, the core workbooks and a **reset** folder.
+5. Open the extracted folder and read **README.md**. Open **files/** and confirm that you can see **DOC-A.pdf**, **DOC-B.pdf**, the core workbooks and a **reset** folder.
 
-Keep the **reset** folder unchanged. It contains clean copies you can use if an exercise needs to restart.
+Keep the **files/reset** folder unchanged. It contains clean copies you can use if an exercise needs to restart.
 
-### Download the starter and solution packages
+### Find the included starter and solution packages
 
-1. Return to the [Day 2 home page](./index.md) and select **Download Flow starters + solutions**.
-2. Extract **day-2-flow-packages.zip** on your computer.
-3. Open **README.md**. Find **starters**, which has one folder per exercise, and **solutions**, which contains the eight working answers in one bundle.
-4. Do not extract the inner ZIPs. Wait for the instructor's starting route below before importing anything. **The outer download ZIP is not an import package.**
+Your complete workshop download already includes **starters/** and **solutions/** alongside **files/**. No second download is needed.
+
+1. Open **README.md** in the extracted **day-2-workshop.zip** folder.
+2. Find **starters**, which has one folder per exercise, and **solutions**, which contains the eight working answers in one bundle.
+3. Do not extract the inner ZIPs. Wait for the instructor's starting route below before importing anything. **The outer workshop ZIP is not an import package.**
 
 All nine inner packages use **solution import**, not Legacy import. You do not need the solution answers to begin an exercise.
 
@@ -49,66 +50,56 @@ Your before-class preparation is complete when **Power Automate, Outlook and One
 
 <span id="import-a-prepared-starter"></span>
 
-A **starter Flow** is the prepared Flow you will repair. Your instructor announces **one starting route** for the class. Follow only that route; you do not need to compare environment settings.
+A **starter flow** is the prepared flow you will repair. Each exercise includes its file preparation and two starting-route tabs. **Follow the tab announced by your instructor.**
 
-> **Starting checkpoint:** Use the route and target environment announced by the instructor. The packages are available, but fresh imports of these delivery packages and representative learner-account checks remain unperformed. Stop if the assigned copy, connection or resource is unavailable.
-
-| Route announced by the instructor | What you do |
+| Tab | What you do |
 |---|---|
-| **Shared training environment — recommended class route** | Make your own copy of the assigned starter |
-| **Legacy Flow package** for a separate target | Import the supplied package as Create as New |
-| **Solution package** for a separate target | Import the supplied solution into the target confirmed by the instructor |
+| **Use my prepared flow** | Open the personal flow link supplied for your account or pair. Check the assigned name and editing access. |
+| **Import starter ZIP** | Import the assigned inner START solution ZIP into the separate target approved by the organiser. |
 
-### Make your own copy in the shared environment {#shared-environment-copy}
+Being in the same environment does not make another person's flow visible. The organiser confirms the environment and gives you access to your personal flow, or approves the import route. You do not need to work out the environment arrangement yourself.
 
-The instructor imports and prepares the class starter once, then gives your account access to the assigned baseline. Your pair makes a separate copy before editing anything.
+> **Starting checkpoint:** Packages are available, but fresh imports of these delivery packages and representative learner-account checks remain unperformed. Stop if your assigned flow, connection or resource is unavailable.
 
-1. In Power Automate, select the training environment announced by the instructor.
-2. Open the assigned starter from the instructor's link. If you are using the Flow list instead, open **My flows → Shared with me** and select the exact baseline name given by the instructor. Stay on its **details page**; do not select Edit on the shared baseline.
-3. Select **Save As**. In **Create a copy of this flow**, enter a unique **Flow name** using your own pair number and exercise name. For example, pair 01 could use **PAIR01-RepairRelay**. Select **Save**. The copy is added to My flows and starts turned off.
-4. Open **My flows** and search for the exact copy name you entered. If it is missing or search shows **No match found** after Save has completed, refresh the page once and repeat the search for that exact name. Do not repeat Save As. If the copy is still missing, stop and tell the instructor. Open the new copy's details page.
-5. Check that its name is the unique name you entered. Under **Co-owner**, read the Flow owners list and confirm that your own account is listed. Select **Edit** only after these checks.
-6. Return to the exercise page at the step immediately after its **Start your assigned Flow** link. Do not repeat Save As. Continue the personal setup shown there; a copied Flow can still use the instructor's connections or resource settings.
-7. After that setup, [save your changes](#save-your-changes). On your copy's details page, select **Turn on** if it is Off. Start the first test only after your own copy is On.
+### Use my prepared flow {#shared-environment-copy}
 
-**Copy checkpoint:** Your own uniquely named Flow is open. Its connection accounts and file selections are assigned to you, and it is On before the first test. The shared baseline has not been edited. This is a personal-copy check, not a package-import check.
+The organiser has already created an independent personal flow and explicitly granted your account editing access. Open their link, check the assigned name and your account under **Co-owner** or **Owners**, then select **Edit**. Do not make another copy or edit the baseline.
 
-If this is your announced route, continue to your exercise. The package import sections below are for a different starting route.
+If the flow is missing or you cannot edit it, stop and show the organiser the message. Selecting the same environment is not a substitute for access.
 
-If the assigned baseline or Save As is unavailable, stop on that screen and tell the instructor which item is missing. Do not edit the shared baseline as a workaround.
+<span id="optional-route-import-a-package"></span>
 
-### Optional route: import a package
+### Import starter ZIP {#solution-route-for-this-edition}
 
-The Flow download contains **eight START solution ZIPs** and **one working SOLUTION bundle**. Extract the outer download and choose the exact inner START filename listed on [Day 2 downloads](./downloads.md#starter-flow-packages). These packages use the solution route below. Neither the outer download nor the practice-files ZIP is importable. The Legacy guide is provided for a genuine Legacy package supplied separately; no Legacy package is included in this edition.
+Use this tab on your assigned exercise page. It shows the exact START filename and the complete import steps. Extract the outer **day-2-workshop.zip**, keep the inner ZIP zipped and use **Solutions → Import**. Check the approved target before continuing.
 
-### Legacy Flow package {#legacy-package-route-only-when-supplied}
+If the solution already exists or the screen proposes an update, stop. Re-importing the same solution can change existing flows rather than create a personal copy. Renaming the ZIP does not change its component identities.
 
-1. Select the environment announced by the instructor. In **My flows**, select **Import → Import Package (Legacy)**.
-2. Select **Upload** and choose the supplied legacy Flow package ZIP.
-3. Under the Flow's **Import setup**, select **Create as New**. Enter a new personal Flow name using the team name given by the instructor, then select **Save**. Do not select Update for an existing Flow.
-4. Under **Related Resources**, open each required row's **Import setup**. Select your own authorised connection, then select **Save** in that dialog. When every required setup item is complete, select **Import**.
-5. When import completes, open the new Flow in **My flows**. Confirm its personal name and continue with the personal setup in your exercise's first Practice.
+### Other package formats {#legacy-package-route-only-when-supplied}
 
-If the legacy import option is unavailable, stop at that screen. Do not change environment settings or upload this package through the solution route.
+<details><summary>Legacy packages — not supplied in this course download</summary>
 
-### Solution package {#solution-route-for-this-edition}
+All supplied inner ZIPs are solution packages. Do not use **Import Package (Legacy)** for them. A genuine non-solution package requires a different, separately confirmed route; company policy may disable that route. See [Microsoft's non-solution package guide](https://learn.microsoft.com/power-automate/export-import-flow-non-solution).
 
-1. Select the environment announced by the instructor. In **Solutions**, select **Import → Browse** and choose your assigned inner START solution ZIP from the extracted **starters** folder.
-2. Check the solution name with the instructor before continuing. If it is already present in this shared environment, stop: importing the same solution can update it instead of creating your own Flow. Renaming the ZIP does not create a separate copy.
-3. Follow the import screens. For each connection reference shown, select your own authorised connection. Select **Import** and wait for completion.
-4. Open the imported solution and its named START Flow. Confirm that this is the personal copy assigned to you before editing it.
-5. Continue with the personal setup in your exercise's first Practice. Check its required workbook, PDF or script location as directed there.
+</details>
 
-The instructor confirms the target and separate-copy arrangement before this route. You do not need to create an environment or change organisation settings.
+### Return to your exercise
+
+Open only the exercise you are starting:
+
+- [Exercise 1: workbook and flow preparation](./exercises/01-repair-relay.md#practice-1-prepare-your-exercise)
+- [Exercise 2: PDF and flow preparation](./exercises/02-document-handoff.md#practice-1-prepare-your-documents)
+- [Exercise 3: tracker and flow preparation](./exercises/03-match-close-remind.md#practice-1-prepare-your-tracker)
+- [Exercise 4: your assigned Rescue card](./exercises/04-flow-rescue.md)
 
 ### Save your changes {#save-your-changes}
 
 In the exercises, **save your changes** means using the control shown in your own Flow editor:
 
-- If it shows **Save**, select Save before testing. This is the legacy Flow route.
+- If it shows **Save**, select Save before testing.
 - If it shows **Publish**, select Publish and wait for **Published**. **Save draft** alone does not make the edited version runnable. If it already says Published and you made no edit, continue to Test.
 
-A copy in the shared environment may still use Publish. Use the control in that copy; making a copy does not change the rule.
+Use the control shown in your personal flow, whether it was prepared for you or imported.
 
 > **Copy is still off:** If Flow checker shows **0 errors** and only **This flow is off**, close the checker and return to your own copy's details page. Select **Turn on** and confirm **On** before testing. This specific warning does not need field changes or another Publish. For other errors, stop at the message and follow [If setup stops](#when-an-import-or-connection-is-blocked).
 
@@ -135,9 +126,8 @@ For the next test, select **Edit** to return to the designer, then **Test → Ma
 
 A personal Flow copy can still use the instructor's connection. Before selecting files or running a test, check every connector action listed on your exercise page. Change settings only in **your own copy**.
 
-**Shared-environment copy or solution Flow:** use the reference check below.
+**Supplied solution flows:** use the reference check below.
 
-**Legacy Flow:** your own connections are selected under Related Resources during import. Its action connection selector is different from the reference button below. The exact post-import account-check steps still need rehearsal for that target; stop here until the instructor confirms them. Do not look for a solution reference button in a legacy Flow.
 
 1. In your own Flow copy, select the named action and open **Parameters**.
 2. Select **Change connection reference** to open the **Change connection** panel.

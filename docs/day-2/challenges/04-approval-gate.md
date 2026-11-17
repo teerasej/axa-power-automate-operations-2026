@@ -32,10 +32,17 @@ flowchart LR
 
 ## Setup
 
-1. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R4.
-2. Open the Flow you just copied or imported. This Flow has no connector actions, so no connection-account check or file selection is needed.
-3. Confirm that the Flow is saved. Follow [Save your changes](../preparation.md#save-your-changes) before testing any edit.
-4. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+<StarterFlowSetup exercise="R4" />
+
+### Check your settings
+
+This flow has no connector actions, workbook or other external file. No connection-account or file-selection check is needed.
+
+### Save and turn on your flow
+
+<FlowReadyCheck />
+
+**Ready checkpoint:** Your assigned personal flow is On. No service connection or file is needed.
 
 ## Practice 1: Verify a decision gate {#practice-1-verify-a-decision-gate}
 
@@ -60,31 +67,8 @@ Correct the manager comparison so a rejection stops the finance branch.
 2. Select **Run flow**. When the confirmation says the run has started, select **Done**.
 3. Wait for the run-result view showing the action statuses. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result). Select **Manager gate** and inspect the comparison result.
 4. Expand **Manager gate** using the arrow beside it. In its **True** branch, notice that **Finance gate** ran even though the manager rejected the request. Expand **Finance gate** using its arrow. In the finance **True** branch, select **Approved result → Outputs** to see the incorrect Approved result.
-5. Return to **Edit → Manager gate → Parameters**. Leave the **ManagerDecision** value and **is equal to** operator unchanged. Replace the right-hand comparison value with:
 
-   ```text
-   Approve
-   ```
-
-6. Save your changes. Select **Test → Manually → Test** and run test A again with the same two inputs. Select **Done** when the confirmation says the run has started, then wait for the run-result view.
-7. Expand **Manager gate** if needed. Select the **arrow beside its outer False branch**, to the right of Manager gate and opposite the True branch containing Finance gate. Open **Manager rejected result → Outputs** and check for **Rejected**. In the manager's **True** branch, check that **Finance gate** shows **Skipped**.
-
-   The manager's False branch and the False branch inside Finance gate are separate. If Copilot covers the right side of the Flow, close its panel. Use **Zoom view to fit** if needed to see the outer branch arrow.
-8. Select **Edit → Test → Manually → Test**. Enter test B:
-
-   - **ManagerDecision**
-
-     ```text
-     Approve
-     ```
-
-   - **FinanceDecision**
-
-     ```text
-     Approve
-     ```
-
-9. Select **Run flow**, then **Done** when the started confirmation appears. Wait for the run-result view. Expand **Manager gate**, then expand **Finance gate** in its **True** branch if needed. Confirm Finance gate ran. In the finance **True** branch, select **Approved result → Outputs** and check for **Approved**.
+Use the test card to diagnose the fault, make one repair and run tests A and B. Try the hints below, or open the full solution whenever you need help.
 
 ### Progressive hints
 
@@ -106,9 +90,46 @@ For test A, finance must not run. A final Rejected label is not enough if Financ
 
 </details>
 
+### Solution available {#solution}
+
+Includes the exact repair and both verification tests. Open whenever you need help.
+
+<details class="rescue-solution">
+<summary>View step-by-step solution</summary>
+<div class="rescue-solution-content">
+
+1. Return to **Edit → Manager gate → Parameters**. Leave the **ManagerDecision** value and **is equal to** operator unchanged. Replace the right-hand comparison value with:
+
+   ```text
+   Approve
+   ```
+
+2. Save your changes. Select **Test → Manually → Test** and run test A again with the same two inputs. Select **Done** when the confirmation says the run has started, then wait for the run-result view.
+3. Expand **Manager gate** if needed. Select the **arrow beside its outer False branch**, to the right of Manager gate and opposite the True branch containing Finance gate. Open **Manager rejected result → Outputs** and check for **Rejected**. In the manager's **True** branch, check that **Finance gate** shows **Skipped**.
+
+   The manager's False branch and the False branch inside Finance gate are separate. If Copilot covers the right side of the Flow, close its panel. Use **Zoom view to fit** if needed to see the outer branch arrow.
+4. Select **Edit → Test → Manually → Test**. Enter test B:
+
+   - **ManagerDecision**
+
+     ```text
+     Approve
+     ```
+
+   - **FinanceDecision**
+
+     ```text
+     Approve
+     ```
+
+5. Select **Run flow**, then **Done** when the started confirmation appears. Wait for the run-result view. Expand **Manager gate**, then expand **Finance gate** in its **True** branch if needed. Confirm Finance gate ran. In the finance **True** branch, select **Approved result → Outputs** and check for **Approved**.
+
+</div>
+</details>
+
 ### Checkpoint
 
-Test A returns Rejected and skips Finance gate. Test B runs Finance gate and returns Approved. Only the comparison value in Manager gate was repaired.
+Test A returns Rejected and skips Finance gate. Test B runs Finance gate and returns Approved. Record the one setting you changed.
 
 ## Reset
 

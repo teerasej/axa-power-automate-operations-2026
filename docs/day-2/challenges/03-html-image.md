@@ -30,16 +30,24 @@ Use the same approved **RecipientEmail** address for both tests.
 
 ## Setup
 
+<StarterFlowSetup exercise="R3" />
+
+### Check your settings
+
+
 | Action to check | Service |
 |---|---|
 | Send image | Office 365 Outlook |
 
+<PersonalConnectionCheck />
 
-1. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R3.
-2. Open the Flow you just copied or imported and select **Edit**.
-3. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for every action in the table above. Stop if a selected account/reference is not assigned to you.
-4. Leave **Image source** and the prepared email body unchanged for the first test. [Save your changes](../preparation.md#save-your-changes).
-5. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+Keep your approved receiving mailbox address ready for **RecipientEmail**. Leave **Image source** and the prepared email body unchanged for the first test. No OneDrive file is needed.
+
+### Save and turn on your flow
+
+<FlowReadyCheck />
+
+**Ready checkpoint:** Your assigned personal flow is On. Every listed action uses your authorised account, and the prepared fault is unchanged.
 
 ## Practice 1: Verify an email image resource {#practice-1-verify-an-email-image-resource}
 
@@ -60,25 +68,8 @@ Replace one image URL and verify its picture in the received emails.
 2. Select **Run flow**. When the confirmation says the run has started, select **Done**. Wait for the run-result view showing the action statuses. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result).
 3. Open Outlook. Find the newest email with subject **[D2 Image] Controlled rendering test**. Check that the body says **Test label: A**, then note the missing picture.
 4. Return to the Power Automate tab and its run-result view. Select **Image source → Outputs** and compare its address with the supplied image.
-5. Return to **Edit → Image source → Parameters**. Replace the complete **Inputs** value with this URL as ordinary text:
 
-   ```text
-   https://teerasej.github.io/axa-power-automate-operations-2026/images/practices/ex01-p01-768.webp
-   ```
-
-   <div class="day2-field-stack" role="figure" aria-label="Image address to repair">
-     <div><span class="subject-reference-label">Image source → Inputs</span><div class="subject-reference-field">Typed directly: the complete supplied image URL above</div></div>
-   </div>
-
-6. Save your changes. Select **Test → Manually → Test** and enter **TestLabel** A and the same **RecipientEmail**. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then open the new received email and check that the supplied picture appears.
-7. Return to the Power Automate tab. Select **Edit → Test → Manually → Test**. Enter **TestLabel**:
-
-   ```text
-   B
-   ```
-
-   Enter the same approved **RecipientEmail**.
-8. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view. Open the second new message. Check label B and the picture separately from test A. Show both messages to your partner.
+Use the test card to diagnose the fault, make one repair and run tests A and B. Try the hints below, or open the full solution whenever you need help.
 
 ### Progressive hints
 
@@ -98,6 +89,37 @@ A different filename points to a different resource. Compare Image source with t
 
 Replace Image source's Inputs only. The prepared email already uses that output in its image element.
 
+</details>
+
+### Solution available {#solution}
+
+Includes the exact repair and both verification tests. Open whenever you need help.
+
+<details class="rescue-solution">
+<summary>View step-by-step solution</summary>
+<div class="rescue-solution-content">
+
+1. Return to **Edit → Image source → Parameters**. Replace the complete **Inputs** value with this URL as ordinary text:
+
+   ```text
+   https://teerasej.github.io/axa-power-automate-operations-2026/images/practices/ex01-p01-768.webp
+   ```
+
+   <div class="day2-field-stack" role="figure" aria-label="Image address to repair">
+     <div><span class="subject-reference-label">Image source → Inputs</span><div class="subject-reference-field">Typed directly: the complete supplied image URL above</div></div>
+   </div>
+
+2. Save your changes. Select **Test → Manually → Test** and enter **TestLabel** A and the same **RecipientEmail**. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then open the new received email and check that the supplied picture appears.
+3. Return to the Power Automate tab. Select **Edit → Test → Manually → Test**. Enter **TestLabel**:
+
+   ```text
+   B
+   ```
+
+   Enter the same approved **RecipientEmail**.
+4. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view. Open the second new message. Check label B and the picture separately from test A. Show both messages to your partner.
+
+</div>
 </details>
 
 ### Checkpoint

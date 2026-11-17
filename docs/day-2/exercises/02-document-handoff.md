@@ -11,9 +11,13 @@ next:
 
 # Exercise 2: Reliable Document Handoff
 
-> **Draft rehearsal:** The **B2D2-v2-Core02-DocumentHandoff-START** baseline is available for the current instructor-account shared-copy rehearsal. Use only the baseline assigned to you. The complete beginner path, learner-account and package-import checks remain pending; this availability does not establish classroom readiness.
+<PracticeIllustration src="/day-2/images/core02-overview.webp" :width="1536" :height="864" alt="A colleague hands over an envelope containing a document while its recipient checks the document." loading="eager" />
 
-The request desk sends a different PDF for each request. The email arrives, but its attachment cannot be opened. Repair the attachment content so each recipient receives the right readable document.
+Your team keeps request documents in OneDrive. The prepared flow should find the PDF for a selected request and email it to the matching test recipient: **R-101 → DOC-A.pdf** and **R-102 → DOC-B.pdf**.
+
+The email arrives with an attachment, but the PDF cannot be opened. Think of an envelope with the right label: the label alone does not guarantee that the correct document is inside.
+
+Check which PDF the flow selects and retrieves, then repair how it attaches the document. Test both requests and open each received PDF to confirm it is readable and belongs to the right request.
 
 > **Access:** This exercise uses Power Automate, OneDrive for Business and Outlook. Use your agreed training account and test recipients. The organiser confirms the required service access. **No Excel workbook is needed for this exercise.**
 
@@ -40,40 +44,54 @@ flowchart LR
 
 ## Practice 1: Prepare your documents
 
-Upload the two supplied PDFs so the starter can retrieve them from your OneDrive.
+<PracticeIllustration src="/day-2/images/core02-setup-v2.webp" :width="1536" :height="864" alt="A colleague organises two distinct documents in a training folder." />
 
-Check these actions in the account step below:
-
-| Action in your own copy | Service |
-|---|---|
-| Get document content, inside One document → True | OneDrive for Business |
-| Send document, inside One document → True | Office 365 Outlook |
+Prepare the two PDFs and your personal flow so it can retrieve files from your OneDrive.
 
 
-1. In OneDrive, open your training folder from Exercise 1. If you skipped that exercise, create a folder named:
+### Prepare your OneDrive files
+
+Open [Day 2 downloads](../downloads.md) and select **Download the Day 2 practice files (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac.
+
+1. In OneDrive, open your training folder from Exercise 1. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
    ```text
    B2D2-Operations-Request-Desk
    ```
 
    Open this folder before the next step.
-2. Inside it, open the subfolder below if it already exists. Otherwise, create it:
+2. Inside it, open the subfolder below if it already exists. Otherwise, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
    ```text
    Documents
    ```
 
+   <LearnScreenshot image="folder-name" />
+
 3. Open **Documents**. If **DOC-A.pdf** and **DOC-B.pdf** already exist there, continue to the next step to check them. Otherwise, use **Create or upload → Files upload** to upload the supplied PDFs. Keep their filenames unchanged.
 4. Open each uploaded PDF once. Confirm that DOC-A contains **R-101** and DOC-B contains **R-102**. Return to the Documents folder.
-5. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the announced route. Open the Flow you just copied or imported and select **Edit**.
-6. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for both actions listed above. Stop if a selected account/reference is not assigned to you.
-7. Leave **Document map** and **Document path** unchanged. They already select the correct PDF name under **/B2D2-Operations-Request-Desk/Documents/**; you only need to upload the two files to that folder.
-8. [Save your changes](../preparation.md#save-your-changes).
-9. Return to your own copy's details page. If its status is Off, select **Turn on**. Confirm it is On before the first test.
+### Open your personal flow
+
+<StarterFlowSetup exercise="Core02" />
+
+### Check connections and settings
+
+| Action in your own copy | Service |
+|---|---|
+| Get document content, inside One document → True | OneDrive for Business |
+| Send document, inside One document → True | Office 365 Outlook |
+
+<PersonalConnectionCheck />
+
+1. Leave **Document map** and **Document path** unchanged. They already select the correct PDF name under **/B2D2-Operations-Request-Desk/Documents/**; you only need to upload the two files to that folder.
+
+### Save and turn on your flow
+
+<FlowReadyCheck />
 
 ### Checkpoint {#setup-checkpoint}
 
-Your Documents folder contains two readable PDFs with their original names. Your own starter Flow is open and uses your account. You have not changed the attachment content yet.
+Your Documents folder contains two readable PDFs with their original names. Your personal starter Flow uses your account and is On. You have not changed the attachment content yet.
 
 ## Practice 2: Retrieve the correct document {#practice-1-retrieve-the-correct-document}
 

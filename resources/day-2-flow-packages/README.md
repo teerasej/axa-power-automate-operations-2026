@@ -25,11 +25,11 @@ The download contains eight START folders and one working-solution bundle: **nin
 
 ## 2. Follow the starting route your instructor announces
 
-**Shared class environment:** the organizer imports each START once and gives you access. Open the assigned baseline, use **Save As** with your pair's unique name, then open your own copy. Follow the exercise's account/resource checks before turning it on or testing. Keep the shared baseline unchanged. Save As creates a copy; it is not an import test.
+**Use my prepared flow:** open the personal flow link supplied for your account or pair. The organiser has already made an independent copy and explicitly granted editing access. Check the assigned name and your ownership/access before selecting Edit. Selecting the same environment does not make other users' flows visible. Do not make another copy or edit a baseline.
 
-**Your own approved environment:** follow the website's **solution import** guide using only your assigned inner START ZIP. Wait for the instructor to confirm the target and access. Importing the same solution again in one environment can update its existing Flows; it does not create a separate copy for each pair.
+**Import starter ZIP:** use the exact inner START ZIP above only in the separate target approved by the organiser. Each exercise's import tab shows the full steps. Select Solutions → Import, then your own authorised connections. Stop if the solution already exists or the screen proposes an update. Repeated solution imports in one actual environment do not create independent learner copies, even if other users' flows are hidden from you.
 
-The website also includes a Legacy import guide for other compatible packages. **There are no Legacy packages in this download.** Do not rename or convert these ZIPs to use that route.
+Follow only the tab announced by your instructor. If access or import fails, stop at that screen. Do not change environment policy. No Legacy packages are included; do not rename or convert these ZIPs for Legacy import.
 
 ## 3. Get the separate practice files
 

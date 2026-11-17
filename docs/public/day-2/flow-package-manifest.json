@@ -4,13 +4,13 @@
   "archive": {
     "name": "day-2-flow-packages.zip",
     "count": 11,
-    "sha256": "f75a620e5e13d17caafb4765a9e674db08efcaae1f4e4a32969ba64fe8210a88"
+    "sha256": "3088ae0a050034f2ab7623a12255c22b6b5f5b7f2e2f9520cb217306613ee2ce"
   },
   "files": [
     {
       "name": "README.md",
-      "bytes": 3729,
-      "sha256": "91125580ced6cc228d71e43eaa77a5bb0d91ed63ad2e5b1ab93b68fecd7b1268"
+      "bytes": 3907,
+      "sha256": "39f8cd0ad7f40ded9f2ff00be07192d41571289c7f2482d87271ae76f4219cc2"
     },
     {
       "name": "solutions/B2D2V2InstructorSolutions_1_0_0_1.zip",
@@ -60,7 +60,7 @@
     {
       "name": "SHA256SUMS.txt",
       "bytes": 1153,
-      "sha256": "c85f8d266169dd5d9f52e4f6d8eea23dd6ee7eac07ae34cd502b4fe528b2b29f"
+      "sha256": "027d9d7095ddd8628c3a6af7cb3b2dbf797baee98a686765cd6a5003fab2bda8"
     }
   ]
 }

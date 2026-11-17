@@ -11,7 +11,7 @@ next: false
 
 A prepared Flow should count the requests in a workbook. It stops because the supplied script cannot find the table it was asked to read. Repair the one parameter that identifies that table.
 
-> **Draft rehearsal:** The **B2D2-v2-R01-OfficeScript-START** baseline is available for the current instructor-account shared-copy rehearsal. Use only the baseline assigned to you. Learner-account, package-import and complete beginner-path checks are still pending; this availability does not establish classroom readiness.
+> **Draft rehearsal:** The **B2D2-v2-R01-OfficeScript-START** baseline is available for the current instructor-account copy rehearsal. Use only the baseline assigned to you. Learner-account, package-import and complete beginner-path checks are still pending; this availability does not establish classroom readiness.
 
 > **Access:** The instructor confirms Excel for the web and Office Scripts access before assigning R1. If **Automate** or **Run script** is unavailable, stop and tell the instructor. You copy a supplied read-only script; you do not write TypeScript.
 
@@ -30,14 +30,18 @@ The supplied workbook Table is named **RequestsTable**. The worksheet tab is **R
 
 Complete this setup before the repair timer starts.
 
-| Action to check | Service |
-|---|---|
-| Run table check | Excel Online (Business) |
 
+1. Open [Day 2 downloads](../downloads.md), select **Download the Day 2 practice files (ZIP)** and extract the ZIP if needed. In your OneDrive, open your training folder. If it is missing, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
-1. Upload both R1 workbooks from your extracted practice files to your OneDrive training folder.
+   ```text
+   B2D2-Operations-Request-Desk
+   ```
+
+   Open the folder. Select **Create or upload → Files upload** (or **Add new → Files upload**) and upload **rescue01-script-workbook-a.xlsx** and **rescue01-script-workbook-b.xlsx**.
 2. Open **rescue01-script-workbook-a.xlsx** in Excel for the web.
 3. Select **Automate → New Script → Create in Code Editor**. If the first-use screen offers **Write a script**, select it.
+   <LearnScreenshot image="script" />
+
 4. Select all default code in the editor and replace it with the unchanged supplied script:
 
    ```typescript
@@ -63,18 +67,32 @@ Complete this setup before the repair timer starts.
 
    Press **Enter** to confirm the name.
 6. If **Save script** is shown, select it. Wait for **Script saved**, then close the Excel tab.
-7. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the route announced for R1. Open the Flow you just copied or imported and select **Edit**.
-8. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for Run table check. Stop if its selected account/reference is not assigned to you.
-9. Select **Run table check → Parameters**. Set **Location** to **OneDrive for Business** and **Document Library** to your document library. Select workbook A in **File**. In **Script**, select the script you just named in step 5 — normally **B2D2-CheckTable-ReadOnly**.
-10. Wait for the script's parameter fields to finish loading. Check **tableName** (shown as **ScriptParameters/tableName** in some views). Its prepared starting value should be:
+### Open your personal flow
+
+<StarterFlowSetup exercise="R1" />
+
+### Check connections and settings
+
+| Action to check | Service |
+|---|---|
+| Run table check | Excel Online (Business) |
+
+<PersonalConnectionCheck />
+
+1. Select **Run table check → Parameters**. Set **Location** to **OneDrive for Business** and **Document Library** to your document library. Select workbook A in **File**. In **Script**, select the script you just named in step 5 — normally **B2D2-CheckTable-ReadOnly**.
+2. Wait for the script's parameter fields to finish loading. Check **tableName** (shown as **ScriptParameters/tableName** in some views). Its prepared starting value should be:
 
     ```text
     RequestsTypo
     ```
 
     If the field is empty, type this value. This restores the starter's intended first-test value after selecting a different script. You will repair it during Practice 1.
-11. [Save your changes](../preparation.md#save-your-changes).
-12. After saving the setup, open your own copy's details page. If it is Off, select **Turn on**. Confirm it is On before starting test A.
+
+### Save and turn on your flow
+
+<FlowReadyCheck />
+
+**Ready checkpoint:** Both workbooks and your saved script are available in your account. Run table check uses your own connection, workbook A and the supplied script. Keep **RequestsTypo** for the first test. Your personal flow is On.
 
 ## Practice 1: Check a script dependency {#practice-1-check-a-script-dependency}
 
@@ -85,17 +103,8 @@ Correct the table-name parameter and return the count from two workbook copies.
 1. On your copy's details page, select **Edit** to open the designer. Then select **Test → Manually → Test**. If **Sign in** appears, complete the [first-test connection check](../preparation.md#first-test-connection-check). This trigger needs no input; select **Run flow**. When the confirmation says the run has started, select **Done**.
 2. Wait for the run-result view showing the action statuses. If it does not appear, follow [Open your test result](../preparation.md#open-your-test-result).
 3. Select the failed **Run table check** action. Read its **Inputs** and error. It should report that the requested table is missing.
-4. Compare the requested **tableName** in the failed action with the supplied Table name above: **RequestsTable**. The script needs the Table name, not the Requests worksheet name.
-5. Return to **Edit → Run table check → Parameters**. In **tableName** (shown as **ScriptParameters/tableName** in some views), replace the existing value with:
 
-   ```text
-   RequestsTable
-   ```
-
-6. Save your changes using the [control shown in your editor](../preparation.md#save-your-changes).
-7. Select **Test → Manually → Test** for test A. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** contains numeric **3**.
-8. Select **Edit**, then **Run table check → Parameters**. Select workbook B in **File**. Keep the same script and repaired tableName. Save your changes.
-9. Select **Test → Manually → Test** for test B. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** for numeric **3** again.
+Use the test card to diagnose the fault, make one repair and run tests A and B. Try the hints below, or open the full solution whenever you need help.
 
 ### Progressive hints
 
@@ -115,6 +124,29 @@ The sheet is called Requests. The Table on it is called RequestsTable. The scrip
 
 Repair the tableName parameter in Run table check. Do not edit the TypeScript or workbook data.
 
+</details>
+
+### Solution available {#solution}
+
+Includes the exact repair and both verification tests. Open whenever you need help.
+
+<details class="rescue-solution">
+<summary>View step-by-step solution</summary>
+<div class="rescue-solution-content">
+
+1. Compare the requested **tableName** in the failed action with the supplied Table name above: **RequestsTable**. The script needs the Table name, not the Requests worksheet name.
+2. Return to **Edit → Run table check → Parameters**. In **tableName** (shown as **ScriptParameters/tableName** in some views), replace the existing value with:
+
+   ```text
+   RequestsTable
+   ```
+
+3. Save your changes using the [control shown in your editor](../preparation.md#save-your-changes).
+4. Select **Test → Manually → Test** for test A. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** contains numeric **3**.
+5. Select **Edit**, then **Run table check → Parameters**. Select workbook B in **File**. Keep the same script and repaired tableName. Save your changes.
+6. Select **Test → Manually → Test** for test B. No input is needed. Select **Run flow**, then **Done** at the started confirmation. Wait for the run-result view, then check **Script result → Outputs** for numeric **3** again.
+
+</div>
 </details>
 
 ### Checkpoint

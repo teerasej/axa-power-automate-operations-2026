@@ -13,9 +13,9 @@ import { withBase } from 'vitepress'
 
 # Day 2 downloads and reset copies
 
-<a :href="withBase('/day-2/day-2-practice-files.zip')" download><strong>Download the Day 2 practice files (ZIP)</strong></a>
+<a :href="withBase('/day-2/day-2-workshop.zip')" download><strong>Download complete Day 2 workshop (ZIP)</strong></a>
 
-Extract the ZIP on your computer before uploading a file to OneDrive. Upload only the files named in the exercise you are starting. The ZIP contains practice resources; it is not a Flow package.
+Extract the ZIP on your computer before uploading a file to OneDrive. Upload only the files named in the exercise you are starting. Open **files/** for practice resources and **starters/** for Flow packages. The outer workshop ZIP is not a Power Automate import package.
 
 ## Core resources
 
@@ -45,9 +45,9 @@ Download only the resources for your assigned card, or use them from the extract
 
 ## Starter Flow packages {#starter-flow-packages}
 
-<a class="day2-download-button" :href="withBase('/day-2/day-2-flow-packages.zip')" download>Download Flow starters + solutions</a>
+The complete workshop ZIP above includes these starter and solution packages.
 
-This single download contains **eight START packages and eight working SOLUTION Flows**, supplied as **nine native unmanaged solution ZIPs**, plus README.md and checksums. Extract **day-2-flow-packages.zip** first. Do not extract the inner ZIPs; do not upload the outer download to Power Automate.
+This single download contains **eight START packages and eight working SOLUTION Flows**, supplied as **nine native unmanaged solution ZIPs**, plus all **16 practice resources** under **files/**, README.md and checksums. Extract **day-2-workshop.zip** first. Do not extract the inner ZIPs; do not upload the outer download to Power Automate.
 
 | Assigned exercise | Inner START package |
 |---|---|
@@ -60,9 +60,9 @@ This single download contains **eight START packages and eight working SOLUTION 
 | R4 — Approval gate | `starters/R4/B2D2V2R04ApprovalGateSTART_1_0_0_1.zip` |
 | R5 — PDF generation | `starters/R5/B2D2V2R05PdfGenerationSTART_1_0_0_1.zip` |
 
-The **solutions** folder contains `B2D2V2InstructorSolutions_1_0_0_1.zip`, with all eight working answers. Use it when the instructor asks; it is not required to start an exercise. The practice files above are a separate download.
+The **solutions** folder contains `B2D2V2InstructorSolutions_1_0_0_1.zip`, with all eight working answers. Use it when the instructor asks; it is not required to start an exercise. The practice files above are included under **files/** in the same workshop ZIP.
 
-**Shared class environment:** the instructor imports each START once, then each pair makes its own copy. Importing the same solution repeatedly can update existing components; changing the ZIP filename does not create a personal copy. Follow [Start your assigned Flow](./preparation.md#start-your-assigned-flow).
+**Follow your assigned tab:** **Use my prepared flow** opens an independent flow already prepared for your account or pair, with explicit editing access. **Import starter ZIP** is for a separate target approved by the organiser. Selecting the same environment does not share flows. Re-importing the same solution can update existing components; changing the ZIP filename does not create a personal copy. The complete steps are on each exercise page. See [starting routes](./preparation.md#start-your-assigned-flow).
 
 **Package type:** use the [solution import guide](./preparation.md#solution-route-for-this-edition) for these inner ZIPs. The Legacy guide remains available for genuine Legacy packages supplied separately; none are included here. Select your own connections and resources as directed in each exercise. Source resource identifiers remain in the native packages and do not make those resources portable.
 
@@ -72,7 +72,7 @@ The **solutions** folder contains `B2D2V2InstructorSolutions_1_0_0_1.zip`, with 
 
 ## Reset safely
 
-If an exercise needs to restart, use a clean copy from the **reset** folder. Do not overwrite another pair's workbook.
+If an exercise needs to restart, use a clean copy from the **files/reset** folder. Do not overwrite another pair's workbook.
 
 | Reset copy | Use |
 |---|---|
@@ -85,6 +85,6 @@ Wait for active runs to finish and close Excel before changing a workbook. Follo
 
 <details><summary>Download checksums</summary>
 
-The <a :href="withBase('/day-2/download-manifest.json')" download>download manifest</a> lists the ZIP contents and SHA-256 checksums. You do not need to read it before the exercise.
+The <a :href="withBase('/day-2/workshop-manifest.json')" download>complete workshop manifest</a> lists the ZIP contents and SHA-256 checksums. You do not need to read it before the exercise.
 
 </details>

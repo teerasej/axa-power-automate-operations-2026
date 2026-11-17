@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
 
-const props = withDefaults(defineProps<{ src: string; alt: string; width?: number; height?: number }>(), { width: 1536, height: 512 })
+const props = withDefaults(defineProps<{ src: string; alt: string; width?: number; height?: number; loading?: 'lazy' | 'eager' }>(), { width: 1536, height: 512, loading: 'lazy' })
 const source = computed(() => withBase(props.src))
-const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.webp'))} 768w, ${source.value} 1536w`)
+const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.webp'))} ${Math.min(768, props.width)}w, ${source.value} ${props.width}w`)
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const sources = computed(() => `${withBase(props.src.replace(/\.webp$/, '-768.we
       :width="props.width"
       :height="props.height"
       :style="{ aspectRatio: `${props.width} / ${props.height}` }"
-      loading="lazy"
+      :loading="props.loading"
       decoding="async"
     >
   </figure>

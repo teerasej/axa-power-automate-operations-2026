@@ -11,7 +11,11 @@ next:
 
 # Exercise 4: Flow Rescue Challenge
 
+<PracticeIllustration src="/day-2/images/rescue-overview.webp" :width="1536" :height="864" alt="A team investigates a small problem and exchanges checked test evidence with another team." loading="eager" />
+
 Your team will repair **one** small Flow. Other teams work on different problems at the same time. After two tests, exchange evidence with another team and explain your repair.
+
+Every challenge includes optional progressive hints and a highlighted **Solution available** section. Select **View step-by-step solution** whenever you want the exact repair and both verification tests.
 
 > **Draft rehearsal:** The revised starters are being checked one at a time. Use only the baseline or package assigned for your rehearsal. Setup and live repair cannot be accepted until the assigned starting route and learner checks pass.
 
@@ -44,7 +48,7 @@ Open only the card assigned to your team. Your instructor checks the required se
 
 Use the card's two tests to show that your one-setting repair works.
 
-1. Open your assigned challenge page and complete its **Setup**. Confirm that you are working in your assigned imported Flow or your own uniquely named copy.
+1. Open your assigned challenge page and complete its **Setup**, including the starting-route tab announced by the instructor. Check your assigned personal flow name and editing access before making changes.
 2. Follow the card's first test without changing the faulty setting. Record the symptom shown on that card.
 3. Follow its diagnostic steps. Use the progressive hints only when you need them.
 4. Change the one setting supported by your evidence. Follow [Save your changes](../preparation.md#save-your-changes) before testing the edit.

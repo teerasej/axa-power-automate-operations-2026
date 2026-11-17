@@ -11,9 +11,13 @@ next:
 
 # Exercise 1: Repair Relay
 
-> **Draft rehearsal:** A separate instructor-account copy of **B2D2-v2-Core01-RepairRelay-START** reproduced the wrong amount. One amount-source repair produced correct IT/PMO rows and new received emails. Same-mailbox checks verify contents; distinct-recipient routing, fresh imports, learner permissions, an uninterrupted final-text attempt and classroom timing remain unperformed.
+<PracticeIllustration src="/day-2/images/core01-overview.webp" :width="1536" :height="864" alt="Two colleagues compare a request with its recorded and delivered results." loading="eager" />
 
-The request desk records an amount in Excel and sends it by email. The prepared Flow finishes, but the amount is wrong. Your job is to find where it changes and repair that setting.
+Your team tracks IT and PMO requests in Excel. The prepared flow reads a selected request, updates its row in **Results**, and emails the amount to the chosen test recipient. For example, **R-101** has an amount of **1250.00**; both the result row and email should show that value.
+
+The flow finishes successfully, but records and sends the wrong amount. It is like copying a price from an order onto a receipt: completing the task does not mean the number is correct.
+
+Trace the amount through the flow, repair the first setting that changes it, and check both the IT and PMO results.
 
 > **Access:** Use the training account checked in [Preparation](../preparation.md). This exercise needs Power Automate, Excel Online (Business), OneDrive for Business and Outlook. The organiser confirms the required service access before class.
 
@@ -29,15 +33,10 @@ Use one driver and one checker. The checker reads the next step and checks the r
 
 ## Practice 1: Prepare your exercise
 
+<PracticeIllustration src="/day-2/images/core01-setup.webp" :width="1536" :height="864" alt="A colleague places a workbook in a personal training folder beside a readiness checklist." />
+
 Put the supplied workbook where your personal Flow expects it, then check its account and prepared settings.
 
-Check each of these actions in your own copy:
-
-| Action | Service | Prepared Table |
-|---|---|---|
-| List requests | Excel Online (Business) | Requests |
-| Update result, inside One request → True | Excel Online (Business) | Results |
-| Send result, inside One request → True | Office 365 Outlook | Not applicable |
 
 Both Excel actions already use this prepared **File** value:
 
@@ -45,11 +44,19 @@ Both Excel actions already use this prepared **File** value:
 B2D2-Operations-Request-Desk/core01-repair-relay.xlsx
 ```
 
-1. In OneDrive, open your training folder. If it does not exist, create a folder named:
+### Prepare your OneDrive files
+
+Open [Day 2 downloads](../downloads.md) and select **Download the Day 2 practice files (ZIP)** if needed. Extract the ZIP: right-click → **Extract All** on Windows, or double-click on Mac.
+
+1. In OneDrive, open your training folder. If it does not exist, select **Create or upload → Folder** (or **Add new → Folder**) and name it:
 
    ```text
    B2D2-Operations-Request-Desk
    ```
+
+   <LearnScreenshot image="folder" />
+
+   <LearnScreenshot image="folder-name" />
 
 2. Open that folder. If **core01-repair-relay.xlsx** is already there, follow [Reset](#reset) before continuing. Otherwise, select **Create or upload → Files upload** and upload that workbook from your extracted practice files. Keep the exact filename; the prepared Flow expects this folder and name. Each pair uses its own OneDrive.
 3. Open the workbook in Excel for the web. Select **Requests** and confirm these two requests:
@@ -60,16 +67,31 @@ B2D2-Operations-Request-Desk/core01-repair-relay.xlsx
    | R-102 | PMO | SLOT-B | 2750.00 |
 
 4. Select **Results**. Confirm that the **R-101** and **R-102** rows exist and both have **Pending** in **Outcome**. Close the Excel tab.
-5. Complete [Start your assigned Flow](../preparation.md#start-your-assigned-flow) using the announced route. Open the Flow you just copied or imported and select **Edit**.
-6. Complete [Check the account used by each service](../preparation.md#check-your-connection-account) for all three actions above. Check each action separately.
-7. Open **List requests → Parameters**. Check **Location** is **OneDrive for Business** and **Document Library** is your own document library. It may show **Documents** or **เอกสาร**; do not select **PersonalCacheLibrary**. Expand **One request** and repeat this own-location/library check on **Update result** in its **True** branch. Wait for the fields to finish loading after any necessary selection.
-8. Check that both actions' **File** values match the path above and their **Table** values match the table above. Leave File and Table unchanged. In **Update result**, check **Key Column** is **RequestID**, **Key Value** contains its supplied token, and **RequestID**, **RouteKey**, **RecipientSlot** and **AmountText** contain prepared values. **Outcome** should be **Processed**. If a prepared value is missing or blank, stop before testing; do not rebuild the mappings for this exercise.
-9. [Save your changes](../preparation.md#save-your-changes) using the control shown in your editor.
-10. Return to your own copy's details page. If its status is Off, select **Turn on**. Confirm **On** before the first test.
+
+### Open your personal flow
+
+<StarterFlowSetup exercise="Core01" />
+
+### Check connections and settings
+
+| Action | Service | Prepared Table |
+|---|---|---|
+| List requests | Excel Online (Business) | Requests |
+| Update result, inside One request → True | Excel Online (Business) | Results |
+| Send result, inside One request → True | Office 365 Outlook | Not applicable |
+
+<PersonalConnectionCheck />
+
+1. Open **List requests → Parameters**. Check **Location** is **OneDrive for Business** and **Document Library** is your own document library. It may show **Documents** or **เอกสาร**; do not select **PersonalCacheLibrary**. Expand **One request** and repeat this own-location/library check on **Update result** in its **True** branch. Wait for the fields to finish loading after any necessary selection.
+2. Check that both actions' **File** values match the path above and their **Table** values match the table above. Leave File and Table unchanged. In **Update result**, check **Key Column** is **RequestID**, **Key Value** contains its supplied token, and **RequestID**, **RouteKey**, **RecipientSlot** and **AmountText** contain prepared values. **Outcome** should be **Processed**. If a prepared value is missing or blank, stop before testing; do not rebuild the mappings for this exercise.
+
+### Save and turn on your flow
+
+<FlowReadyCheck />
 
 ### Checkpoint {#setup-checkpoint}
 
-Your canonical workbook contains the expected two requests and two Pending results. Both Excel actions use your account/library and the supplied File/Table settings. The prepared keys and writing fields remain populated. Do not repair **Mapped amount** yet.
+Your canonical workbook contains the expected two requests and two Pending results. Both Excel actions use your account/library and the supplied File/Table settings. The prepared keys and writing fields remain populated. Your personal flow is On. Do not repair **Mapped amount** yet.
 
 ## Practice 2: Trace an incorrect result {#practice-1-trace-an-incorrect-result}
 

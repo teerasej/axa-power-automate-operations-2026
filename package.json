@@ -6,11 +6,12 @@
   "scripts": {
     "docs:dev": "vitepress docs",
     "samples:pack": "node scripts/package-samples.mjs",
-    "docs:build": "npm run samples:pack && npm run optional:samples:pack && npm run day2:samples:pack && npm run day2:flows:pack && vitepress build docs",
+    "docs:build": "npm run samples:pack && npm run optional:samples:pack && npm run day2:samples:pack && npm run day2:flows:pack && npm run day2:workshop:pack && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "optional:samples:pack": "node scripts/package-optional-samples.mjs",
     "day2:samples:pack": "node scripts/package-day2-samples.mjs",
-    "day2:flows:pack": "node scripts/package-day2-flows.mjs"
+    "day2:flows:pack": "node scripts/package-day2-flows.mjs",
+    "day2:workshop:pack": "node scripts/package-day2-workshop.mjs"
   },
   "overrides": {
     "vite": "6.4.3",
